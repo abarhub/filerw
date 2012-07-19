@@ -1,0 +1,109 @@
+package org.abarhub.filerw;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TestTools<T extends Enum<T>&Field> {
+
+	private List<T> liste_champs;
+
+	private String messageError;
+	
+	public TestTools(List<T> liste_champs)
+	{
+		this.liste_champs=liste_champs;
+	}
+	
+	public TestTools(Class<T> clazz)
+	{
+		this.liste_champs=new ArrayList<T>();
+        for (T option : clazz.getEnumConstants()) {
+            liste_champs.add(option);
+        }
+	}
+	
+	public boolean testBasic()
+	{
+		T premier_debut=null;
+		for(T tmp:liste_champs)
+		{
+			if(tmp.getPosition()<0)
+			{
+				messageError="La position du champs "+tmp+" est incorrecte";
+				return false;
+			}
+			if(tmp.getLength()<=0)
+			{
+				messageError="la longueur du champs "+tmp+" est trop petite";
+				return false;
+			}
+			if(tmp.getPosition()==0)
+			{
+				premier_debut=tmp;
+			}
+		}
+		if(premier_debut==null)
+		{
+			messageError="il n'y a aucun champs pour la colonne no 0";
+			return false;
+		}
+		return true;
+	}
+
+	public boolean testDuplicate()
+	{
+		List<T> tab;
+		int len;
+		tab=new ArrayList<T>();//[ChampsFixes.taille_ligne()];
+		len=getSize();
+		if(len<=0)
+		{
+			messageError="La taille n'est pas correcte";
+			return false;
+		}
+		for(int i=0;i<len;i++)
+		{
+			tab.add(null);
+		}
+		
+		for(T tmp:liste_champs)
+		{
+			for(int i=tmp.getPosition();i<tmp.getPosition()+tmp.getLength();i++)
+			{
+				if(tab.get(i)!=null)
+				{
+					messageError="La case n°"+i+" est associé a deux champs différents :"+tmp+" et "+tab.get(i);
+					return false;
+				}
+				tab.set(i, tmp);
+			}
+		}
+		for(int i=0;i<tab.size();i++)
+		{
+			if(tab.get(i)==null)
+			{
+				messageError="La case n°"+i+" n'est associée a aucun champs ";
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private int getSize() {
+		int res=0;
+    	for(T champs:liste_champs)
+    	{
+    		res=Math.max(res, champs.getPosition()+champs.getLength());
+    	}
+    	return res;
+	}
+
+	public boolean testAll()
+	{
+		return testBasic() && testDuplicate();
+	}
+	
+	public String getMessageError() {
+		return messageError;
+	}
+}
