@@ -13,11 +13,11 @@ import java.util.Map;
  *
  * @author abarhub
  */
-public class FileContent<T extends Field> {
+public class FileContentAscii<T extends Field> {
     
     private List<Map<T,String>> liste;
     
-    public FileContent()
+    public FileContentAscii()
     {
         liste=new ArrayList<Map<T, String>>();
     }

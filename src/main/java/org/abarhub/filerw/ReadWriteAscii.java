@@ -11,39 +11,39 @@ import java.util.*;
  *
  * @author abarhub
  */
-public class ReadWrite<T extends Field> {
+public class ReadWriteAscii<T extends Field> {
 	//<T extends Enum<T>&Field>
     // le enum n'est pas necessaire, et peut être enlevé
     private File file;
-    private List<T> liste_champs;
+    private List<T> fieldsList;
     
-    public ReadWrite(File file,List<T> liste_champs){
+    public ReadWriteAscii(File file,List<T> liste_champs){
         this.file=file;
-        this.liste_champs=liste_champs;
+        this.fieldsList=liste_champs;
     }
         
-    public ReadWrite(File file,Class<T> clazz){
+    public ReadWriteAscii(File file,Class<T> clazz){
         this.file=file;
-        this.liste_champs=new ArrayList<T>();
+        this.fieldsList=new ArrayList<T>();
         for (T option : clazz.getEnumConstants()) {
-            liste_champs.add(option);
+            fieldsList.add(option);
         }
     }
     
-    public FileContent<T> readFile() throws FileNotFoundException, IOException
+    public FileContentAscii<T> readFile() throws FileNotFoundException, IOException
     {
-        FileContent<T> res;
+        FileContentAscii<T> res;
         BufferedReader buf=null;
         Map<T,String> ligne;
         String ligne2;
-        res=new FileContent<T>();
+        res=new FileContentAscii<T>();
         try{
             buf=new BufferedReader(new FileReader(file));
             while((ligne2=buf.readLine())!=null)
             {
                 if(ligne2!=null&&ligne2.length()>0)
                 {
-                    ligne=decoupe(ligne2);
+                    ligne=split(ligne2);
                     if(ligne!=null)
                     {
                         res.add(ligne);
@@ -60,24 +60,24 @@ public class ReadWrite<T extends Field> {
         return res;
     }
     
-    private Map<T, String> decoupe(String ligne) {
+    private Map<T, String> split(String line) {
         Map<T, String> res;
         String s;
         //res=new EnumMap(ListeChamps.class);
         res=new HashMap<T,String>();
-        for(T champs:liste_champs)
+        for(T field:fieldsList)
         {
-            s=ligne.substring(champs.getPosition(), champs.getPosition()+champs.getLength());
-            res.put(champs, s);
+            s=line.substring(field.getPosition(), field.getPosition()+field.getLength());
+            res.put(field, s);
         }
         return res;
     }
 
-    public void WriteFile(File nom_fichier,FileContent<T> contenu_fichier) throws IOException
+    public void WriteFile(File fileName,FileContentAscii<T> contenu_fichier) throws IOException
     {
     	PrintWriter out=null;
     	try{
-    		out=new PrintWriter(new BufferedWriter(new FileWriter(nom_fichier)));
+    		out=new PrintWriter(new BufferedWriter(new FileWriter(fileName)));
     		if(contenu_fichier!=null)
     		{
     			if(contenu_fichier.getListe()!=null)
@@ -121,7 +121,7 @@ public class ReadWrite<T extends Field> {
     private int getSize()
     {
     	int res=0;
-    	for(T champs:liste_champs)
+    	for(T champs:fieldsList)
     	{
     		res=Math.max(res, champs.getPosition()+champs.getLength());
     	}

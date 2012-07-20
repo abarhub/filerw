@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.abarhub.filerw.FileContent;
-import org.abarhub.filerw.ReadWrite;
+import org.abarhub.filerw.FileContentAscii;
+import org.abarhub.filerw.ReadWriteAscii;
 
 /**
  *
@@ -22,12 +22,12 @@ import org.abarhub.filerw.ReadWrite;
 public class Main {
     public static void main(String[] arg)
     {
-        ReadWrite lecture;
-        FileContent fichier;
+        ReadWriteAscii lecture;
+        FileContentAscii fichier;
         File f=new File("./data/exemple1.txt");
         try {
         	System.out.println("Lecture du fichier "+f.getPath()+" :");
-            lecture=new ReadWrite(f,ListeChamps1.class);
+            lecture=new ReadWriteAscii(f,ListeChamps1.class);
             fichier=lecture.readFile();
             fichier.show();
         } catch (FileNotFoundException ex) {
