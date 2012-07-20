@@ -27,7 +27,7 @@ public class Main {
         File f=new File("./data/exemple1.txt");
         try {
         	System.out.println("Lecture du fichier "+f.getPath()+" :");
-            lecture=new ReadWriteAscii(f,ListeChamps1.class);
+            lecture=new ReadWriteAscii(f,FieldsListChamps1.class);
             fichier=lecture.readFile();
             fichier.show();
         } catch (FileNotFoundException ex) {

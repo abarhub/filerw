@@ -12,12 +12,12 @@ public class TestExample1 extends TestCase {
 
 	public void test1()
 	{
-		ReadWriteAscii lecture;
-        FileContentAscii fichier;
+		ReadWriteAscii<FieldsListChamps1> lecture;
+        FileContentAscii<FieldsListChamps1> fichier;
         File f=new File("./data/exemple1.txt");
         try {
         	System.out.println("Lecture du fichier "+f.getPath()+" :");
-            lecture=new ReadWriteAscii(f,ListeChamps1.class);
+            lecture=new ReadWriteAscii<FieldsListChamps1>(f,FieldsListChamps1.class);
             fichier=lecture.readFile();
             assertTrue(fichier!=null);
             fichier.show();
