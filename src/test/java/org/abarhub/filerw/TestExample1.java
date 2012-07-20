@@ -13,7 +13,7 @@ public class TestExample1 extends TestCase {
 	public void test1()
 	{
 		ReadWrite lecture;
-        Fichier fichier;
+        FileContent fichier;
         File f=new File("./data/exemple1.txt");
         try {
         	System.out.println("Lecture du fichier "+f.getPath()+" :");

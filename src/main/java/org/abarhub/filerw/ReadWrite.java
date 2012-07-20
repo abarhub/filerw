@@ -30,13 +30,13 @@ public class ReadWrite<T extends Field> {
         }
     }
     
-    public Fichier<T> readFile() throws FileNotFoundException, IOException
+    public FileContent<T> readFile() throws FileNotFoundException, IOException
     {
-        Fichier<T> res;
+        FileContent<T> res;
         BufferedReader buf=null;
         Map<T,String> ligne;
         String ligne2;
-        res=new Fichier<T>();
+        res=new FileContent<T>();
         try{
             buf=new BufferedReader(new FileReader(file));
             while((ligne2=buf.readLine())!=null)
@@ -73,7 +73,7 @@ public class ReadWrite<T extends Field> {
         return res;
     }
 
-    public void WriteFile(File nom_fichier,Fichier<T> contenu_fichier) throws IOException
+    public void WriteFile(File nom_fichier,FileContent<T> contenu_fichier) throws IOException
     {
     	PrintWriter out=null;
     	try{

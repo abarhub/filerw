@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.abarhub.filerw.Fichier;
+import org.abarhub.filerw.FileContent;
 import org.abarhub.filerw.ReadWrite;
 
 /**
@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] arg)
     {
         ReadWrite lecture;
-        Fichier fichier;
+        FileContent fichier;
         File f=new File("./data/exemple1.txt");
         try {
         	System.out.println("Lecture du fichier "+f.getPath()+" :");
