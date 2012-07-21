@@ -16,6 +16,9 @@ public class ReadWriteAscii<T extends Field> {
     // le enum n'est pas necessaire, et peut être enlevé
     private File file;
     private final List<T> fieldsList;
+    private enum Separator{NewLine,NoSeparator,String};
+    private Separator separator=Separator.NewLine;
+    private String stringSeparator;
     
     public ReadWriteAscii(File file,List<T> liste_champs){
         this.file=file;
@@ -39,13 +42,30 @@ public class ReadWriteAscii<T extends Field> {
         res=new FileContentAscii<T>();
         try{
             buf=new BufferedReader(new FileReader(file));
-            while((ligne2=buf.readLine())!=null)
+            if(separator==Separator.NewLine)
             {
-                if(ligne2!=null&&ligne2.length()>0)
-                {
-                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
-                	res.add(ligne);
-                }
+	            while((ligne2=buf.readLine())!=null)
+	            {
+	                if(ligne2!=null&&ligne2.length()>0)
+	                {
+	                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
+	                	res.add(ligne);
+	                }
+	            }
+            }
+            else
+            {
+            	char buf2[]=new char[getSize()];
+            	int len;
+            	while((len=buf.read(buf2))!=-1)
+	            {
+	                if(len>0)
+	                {
+	                	ligne2=new String(buf2);
+	                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
+	                	res.add(ligne);
+	                }
+	            }
             }
         }finally{
             if(buf!=null)
@@ -79,6 +99,41 @@ public class ReadWriteAscii<T extends Field> {
     			out.close();
     		}
     	}
+    }
+    
+    public void setNewLineSeparator()
+    {
+    	separator=Separator.NewLine;
+    	stringSeparator=null;
+    }
+    
+    public boolean isNewLineException()
+    {
+    	return separator==Separator.NewLine;
+    }
+    
+    public void setNoSeparator()
+    {
+    	separator=Separator.NoSeparator;
+    	stringSeparator=null;
+    }
+
+    public boolean isNoSeparator()
+    {
+    	return separator==Separator.NoSeparator;
+    }
+    
+    public void setStringSeparator(String sep)
+    {
+    	if(sep==null)
+    		throw new IllegalArgumentException();
+    	separator=Separator.String;
+    	stringSeparator=sep;
+    }
+    
+    public boolean isStringSeparator()
+    {
+    	return separator==Separator.String;
     }
     
     private int getSize()
