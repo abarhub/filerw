@@ -45,11 +45,6 @@ public class ReadWriteAscii<T extends Field> {
                 {
                 	ligne=new LineContentAscii<T>(fieldsList, ligne2);
                 	res.add(ligne);
-                    /*ligne=split(ligne2);
-                    if(ligne!=null)
-                    {
-                        res.add(ligne);
-                    }*/
                 }
             }
         }finally{
@@ -58,19 +53,6 @@ public class ReadWriteAscii<T extends Field> {
                 buf.close();
                 buf=null;
             }
-        }
-        return res;
-    }
-    
-    private Map<T, String> split(String line) {
-        Map<T, String> res;
-        String s;
-        //res=new EnumMap(ListeChamps.class);
-        res=new HashMap<T,String>();
-        for(T field:fieldsList)
-        {
-            s=line.substring(field.getPosition(), field.getPosition()+field.getLength());
-            res.put(field, s);
         }
         return res;
     }
@@ -97,27 +79,6 @@ public class ReadWriteAscii<T extends Field> {
     			out.close();
     		}
     	}
-    }
-    
-    private String assemble(Map<T, String> ligne) {
-        String valeur;
-        StringBuilder buf;
-        char c;
-        buf=new StringBuilder();
-        buf.setLength(getSize());
-        for(T champs:ligne.keySet())
-        {
-        	valeur=ligne.get(champs);
-        	if(valeur!=null&&valeur.length()>0)
-        	{
-        		for(int i=0;i<champs.getLength();i++)
-        		{
-        			c=valeur.charAt(i);
-        			buf.setCharAt(champs.getPosition()+i, c);
-        		}
-        	}
-        }
-        return buf.toString();
     }
     
     private int getSize()

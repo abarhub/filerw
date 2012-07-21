@@ -46,10 +46,6 @@ public class FileContentAscii<T extends Field> {
             	LineContentAscii<T> line=liste.get(i);
                 out.println("Line no "+i);
                 line.show(out);
-                /*for(Field champs:map.keySet())
-                {
-                    out.println(champs.name()+"="+map.get(champs));
-                }*/
             }
         }
     }
