@@ -53,7 +53,7 @@ public class ReadWriteAscii<T extends Field> {
 	                }
 	            }
             }
-            else
+            else if(separator==Separator.NoSeparator)
             {
             	char buf2[]=new char[getSize()];
             	int len;
@@ -66,6 +66,10 @@ public class ReadWriteAscii<T extends Field> {
 	                	res.add(ligne);
 	                }
 	            }
+            }
+            else
+            {
+            	assert(false);
             }
         }finally{
             if(buf!=null)
@@ -88,7 +92,24 @@ public class ReadWriteAscii<T extends Field> {
     			{
     				for(LineContentAscii<T> ligne:contenu_fichier.getListe())
     				{
-    					out.println(ligne.getLine());
+    					if(separator==Separator.NewLine)
+    					{
+    						out.println(ligne.getLine());
+    					}
+    					else if(separator==Separator.NoSeparator)
+    					{
+    						out.print(ligne.getLine());
+    					}
+    					else if(separator==Separator.String)
+    					{
+    						out.print(ligne.getLine());
+    						if(stringSeparator!=null&&stringSeparator.length()>0)
+    							out.print(stringSeparator);
+    					}
+    					else
+    					{
+    						assert(false);
+    					}
     				}
     			}
     		}
