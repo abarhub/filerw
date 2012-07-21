@@ -69,7 +69,7 @@ public class TestExample1 extends TestCase {
         URL url = getClass().getResource("/data/exemple1.txt");
         try {
         	f=new File(url.toURI());
-        	f2=new File(f.getAbsoluteFile().getParentFile(),"exemple1_1.txt");
+        	f2=new File(f.getAbsoluteFile().getParentFile(),"exemple1_2.txt");
         	System.out.println("Lecture du fichier "+f.getPath()+" :");
             lecture=new ReadWriteAscii<FieldsListChamps1>(f,FieldsListChamps1.class);
             lecture.setNewLineSeparator();
