@@ -1,3 +1,1 @@
-Newton3             Isaac               04011643
-Einstein            Albert              14103879
-Copernic            Nicolas             19021473
+Newton3             Isaac               04011643Einstein            Albert              14103879Copernic            Nicolas             19021473
