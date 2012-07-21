@@ -15,7 +15,7 @@ public class ReadWriteAscii<T extends Field> {
 	//<T extends Enum<T>&Field>
     // le enum n'est pas necessaire, et peut être enlevé
     private File file;
-    private List<T> fieldsList;
+    private final List<T> fieldsList;
     
     public ReadWriteAscii(File file,List<T> liste_champs){
         this.file=file;
@@ -34,7 +34,7 @@ public class ReadWriteAscii<T extends Field> {
     {
         FileContentAscii<T> res;
         BufferedReader buf=null;
-        Map<T,String> ligne;
+        LineContentAscii<T> ligne;
         String ligne2;
         res=new FileContentAscii<T>();
         try{
@@ -43,11 +43,13 @@ public class ReadWriteAscii<T extends Field> {
             {
                 if(ligne2!=null&&ligne2.length()>0)
                 {
-                    ligne=split(ligne2);
+                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
+                	res.add(ligne);
+                    /*ligne=split(ligne2);
                     if(ligne!=null)
                     {
                         res.add(ligne);
-                    }
+                    }*/
                 }
             }
         }finally{
@@ -82,9 +84,9 @@ public class ReadWriteAscii<T extends Field> {
     		{
     			if(contenu_fichier.getListe()!=null)
     			{
-    				for(Map<T, String> ligne:contenu_fichier.getListe())
+    				for(LineContentAscii<T> ligne:contenu_fichier.getListe())
     				{
-    					out.println(assemble(ligne));
+    					out.println(ligne.getLine());
     				}
     			}
     		}
@@ -121,9 +123,9 @@ public class ReadWriteAscii<T extends Field> {
     private int getSize()
     {
     	int res=0;
-    	for(T champs:fieldsList)
+    	for(T field:fieldsList)
     	{
-    		res=Math.max(res, champs.getPosition()+champs.getLength());
+    		res=Math.max(res, field.getPosition()+field.getLength());
     	}
     	return res;
     }

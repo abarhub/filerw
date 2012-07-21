@@ -15,19 +15,19 @@ import java.util.Map;
  */
 public class FileContentAscii<T extends Field> {
     
-    private List<Map<T,String>> liste;
+    private List<LineContentAscii<T>> liste;
     
     public FileContentAscii()
     {
-        liste=new ArrayList<Map<T, String>>();
+        liste=new ArrayList<LineContentAscii<T>>();
     }
     
-    public void add(Map<T, String> map)
+    public void add(LineContentAscii<T> line)
     {
-        liste.add(map);
+        liste.add(line);
     }
 
-    public List<Map<T, String>> getListe() {
+    public List<LineContentAscii<T>> getListe() {
         return liste;
     }
     
@@ -43,12 +43,13 @@ public class FileContentAscii<T extends Field> {
         {
             for(int i=0;i<liste.size();i++)
             {
-                Map<T,String> map=liste.get(i);
+            	LineContentAscii<T> line=liste.get(i);
                 out.println("Line no "+i);
-                for(Field champs:map.keySet())
+                line.show(out);
+                /*for(Field champs:map.keySet())
                 {
                     out.println(champs.name()+"="+map.get(champs));
-                }
+                }*/
             }
         }
     }
