@@ -89,7 +89,7 @@ public class StructAsciiReader<T extends Field> extends Reader {
 		return reader.skip(n);
 	}
 	
-	public LineContentAscii<T> readStruct() throws IOException
+	public LineContentAscii<T> readLine() throws IOException
 	{
 		char buf[]=new char[Tools.getSize(fieldsList)];
     	int len;
