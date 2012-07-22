@@ -3,6 +3,7 @@ package org.abarhub.filerw.ascii;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.CharBuffer;
+import java.text.ParseException;
 import java.util.List;
 
 import org.abarhub.filerw.Field;
@@ -89,7 +90,7 @@ public class StructAsciiReader<T extends Field> extends Reader {
 		return reader.skip(n);
 	}
 	
-	public LineContentAscii<T> readLine() throws IOException
+	public LineContentAscii<T> readLine() throws IOException, ParseException
 	{
 		char buf[]=new char[Tools.getSize(fieldsList)];
     	int len;
@@ -101,6 +102,10 @@ public class StructAsciiReader<T extends Field> extends Reader {
         {
             if(len>0)
             {
+            	if(len!=Tools.getSize(fieldsList))
+            	{
+            		throw new ParseException("Invalid Size ("+len+"!="+Tools.getSize(fieldsList)+")",len);
+            	}
             	ligne=new String(buf);
             	res=new LineContentAscii<T>(fieldsList, ligne);
             }

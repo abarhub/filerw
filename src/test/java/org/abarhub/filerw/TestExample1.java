@@ -1,15 +1,18 @@
 package org.abarhub.filerw;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class TestExample1 extends TestCase {
+public class TestExample1 {
 
+	@Test
 	public void test1() throws URISyntaxException, FileNotFoundException, IOException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
@@ -25,6 +28,7 @@ public class TestExample1 extends TestCase {
         
 	}
 
+	@Test
 	public void test2() throws URISyntaxException, FileNotFoundException, IOException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
@@ -43,6 +47,7 @@ public class TestExample1 extends TestCase {
             assertTrue(ToolBox.compare(f,f2));
 	}
 
+	@Test
 	public void test3() throws URISyntaxException, FileNotFoundException, IOException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
@@ -61,6 +66,7 @@ public class TestExample1 extends TestCase {
             assertTrue(ToolBox.compare(f,f2));
 	}
 
+	@Test
 	public void test4() throws URISyntaxException, FileNotFoundException, IOException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
