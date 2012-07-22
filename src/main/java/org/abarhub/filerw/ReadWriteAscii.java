@@ -7,6 +7,8 @@ package org.abarhub.filerw;
 import java.io.*;
 import java.util.*;
 
+import org.abarhub.filerw.ascii.LineContentAscii;
+
 /**
  *
  * @author abarhub
@@ -27,13 +29,10 @@ public class ReadWriteAscii<T extends Field> {
         
     public ReadWriteAscii(File file,Class<T> clazz){
         this.file=file;
-        this.fieldsList=new ArrayList<T>();
-        for (T option : clazz.getEnumConstants()) {
-            fieldsList.add(option);
-        }
+        this.fieldsList=Tools.convClassEnum(clazz);
     }
-    
-    public FileContentAscii<T> readFile() throws FileNotFoundException, IOException
+
+	public FileContentAscii<T> readFile() throws FileNotFoundException, IOException
     {
         FileContentAscii<T> res;
         BufferedReader buf=null;

@@ -1,7 +1,9 @@
-package org.abarhub.filerw;
+package org.abarhub.filerw.ascii;
 
 import java.io.PrintStream;
 import java.util.List;
+
+import org.abarhub.filerw.Field;
 
 public class LineContentAscii<T extends Field> {
 
