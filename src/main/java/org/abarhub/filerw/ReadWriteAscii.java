@@ -5,9 +5,11 @@
 package org.abarhub.filerw;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.*;
 
 import org.abarhub.filerw.ascii.LineContentAscii;
+import org.abarhub.filerw.ascii.StructAsciiReader;
 
 /**
  *
@@ -32,45 +34,56 @@ public class ReadWriteAscii<T extends Field> {
         this.fieldsList=Tools.convClassEnum(clazz);
     }
 
-	public FileContentAscii<T> readFile() throws FileNotFoundException, IOException
+	public FileContentAscii<T> readFile() throws FileNotFoundException, IOException, ParseException
     {
         FileContentAscii<T> res;
-        BufferedReader buf=null;
         LineContentAscii<T> ligne;
         String ligne2;
+        StructAsciiReader<T> buf=null;
+        int i;
         res=new FileContentAscii<T>();
         try{
-            buf=new BufferedReader(new FileReader(file));
-            if(separator==Separator.NewLine)
+        	buf=new StructAsciiReader<T>(new BufferedReader(new FileReader(file)),fieldsList);
+        	loop:{
+            while((ligne=buf.readLine())!=null)
             {
-	            while((ligne2=buf.readLine())!=null)
-	            {
-	                if(ligne2!=null&&ligne2.length()>0)
-	                {
-	                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
-	                	res.add(ligne);
-	                }
-	            }
+            	res.add(ligne);
+            	if(separator==Separator.NewLine)
+                {
+            		i=buf.read();
+            		switch(i)
+            		{
+            		case -1:// EOF
+            			break loop;
+            		case '\n':
+            			break;
+            		case '\r':
+            			i=buf.read();
+            			switch(i)
+            			{
+            			case -1: // EOF
+            				break loop;
+            			case '\n':
+            				break;
+            			default:
+                			throw new IOException("Bad format");
+            			}
+            			break;
+            		default:
+            			throw new IOException("Bad format");
+            		}
+                }
+            	else if(separator==Separator.NoSeparator)
+                {// nothing to do
+            		
+                }
+                else
+                {
+                	assert(false);
+                }
             }
-            else if(separator==Separator.NoSeparator)
-            {
-            	char buf2[]=new char[getSize()];
-            	int len;
-            	while((len=buf.read(buf2))!=-1)
-	            {
-	                if(len>0)
-	                {
-	                	ligne2=new String(buf2);
-	                	ligne=new LineContentAscii<T>(fieldsList, ligne2);
-	                	res.add(ligne);
-	                }
-	            }
-            }
-            else
-            {
-            	assert(false);
-            }
-        }finally{
+        	}
+		}finally{
             if(buf!=null)
             {
                 buf.close();

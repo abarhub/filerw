@@ -19,7 +19,7 @@ public class StructAsciiReader<T extends Field> extends Reader {
 		{
 			throw new IllegalArgumentException();
 		}
-		if(clazz==null)
+		if(clazz==null||!clazz.isEnum())
 		{
 			throw new IllegalArgumentException();
 		}
