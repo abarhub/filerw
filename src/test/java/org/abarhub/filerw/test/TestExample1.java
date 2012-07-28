@@ -1,4 +1,4 @@
-package org.abarhub.filerw;
+package org.abarhub.filerw.test;
 
 import static org.junit.Assert.assertTrue;
 
@@ -7,13 +7,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.text.ParseException;
 
+import org.abarhub.filerw.FileContentAscii;
+import org.abarhub.filerw.ReadWriteAscii;
 import org.junit.Test;
 
 public class TestExample1 {
 
 	@Test
-	public void test1() throws URISyntaxException, FileNotFoundException, IOException
+	public void test1() throws URISyntaxException, FileNotFoundException, IOException, ParseException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
         FileContentAscii<FieldsListChamps1> fichier;
@@ -29,7 +32,7 @@ public class TestExample1 {
 	}
 
 	@Test
-	public void test2() throws URISyntaxException, FileNotFoundException, IOException
+	public void test2() throws URISyntaxException, FileNotFoundException, IOException, ParseException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
         FileContentAscii<FieldsListChamps1> fichier;
@@ -48,7 +51,7 @@ public class TestExample1 {
 	}
 
 	@Test
-	public void test3() throws URISyntaxException, FileNotFoundException, IOException
+	public void test3() throws URISyntaxException, FileNotFoundException, IOException, ParseException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
         FileContentAscii<FieldsListChamps1> fichier;
@@ -67,7 +70,7 @@ public class TestExample1 {
 	}
 
 	@Test
-	public void test4() throws URISyntaxException, FileNotFoundException, IOException
+	public void test4() throws URISyntaxException, FileNotFoundException, IOException, ParseException
 	{
 		ReadWriteAscii<FieldsListChamps1> lecture;
         FileContentAscii<FieldsListChamps1> fichier;

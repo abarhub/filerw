@@ -1,4 +1,4 @@
-package org.abarhub.filerw;
+package org.abarhub.filerw.test;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
