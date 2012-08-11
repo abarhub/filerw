@@ -10,6 +10,7 @@ import java.util.*;
 
 import org.abarhub.filerw.ascii.LineContentAscii;
 import org.abarhub.filerw.ascii.StructAsciiReader;
+import org.abarhub.filerw.ascii.StructAsciiWriter;
 
 /**
  *
@@ -95,26 +96,26 @@ public class ReadWriteAscii<T extends Field> {
 
     public void WriteFile(File fileName,FileContentAscii<T> contenu_fichier) throws IOException
     {
-    	PrintWriter out=null;
+    	StructAsciiWriter<T> out=null;
     	try{
-    		out=new PrintWriter(new BufferedWriter(new FileWriter(fileName)));
+    		out=new StructAsciiWriter<T>(new BufferedWriter(new FileWriter(fileName)),fieldsList);
     		if(contenu_fichier!=null)
     		{
     			if(contenu_fichier.getListe()!=null)
     			{
     				for(LineContentAscii<T> ligne:contenu_fichier.getListe())
     				{
+    					out.writeLine(ligne);
     					if(separator==Separator.NewLine)
     					{
-    						out.println(ligne.getLine());
+    						out.println();
     					}
     					else if(separator==Separator.NoSeparator)
     					{
-    						out.print(ligne.getLine());
+    						
     					}
     					else if(separator==Separator.String)
     					{
-    						out.print(ligne.getLine());
     						if(stringSeparator!=null&&stringSeparator.length()>0)
     							out.print(stringSeparator);
     					}
