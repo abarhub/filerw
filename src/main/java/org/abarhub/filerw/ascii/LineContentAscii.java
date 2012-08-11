@@ -4,6 +4,7 @@ import java.io.PrintStream;
 import java.util.List;
 
 import org.abarhub.filerw.Field;
+import org.abarhub.filerw.Tools;
 
 public class LineContentAscii<T extends Field> {
 
@@ -12,8 +13,91 @@ public class LineContentAscii<T extends Field> {
 	
 	public LineContentAscii(List<T> fieldsList, String line) {
 		super();
+		int len;
+		len=Tools.getSize(fieldsList);
+		if(fieldsList==null||fieldsList.isEmpty())
+		{
+			throw new IllegalArgumentException();
+		}
+		if(line.length()>len)
+		{
+			throw new IllegalArgumentException();
+		}
+		if(len<=0)
+		{
+			throw new IllegalArgumentException();
+		}
 		this.fieldsList = fieldsList;
 		this.line = new StringBuilder(line);
+		complete(len);
+	}
+
+	private void complete(int len) {
+		if(this.line.length()<len)
+		{
+			int len2;
+			len2=this.line.length();
+			this.line.setLength(len);
+			for(int i=len2;i<len;i++)
+			{
+				this.line.setCharAt(i, ' ');
+			}
+		}
+	}
+
+	public LineContentAscii(Class<T> fieldsList, String line) {
+		super();
+		int len;
+		len=Tools.getSize(fieldsList);
+		if(line.length()>len)
+		{
+			throw new IllegalArgumentException();
+		}
+		if(fieldsList==null||!fieldsList.isEnum())
+		{
+			throw new IllegalArgumentException();
+		}
+		if(len<=0)
+		{
+			throw new IllegalArgumentException();
+		}
+		this.fieldsList = Tools.convClassEnum(fieldsList);
+		this.line = new StringBuilder(line);
+		complete(len);
+	}
+
+	public LineContentAscii(List<T> fieldsList) {
+		super();
+		int len;
+		len=Tools.getSize(fieldsList);
+		if(fieldsList==null||fieldsList.isEmpty())
+		{
+			throw new IllegalArgumentException();
+		}
+		if(len<=0)
+		{
+			throw new IllegalArgumentException();
+		}
+		this.fieldsList = fieldsList;
+		this.line = new StringBuilder();
+		complete(len);
+	}
+
+	public LineContentAscii(Class<T> fieldsList) {
+		super();
+		int len;
+		len=Tools.getSize(fieldsList);
+		if(fieldsList==null||!fieldsList.isEnum())
+		{
+			throw new IllegalArgumentException();
+		}
+		if(len<=0)
+		{
+			throw new IllegalArgumentException();
+		}
+		this.fieldsList = Tools.convClassEnum(fieldsList);
+		this.line = new StringBuilder();
+		complete(len);
 	}
 
 	public List<T> getFieldsList() {
@@ -41,6 +125,21 @@ public class LineContentAscii<T extends Field> {
     		res=line.substring(field.getPosition(), field.getPosition()+field.getLength());
     	}
     	return res;
+    }
+    
+    public void setString(T field,String value)
+    {
+    	for(int i=field.getPosition(),j=0;i<field.getPosition()+field.getLength();i++,j++)
+    	{
+    		if(value!=null&&j<value.length())
+    		{
+    			line.setCharAt(i, value.charAt(j));
+    		}
+    		else
+    		{
+    			line.setCharAt(i, ' ');
+    		}
+    	}
     }
 	
 }

@@ -45,7 +45,7 @@ public class ReadWriteAscii<T extends Field> {
         try{
         	buf=new StructAsciiReader<T>(new BufferedReader(new FileReader(file)),fieldsList);
         	loop:{
-            while((ligne=buf.readLine())!=null)
+            while((ligne=buf.readLn())!=null)
             {
             	res.add(ligne);
             	if(separator==Separator.NewLine)

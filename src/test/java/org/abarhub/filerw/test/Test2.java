@@ -41,7 +41,7 @@ public class Test2 {
 	    	in=new StructAsciiReader<FieldsListChamps1>(new FileReader(f),FieldsListChamps1.class);
 	    	list=new ArrayList<LineContentAscii<FieldsListChamps1>>();
 	    	no=1;
-	    	while((line=in.readLine())!=null)
+	    	while((line=in.readLn())!=null)
 	    	{
 	    		list.add(line);
 	    		i=in.read();
@@ -83,11 +83,11 @@ public class Test2 {
 	    	in=new StructAsciiReader<FieldsListChamps1>(in_str,FieldsListChamps1.class);
 	    	list=new ArrayList<LineContentAscii<FieldsListChamps1>>();
 	    	no=1;
-	    	while((line=in.readLine())!=null)
+	    	while((line=in.readLn())!=null)
 	    	{
 	    		assertTrue(no<=tab.length);
 	    		assertEquals(tab[no-1],line.getLine());
-	    		list.add(line);	    		
+	    		list.add(line);
 	    		no++;
 	    	}
 	    	assertEquals("Error in line "+no,3,list.size());
