@@ -38,7 +38,6 @@ public class ReadWriteText<T extends Field> {
     {
         FileContentText<T> res;
         LineContentText<T> ligne;
-        String ligne2;
         StructTextReader<T> buf=null;
         int i;
         res=new FileContentText<T>();
@@ -167,15 +166,5 @@ public class ReadWriteText<T extends Field> {
     public boolean isStringSeparator()
     {
     	return separator==Separator.String;
-    }
-    
-    private int getSize()
-    {
-    	int res=0;
-    	for(T field:fieldsList)
-    	{
-    		res=Math.max(res, field.getPosition()+field.getLength());
-    	}
-    	return res;
     }
 }

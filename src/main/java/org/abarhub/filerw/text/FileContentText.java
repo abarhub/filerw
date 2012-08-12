@@ -7,7 +7,6 @@ package org.abarhub.filerw.text;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
