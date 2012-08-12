@@ -106,4 +106,8 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
     		}
     	}
     }
+
+	public byte[] getLine() {
+		return line;
+	}
 }
