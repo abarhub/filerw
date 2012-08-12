@@ -46,7 +46,7 @@ public class TestExample1 {
             fichier=lecture.readFile();
             assertTrue(fichier!=null);
             fichier.show();
-            lecture.WriteFile(f2, fichier);
+            lecture.writeFile(f2, fichier);
             assertTrue(ToolBox.compare(f,f2));
 	}
 
@@ -65,7 +65,7 @@ public class TestExample1 {
             fichier=lecture.readFile();
             assertTrue(fichier!=null);
             fichier.show();
-            lecture.WriteFile(f2, fichier);
+            lecture.writeFile(f2, fichier);
             assertTrue(ToolBox.compare(f,f2));
 	}
 
@@ -84,7 +84,7 @@ public class TestExample1 {
             fichier=lecture.readFile();
             assertTrue(fichier!=null);
             fichier.show();
-            lecture.WriteFile(f2, fichier);
+            lecture.writeFile(f2, fichier);
             assertTrue(ToolBox.compare(f,f2));
 	}
 }

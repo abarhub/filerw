@@ -94,7 +94,7 @@ public class ReadWriteAscii<T extends Field> {
         return res;
     }
 
-    public void WriteFile(File fileName,FileContentAscii<T> contenu_fichier) throws IOException
+    public void writeFile(File fileName,FileContentAscii<T> contenu_fichier) throws IOException
     {
     	StructAsciiWriter<T> out=null;
     	try{
