@@ -28,7 +28,7 @@ public class ReadWriteText<T extends Field> {
         this.file=file;
         this.fieldsList=liste_champs;
     }
-        
+    
     public ReadWriteText(File file,Class<T> clazz){
         this.file=file;
         this.fieldsList=Tools.convClassEnum(clazz);
