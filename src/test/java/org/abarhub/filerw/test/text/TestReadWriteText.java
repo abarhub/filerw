@@ -14,7 +14,7 @@ import org.abarhub.filerw.text.FileContentText;
 import org.abarhub.filerw.text.ReadWriteText;
 import org.junit.Test;
 
-public class TestExample1 {
+public class TestReadWriteText {
 
 	@Test
 	public void test1() throws URISyntaxException, FileNotFoundException, IOException, ParseException

@@ -22,7 +22,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class Test2 {
+public class TestStructReadText {
 
 	@Test
 	public void testReadLine() throws URISyntaxException, FileNotFoundException, IOException, ParseException {

@@ -6,7 +6,7 @@ import org.abarhub.filerw.Tools;
 import org.abarhub.filerw.text.LineContentText;
 import org.junit.Test;
 
-public class Test4 {
+public class TestLineContentText {
 
 	@Test
 	public void test1() {

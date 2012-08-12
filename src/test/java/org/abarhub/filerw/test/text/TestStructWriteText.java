@@ -8,7 +8,7 @@ import org.abarhub.filerw.text.LineContentText;
 import org.abarhub.filerw.text.StructTextWriter;
 import org.junit.Test;
 
-public class Test3 {
+public class TestStructWriteText {
 
 	@Test
 	public void testWriteLine() {
