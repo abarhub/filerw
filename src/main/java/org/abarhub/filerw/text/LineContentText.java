@@ -9,17 +9,12 @@ import org.abarhub.filerw.Tools;
 
 public class LineContentText<T extends Field> extends LineContent<T> {
 
-	//private final List<T> fieldsList;
 	private final StringBuilder line;
 	
 	public LineContentText(List<T> fieldsList, String line) {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		/*if(fieldsList==null||fieldsList.isEmpty())
-		{
-			throw new IllegalArgumentException();
-		}*/
 		if(line.length()>len)
 		{
 			throw new IllegalArgumentException();
@@ -28,7 +23,6 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.fieldsList = fieldsList;
 		this.line = new StringBuilder(line);
 		complete(len);
 	}
@@ -54,15 +48,10 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 		{
 			throw new IllegalArgumentException();
 		}
-		/*if(fieldsList==null||!fieldsList.isEnum())
-		{
-			throw new IllegalArgumentException();
-		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.fieldsList = Tools.convClassEnum(fieldsList);
 		this.line = new StringBuilder(line);
 		complete(len);
 	}
@@ -71,15 +60,10 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		/*if(fieldsList==null||fieldsList.isEmpty())
-		{
-			throw new IllegalArgumentException();
-		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.fieldsList = fieldsList;
 		this.line = new StringBuilder();
 		complete(len);
 	}
@@ -88,22 +72,13 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		/*if(fieldsList==null||!fieldsList.isEnum())
-		{
-			throw new IllegalArgumentException();
-		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.fieldsList = Tools.convClassEnum(fieldsList);
 		this.line = new StringBuilder();
 		complete(len);
 	}
-
-	/*public List<T> getFieldsList() {
-		return fieldsList;
-	}*/
 
 	public String getLine() {
 		return line.toString();
