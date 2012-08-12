@@ -45,7 +45,7 @@ public class FileContentAscii<T extends Field> {
         {
             for(int i=0;i<liste.size();i++)
             {
-            	LineContentAscii<T> line=liste.get(i);
+            	LineContent<T> line=liste.get(i);
                 out.println("Line no "+i);
                 line.show(out);
             }

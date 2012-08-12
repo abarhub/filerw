@@ -4,21 +4,22 @@ import java.io.PrintStream;
 import java.util.List;
 
 import org.abarhub.filerw.Field;
+import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
 
-public class LineContentAscii<T extends Field> {
+public class LineContentAscii<T extends Field> extends LineContent<T> {
 
-	private final List<T> fieldsList;
+	//private final List<T> fieldsList;
 	private final StringBuilder line;
 	
 	public LineContentAscii(List<T> fieldsList, String line) {
-		super();
+		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		if(fieldsList==null||fieldsList.isEmpty())
+		/*if(fieldsList==null||fieldsList.isEmpty())
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 		if(line.length()>len)
 		{
 			throw new IllegalArgumentException();
@@ -27,7 +28,7 @@ public class LineContentAscii<T extends Field> {
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList = fieldsList;
+		//this.fieldsList = fieldsList;
 		this.line = new StringBuilder(line);
 		complete(len);
 	}
@@ -46,68 +47,69 @@ public class LineContentAscii<T extends Field> {
 	}
 
 	public LineContentAscii(Class<T> fieldsList, String line) {
-		super();
+		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
 		if(line.length()>len)
 		{
 			throw new IllegalArgumentException();
 		}
-		if(fieldsList==null||!fieldsList.isEnum())
+		/*if(fieldsList==null||!fieldsList.isEnum())
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList = Tools.convClassEnum(fieldsList);
+		//this.fieldsList = Tools.convClassEnum(fieldsList);
 		this.line = new StringBuilder(line);
 		complete(len);
 	}
 
 	public LineContentAscii(List<T> fieldsList) {
-		super();
+		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		if(fieldsList==null||fieldsList.isEmpty())
+		/*if(fieldsList==null||fieldsList.isEmpty())
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList = fieldsList;
+		//this.fieldsList = fieldsList;
 		this.line = new StringBuilder();
 		complete(len);
 	}
 
 	public LineContentAscii(Class<T> fieldsList) {
-		super();
+		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
-		if(fieldsList==null||!fieldsList.isEnum())
+		/*if(fieldsList==null||!fieldsList.isEnum())
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 		if(len<=0)
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList = Tools.convClassEnum(fieldsList);
+		//this.fieldsList = Tools.convClassEnum(fieldsList);
 		this.line = new StringBuilder();
 		complete(len);
 	}
 
-	public List<T> getFieldsList() {
+	/*public List<T> getFieldsList() {
 		return fieldsList;
-	}
+	}*/
 
 	public String getLine() {
 		return line.toString();
 	}
 
+	@Override
     public void show(PrintStream out)
     {
     	for(T champs:fieldsList)

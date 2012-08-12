@@ -12,11 +12,10 @@ import org.abarhub.filerw.Tools;
 
 public class StructAsciiReader<T extends Field> extends BufferedReader {
 
-	//protected Reader reader;
 	protected List<T> fieldsList;
 	
 	public StructAsciiReader(Reader reader,Class<T> clazz) {
-		super(reader);
+		super(reader,defaultSize(Tools.convClassEnum(clazz)));
 		if(reader==null)
 		{
 			throw new IllegalArgumentException();
@@ -25,12 +24,11 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.reader=reader;
 		this.fieldsList=Tools.convClassEnum(clazz);
 	}
 	
 	public StructAsciiReader(Reader reader,List<T> fieldsList) {
-		super(reader);
+		super(reader,defaultSize(fieldsList));
 		if(reader==null)
 		{
 			throw new IllegalArgumentException();
@@ -39,9 +37,47 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 		{
 			throw new IllegalArgumentException();
 		}
-		//this.reader=reader;
 		this.fieldsList=fieldsList;
 	}
+
+	private static <T extends Field> int defaultSize(List<T> fieldsList2) {
+		int res=512,i;
+		if(fieldsList2!=null&&!fieldsList2.isEmpty())
+		{
+			i=Tools.getSize(fieldsList2);
+			if(i>0)
+				res=i;
+		}
+		return res;
+	}
+
+	public StructAsciiReader(Reader reader,Class<T> clazz,int sz) {
+		super(reader,sz);
+		if(reader==null)
+		{
+			throw new IllegalArgumentException();
+		}
+		if(clazz==null||!clazz.isEnum())
+		{
+			throw new IllegalArgumentException();
+		}
+		this.fieldsList=Tools.convClassEnum(clazz);
+	}
+	
+	public StructAsciiReader(Reader reader,List<T> fieldsList,int sz) {
+		super(reader,sz);
+		if(reader==null)
+		{
+			throw new IllegalArgumentException();
+		}
+		if(fieldsList==null||fieldsList.isEmpty())
+		{
+			throw new IllegalArgumentException();
+		}
+		this.fieldsList=fieldsList;
+	}
+	
+	
 	
 	public LineContentAscii<T> readLn() throws IOException, ParseException
 	{
