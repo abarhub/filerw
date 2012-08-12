@@ -1,4 +1,4 @@
-package org.abarhub.filerw.test;
+package org.abarhub.filerw.test.text;
 
 import static org.junit.Assert.*;
 

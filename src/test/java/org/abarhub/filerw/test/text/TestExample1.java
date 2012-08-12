@@ -1,4 +1,4 @@
-package org.abarhub.filerw.test;
+package org.abarhub.filerw.test.text;
 
 import static org.junit.Assert.assertTrue;
 
@@ -9,6 +9,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 
+import org.abarhub.filerw.test.ToolBox;
 import org.abarhub.filerw.text.FileContentText;
 import org.abarhub.filerw.text.ReadWriteText;
 import org.junit.Test;

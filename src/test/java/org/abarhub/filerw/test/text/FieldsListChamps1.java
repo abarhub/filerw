@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.abarhub.filerw.test;
+package org.abarhub.filerw.test.text;
 
 import org.abarhub.filerw.Field;
 
