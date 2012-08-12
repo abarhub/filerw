@@ -7,11 +7,11 @@ import java.util.List;
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.Tools;
 
-public class StructAsciiWriter<T extends Field> extends PrintWriter {
+public class StructTextWriter<T extends Field> extends PrintWriter {
 
 	protected List<T> fieldsList;
 	
-	public StructAsciiWriter(Writer out,Class<T> clazz) {
+	public StructTextWriter(Writer out,Class<T> clazz) {
 		super(out);
 		if(out==null)
 		{
@@ -24,7 +24,7 @@ public class StructAsciiWriter<T extends Field> extends PrintWriter {
 		this.fieldsList=Tools.convClassEnum(clazz);
 	}
 	
-	public StructAsciiWriter(Writer out,List<T> fieldsList) {
+	public StructTextWriter(Writer out,List<T> fieldsList) {
 		super(out);
 		if(out==null)
 		{
@@ -37,7 +37,7 @@ public class StructAsciiWriter<T extends Field> extends PrintWriter {
 		this.fieldsList=fieldsList;
 	}
 	
-	public void writeLine(LineContentAscii<T> line){
+	public void writeLine(LineContentText<T> line){
 		print(line.getLine());
 	}
 

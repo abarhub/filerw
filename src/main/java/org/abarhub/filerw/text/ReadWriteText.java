@@ -15,7 +15,7 @@ import org.abarhub.filerw.Tools;
  *
  * @author abarhub
  */
-public class ReadWriteAscii<T extends Field> {
+public class ReadWriteText<T extends Field> {
 	//<T extends Enum<T>&Field>
     // le enum n'est pas necessaire, et peut être enlevé
     private File file;
@@ -24,26 +24,26 @@ public class ReadWriteAscii<T extends Field> {
     private Separator separator=Separator.NewLine;
     private String stringSeparator;
     
-    public ReadWriteAscii(File file,List<T> liste_champs){
+    public ReadWriteText(File file,List<T> liste_champs){
         this.file=file;
         this.fieldsList=liste_champs;
     }
         
-    public ReadWriteAscii(File file,Class<T> clazz){
+    public ReadWriteText(File file,Class<T> clazz){
         this.file=file;
         this.fieldsList=Tools.convClassEnum(clazz);
     }
 
-	public FileContentAscii<T> readFile() throws FileNotFoundException, IOException, ParseException
+	public FileContentText<T> readFile() throws FileNotFoundException, IOException, ParseException
     {
-        FileContentAscii<T> res;
-        LineContentAscii<T> ligne;
+        FileContentText<T> res;
+        LineContentText<T> ligne;
         String ligne2;
-        StructAsciiReader<T> buf=null;
+        StructTextReader<T> buf=null;
         int i;
-        res=new FileContentAscii<T>();
+        res=new FileContentText<T>();
         try{
-        	buf=new StructAsciiReader<T>(new BufferedReader(new FileReader(file)),fieldsList);
+        	buf=new StructTextReader<T>(new BufferedReader(new FileReader(file)),fieldsList);
         	loop:{
             while((ligne=buf.readLn())!=null)
             {
@@ -93,16 +93,16 @@ public class ReadWriteAscii<T extends Field> {
         return res;
     }
 
-    public void writeFile(File fileName,FileContentAscii<T> contenu_fichier) throws IOException
+    public void writeFile(File fileName,FileContentText<T> contenu_fichier) throws IOException
     {
-    	StructAsciiWriter<T> out=null;
+    	StructTextWriter<T> out=null;
     	try{
-    		out=new StructAsciiWriter<T>(new BufferedWriter(new FileWriter(fileName)),fieldsList);
+    		out=new StructTextWriter<T>(new BufferedWriter(new FileWriter(fileName)),fieldsList);
     		if(contenu_fichier!=null)
     		{
     			if(contenu_fichier.getListe()!=null)
     			{
-    				for(LineContentAscii<T> ligne:contenu_fichier.getListe())
+    				for(LineContentText<T> ligne:contenu_fichier.getListe())
     				{
     					out.writeLine(ligne);
     					if(separator==Separator.NewLine)

@@ -3,33 +3,33 @@ package org.abarhub.filerw.test;
 import static org.junit.Assert.*;
 
 import org.abarhub.filerw.Tools;
-import org.abarhub.filerw.text.LineContentAscii;
+import org.abarhub.filerw.text.LineContentText;
 import org.junit.Test;
 
 public class Test4 {
 
 	@Test
 	public void test1() {
-		LineContentAscii<FieldsListChamps1> line;
+		LineContentText<FieldsListChamps1> line;
 		int len;
-		line=new LineContentAscii<FieldsListChamps1>(FieldsListChamps1.class, "ABC");
+		line=new LineContentText<FieldsListChamps1>(FieldsListChamps1.class, "ABC");
 		len=Tools.getSize(FieldsListChamps1.class);
 		assertEquals(padding("ABC",len), line.getLine());
 	}
 	
 	@Test
 	public void test2() {
-		LineContentAscii<FieldsListChamps1> line;
+		LineContentText<FieldsListChamps1> line;
 		int len;
-		line=new LineContentAscii<FieldsListChamps1>(FieldsListChamps1.class);
+		line=new LineContentText<FieldsListChamps1>(FieldsListChamps1.class);
 		len=Tools.getSize(FieldsListChamps1.class);
 		assertEquals(padding("",len), line.getLine());
 	}
 
 	@Test
 	public void test3() {
-		LineContentAscii<FieldsListChamps1> line;
-		line=new LineContentAscii<FieldsListChamps1>(FieldsListChamps1.class, "ABC");
+		LineContentText<FieldsListChamps1> line;
+		line=new LineContentText<FieldsListChamps1>(FieldsListChamps1.class, "ABC");
 		line.setString(FieldsListChamps1.Prenom, "AAA");
 		assertEquals(padding("ABC",FieldsListChamps1.Nom)+
 				padding("AAA",FieldsListChamps1.Prenom)+
@@ -38,8 +38,8 @@ public class Test4 {
 
 	@Test
 	public void test4() {
-		LineContentAscii<FieldsListChamps1> line;
-		line=new LineContentAscii<FieldsListChamps1>(FieldsListChamps1.class);
+		LineContentText<FieldsListChamps1> line;
+		line=new LineContentText<FieldsListChamps1>(FieldsListChamps1.class);
 		line.setString(FieldsListChamps1.Prenom, "BBC");
 		assertEquals(padding("",FieldsListChamps1.Nom)+
 				padding("BBC",FieldsListChamps1.Prenom)+

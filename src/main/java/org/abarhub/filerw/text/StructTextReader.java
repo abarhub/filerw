@@ -10,11 +10,11 @@ import java.util.List;
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.Tools;
 
-public class StructAsciiReader<T extends Field> extends BufferedReader {
+public class StructTextReader<T extends Field> extends BufferedReader {
 
 	protected List<T> fieldsList;
 	
-	public StructAsciiReader(Reader reader,Class<T> clazz) {
+	public StructTextReader(Reader reader,Class<T> clazz) {
 		super(reader,defaultSize(Tools.convClassEnum(clazz)));
 		if(reader==null)
 		{
@@ -27,7 +27,7 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 		this.fieldsList=Tools.convClassEnum(clazz);
 	}
 	
-	public StructAsciiReader(Reader reader,List<T> fieldsList) {
+	public StructTextReader(Reader reader,List<T> fieldsList) {
 		super(reader,defaultSize(fieldsList));
 		if(reader==null)
 		{
@@ -51,7 +51,7 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 		return res;
 	}
 
-	public StructAsciiReader(Reader reader,Class<T> clazz,int sz) {
+	public StructTextReader(Reader reader,Class<T> clazz,int sz) {
 		super(reader,sz);
 		if(reader==null)
 		{
@@ -64,7 +64,7 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 		this.fieldsList=Tools.convClassEnum(clazz);
 	}
 	
-	public StructAsciiReader(Reader reader,List<T> fieldsList,int sz) {
+	public StructTextReader(Reader reader,List<T> fieldsList,int sz) {
 		super(reader,sz);
 		if(reader==null)
 		{
@@ -79,11 +79,11 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
 	
 	
 	
-	public LineContentAscii<T> readLn() throws IOException, ParseException
+	public LineContentText<T> readLn() throws IOException, ParseException
 	{
 		char buf[]=new char[Tools.getSize(fieldsList)];
     	int len;
-    	LineContentAscii<T> res=null;
+    	LineContentText<T> res=null;
     	String ligne;
     	
     	len=read(buf);
@@ -96,7 +96,7 @@ public class StructAsciiReader<T extends Field> extends BufferedReader {
             		throw new ParseException("Invalid Size ("+len+"!="+Tools.getSize(fieldsList)+")",len);
             	}
             	ligne=new String(buf);
-            	res=new LineContentAscii<T>(fieldsList, ligne);
+            	res=new LineContentText<T>(fieldsList, ligne);
             }
         }
     	

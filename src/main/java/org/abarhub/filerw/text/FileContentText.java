@@ -16,21 +16,21 @@ import org.abarhub.filerw.LineContent;
  *
  * @author abarhub
  */
-public class FileContentAscii<T extends Field> {
+public class FileContentText<T extends Field> {
     
-    private List<LineContentAscii<T>> liste;
+    private List<LineContentText<T>> liste;
     
-    public FileContentAscii()
+    public FileContentText()
     {
-        liste=new ArrayList<LineContentAscii<T>>();
+        liste=new ArrayList<LineContentText<T>>();
     }
     
-    public void add(LineContentAscii<T> line)
+    public void add(LineContentText<T> line)
     {
         liste.add(line);
     }
 
-    public List<LineContentAscii<T>> getListe() {
+    public List<LineContentText<T>> getListe() {
         return liste;
     }
     

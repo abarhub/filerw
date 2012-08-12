@@ -14,10 +14,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.abarhub.filerw.text.FileContentAscii;
-import org.abarhub.filerw.text.LineContentAscii;
-import org.abarhub.filerw.text.ReadWriteAscii;
-import org.abarhub.filerw.text.StructAsciiReader;
+import org.abarhub.filerw.text.FileContentText;
+import org.abarhub.filerw.text.LineContentText;
+import org.abarhub.filerw.text.ReadWriteText;
+import org.abarhub.filerw.text.StructTextReader;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -26,20 +26,20 @@ public class Test2 {
 
 	@Test
 	public void testReadLine() throws URISyntaxException, FileNotFoundException, IOException, ParseException {
-		ReadWriteAscii<FieldsListChamps1> lecture;
-        FileContentAscii<FieldsListChamps1> fichier;
+		ReadWriteText<FieldsListChamps1> lecture;
+        FileContentText<FieldsListChamps1> fichier;
         File f;
-        StructAsciiReader<FieldsListChamps1> in=null;
+        StructTextReader<FieldsListChamps1> in=null;
         URL url = getClass().getResource("/data/exemple1.txt");
-        List<LineContentAscii<FieldsListChamps1>> list;
-        LineContentAscii<FieldsListChamps1> line;
+        List<LineContentText<FieldsListChamps1>> list;
+        LineContentText<FieldsListChamps1> line;
         char c;
         int i,no;
     	f=new File(url.toURI());
     	System.out.println("Lecture du fichier "+f.getPath()+" :");
     	try{
-	    	in=new StructAsciiReader<FieldsListChamps1>(new FileReader(f),FieldsListChamps1.class);
-	    	list=new ArrayList<LineContentAscii<FieldsListChamps1>>();
+	    	in=new StructTextReader<FieldsListChamps1>(new FileReader(f),FieldsListChamps1.class);
+	    	list=new ArrayList<LineContentText<FieldsListChamps1>>();
 	    	no=1;
 	    	while((line=in.readLn())!=null)
 	    	{
@@ -63,13 +63,13 @@ public class Test2 {
 
 	@Test
 	public void testReadLine2() throws URISyntaxException, FileNotFoundException, IOException, ParseException {
-		ReadWriteAscii<FieldsListChamps1> lecture;
-        FileContentAscii<FieldsListChamps1> fichier;
+		ReadWriteText<FieldsListChamps1> lecture;
+        FileContentText<FieldsListChamps1> fichier;
         File f;
-        StructAsciiReader<FieldsListChamps1> in=null;
+        StructTextReader<FieldsListChamps1> in=null;
         URL url = getClass().getResource("/data/exemple1.txt");
-        List<LineContentAscii<FieldsListChamps1>> list;
-        LineContentAscii<FieldsListChamps1> line;
+        List<LineContentText<FieldsListChamps1>> list;
+        LineContentText<FieldsListChamps1> line;
         char c;
         int i,no;
         StringReader in_str;
@@ -80,8 +80,8 @@ public class Test2 {
     	System.out.println("Lecture du fichier "+f.getPath()+" :");
     	in_str=new StringReader(tab[0]+tab[1]+tab[2]);
     	try{
-	    	in=new StructAsciiReader<FieldsListChamps1>(in_str,FieldsListChamps1.class);
-	    	list=new ArrayList<LineContentAscii<FieldsListChamps1>>();
+	    	in=new StructTextReader<FieldsListChamps1>(in_str,FieldsListChamps1.class);
+	    	list=new ArrayList<LineContentText<FieldsListChamps1>>();
 	    	no=1;
 	    	while((line=in.readLn())!=null)
 	    	{

@@ -7,12 +7,12 @@ import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
 
-public class LineContentAscii<T extends Field> extends LineContent<T> {
+public class LineContentText<T extends Field> extends LineContent<T> {
 
 	//private final List<T> fieldsList;
 	private final StringBuilder line;
 	
-	public LineContentAscii(List<T> fieldsList, String line) {
+	public LineContentText(List<T> fieldsList, String line) {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
@@ -46,7 +46,7 @@ public class LineContentAscii<T extends Field> extends LineContent<T> {
 		}
 	}
 
-	public LineContentAscii(Class<T> fieldsList, String line) {
+	public LineContentText(Class<T> fieldsList, String line) {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
@@ -67,7 +67,7 @@ public class LineContentAscii<T extends Field> extends LineContent<T> {
 		complete(len);
 	}
 
-	public LineContentAscii(List<T> fieldsList) {
+	public LineContentText(List<T> fieldsList) {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
@@ -84,7 +84,7 @@ public class LineContentAscii<T extends Field> extends LineContent<T> {
 		complete(len);
 	}
 
-	public LineContentAscii(Class<T> fieldsList) {
+	public LineContentText(Class<T> fieldsList) {
 		super(fieldsList);
 		int len;
 		len=Tools.getSize(fieldsList);
