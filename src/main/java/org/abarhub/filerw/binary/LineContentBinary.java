@@ -15,6 +15,11 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		super(fieldsList);
 		init(line);
 	}
+	
+	public LineContentBinary(List<T> fieldsList) {
+		super(fieldsList);
+		init(null);
+	}
 
 	private void init(byte[] line) {
 		int len,len2;
@@ -41,6 +46,11 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 	}
 
 	public LineContentBinary(Class<T> clazz) {
+		super(clazz);
+		init(null);
+	}
+
+	public LineContentBinary(Class<T> clazz,byte[] line) {
 		super(clazz);
 		init(line);
 	}
