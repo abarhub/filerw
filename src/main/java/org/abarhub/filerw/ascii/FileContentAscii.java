@@ -2,14 +2,15 @@
  * To change this template,   choose Tools | Templates
  * and open the template in the editor.
  */
-package org.abarhub.filerw;
+package org.abarhub.filerw.ascii;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.abarhub.filerw.ascii.LineContentAscii;
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.LineContent;
 
 /**
  *
