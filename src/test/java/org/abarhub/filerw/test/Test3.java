@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import java.io.StringWriter;
 
-import org.abarhub.filerw.ascii.LineContentAscii;
-import org.abarhub.filerw.ascii.StructAsciiWriter;
+import org.abarhub.filerw.text.LineContentAscii;
+import org.abarhub.filerw.text.StructAsciiWriter;
 import org.junit.Test;
 
 public class Test3 {

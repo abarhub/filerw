@@ -14,10 +14,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.abarhub.filerw.ascii.FileContentAscii;
-import org.abarhub.filerw.ascii.LineContentAscii;
-import org.abarhub.filerw.ascii.ReadWriteAscii;
-import org.abarhub.filerw.ascii.StructAsciiReader;
+import org.abarhub.filerw.text.FileContentAscii;
+import org.abarhub.filerw.text.LineContentAscii;
+import org.abarhub.filerw.text.ReadWriteAscii;
+import org.abarhub.filerw.text.StructAsciiReader;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

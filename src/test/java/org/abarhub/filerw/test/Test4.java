@@ -3,7 +3,7 @@ package org.abarhub.filerw.test;
 import static org.junit.Assert.*;
 
 import org.abarhub.filerw.Tools;
-import org.abarhub.filerw.ascii.LineContentAscii;
+import org.abarhub.filerw.text.LineContentAscii;
 import org.junit.Test;
 
 public class Test4 {

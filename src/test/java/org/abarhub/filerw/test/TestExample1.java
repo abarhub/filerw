@@ -9,8 +9,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 
-import org.abarhub.filerw.ascii.FileContentAscii;
-import org.abarhub.filerw.ascii.ReadWriteAscii;
+import org.abarhub.filerw.text.FileContentAscii;
+import org.abarhub.filerw.text.ReadWriteAscii;
 import org.junit.Test;
 
 public class TestExample1 {

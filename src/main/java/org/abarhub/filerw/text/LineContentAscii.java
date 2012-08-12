@@ -1,4 +1,4 @@
-package org.abarhub.filerw.ascii;
+package org.abarhub.filerw.text;
 
 import java.io.PrintStream;
 import java.util.List;
