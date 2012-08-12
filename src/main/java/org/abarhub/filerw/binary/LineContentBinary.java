@@ -57,9 +57,23 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 
 	@Override
 	public void show(PrintStream out) {
+		byte tab[];
 		for(T champs:fieldsList)
         {
-            out.println(champs.name()+"="+get(champs));
+			tab=get(champs);
+            out.print(champs.name()+"=");
+            if(tab!=null)
+            {
+            	boolean start=true;
+            	for(byte b:tab)
+            	{
+            		if(!start)
+            			out.print(',');
+            		out.print(b);
+            		start=false;
+            	}
+            }
+            out.println();
         }
 	}
 
