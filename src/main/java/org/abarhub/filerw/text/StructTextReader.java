@@ -14,7 +14,8 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 	protected List<T> fieldsList;
 	
 	public StructTextReader(Reader reader,Class<T> clazz) {
-		super(reader,defaultSize(Tools.convClassEnum(clazz)));
+		this(reader,clazz,defaultSize(Tools.convClassEnum(clazz)));
+		/*super(reader,defaultSize(Tools.convClassEnum(clazz)));
 		if(reader==null)
 		{
 			throw new IllegalArgumentException();
@@ -23,11 +24,12 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=Tools.convClassEnum(clazz);
+		this.fieldsList=Tools.convClassEnum(clazz);*/
 	}
 	
 	public StructTextReader(Reader reader,List<T> fieldsList) {
-		super(reader,defaultSize(fieldsList));
+		this(reader,fieldsList,defaultSize(fieldsList));
+		/*super(reader,defaultSize(fieldsList));
 		if(reader==null)
 		{
 			throw new IllegalArgumentException();
@@ -36,7 +38,7 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 		{
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=fieldsList;
+		this.fieldsList=fieldsList;*/
 	}
 
 	private static <T extends Field> int defaultSize(List<T> fieldsList2) {

@@ -1,0 +1,3 @@
+tests qui manquent:
+-lecture/ecriture avec les séparateurs de lignes
+-les exceptions générés par structTextReader/Writer

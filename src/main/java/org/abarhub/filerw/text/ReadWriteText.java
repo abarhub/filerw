@@ -30,8 +30,9 @@ public class ReadWriteText<T extends Field> {
     }
     
     public ReadWriteText(File file,Class<T> clazz){
-        this.file=file;
-        this.fieldsList=Tools.convClassEnum(clazz);
+    	this(file,Tools.convClassEnum(clazz));
+        /*this.file=file;
+        this.fieldsList=Tools.convClassEnum(clazz);*/
     }
 
 	public FileContentText<T> readFile() throws FileNotFoundException, IOException, ParseException
@@ -139,7 +140,7 @@ public class ReadWriteText<T extends Field> {
     	stringSeparator=null;
     }
     
-    public boolean isNewLineException()
+    public boolean isNewLineSeparator()
     {
     	return separator==Separator.NewLine;
     }
