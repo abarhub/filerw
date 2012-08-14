@@ -1,8 +1,8 @@
 package org.abarhub.filerw.test.binary;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -44,8 +44,6 @@ public class TestLineContentBinary {
 		assertTrue(equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
 		assertTrue(equals(new byte[]{100,101,102,103,104,105},line.get(FieldsListChamps2.Code2)));
 		assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
-		
-		String s;
 		
 		
 	}
