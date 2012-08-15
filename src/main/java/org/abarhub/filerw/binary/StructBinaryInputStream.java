@@ -52,6 +52,25 @@ public class StructBinaryInputStream<T extends Field> extends FilterInputStream 
         {
             if(len>0)
             {
+            	if(len<len0)
+            	{
+            		int nb;
+            		nb=len0-len;
+            		byte buf2[]=new byte[len0];
+            		nb=read(buf2);
+            		if(nb==-1)
+            		{
+            			return res;
+            		}
+            		else if(nb>0)
+            		{
+            			for(int i=len;i<len+nb;i++)
+            			{
+            				buf[i]=buf2[i-len];
+            			}
+            			len+=nb;
+            		}
+            	}            	
             	if(len!=len0)
             	{
             		throw new ParseException("Invalid Size ("+len+"!="+len0+")",len);
