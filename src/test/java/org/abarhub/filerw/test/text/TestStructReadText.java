@@ -1,28 +1,28 @@
 package org.abarhub.filerw.test.text;
 
-import org.abarhub.filerw.text.FileContentText;
-import org.abarhub.filerw.text.LineContentText;
-import org.abarhub.filerw.text.ReadWriteText;
-import org.abarhub.filerw.text.StructTextReader;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.StringReader;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.abarhub.filerw.text.LineContentText;
+import org.abarhub.filerw.text.StructTextReader;
+import org.junit.Test;
 
 public class TestStructReadText {
 
 	@Test
-	public void testReadLine() throws URISyntaxException,
-			FileNotFoundException, IOException, ParseException {
-		ReadWriteText<FieldsListChamps1> lecture;
-		FileContentText<FieldsListChamps1> fichier;
+	public void testReadLine() throws URISyntaxException, IOException,
+			ParseException {
 		File f;
 		StructTextReader<FieldsListChamps1> in = null;
 		URL url = getClass().getResource("/data/exemple1.txt");
@@ -59,15 +59,12 @@ public class TestStructReadText {
 	@Test
 	public void testReadLine2() throws URISyntaxException,
 			FileNotFoundException, IOException, ParseException {
-		ReadWriteText<FieldsListChamps1> lecture;
-		FileContentText<FieldsListChamps1> fichier;
 		File f;
 		StructTextReader<FieldsListChamps1> in = null;
 		URL url = getClass().getResource("/data/exemple1.txt");
 		List<LineContentText<FieldsListChamps1>> list;
 		LineContentText<FieldsListChamps1> line;
-		char c;
-		int i, no;
+		int no;
 		StringReader in_str;
 		String tab[] = { "Newton2             Isaac               04011643",
 				"Einstein            Albert              14103879",
