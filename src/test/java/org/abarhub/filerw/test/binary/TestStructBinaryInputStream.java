@@ -1,17 +1,15 @@
 package org.abarhub.filerw.test.binary;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.abarhub.filerw.Tools;
+import org.abarhub.filerw.binary.LineContentBinary;
+import org.abarhub.filerw.binary.StructBinaryInputStream;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
-import org.abarhub.filerw.Tools;
-import org.abarhub.filerw.binary.LineContentBinary;
-import org.abarhub.filerw.binary.StructBinaryInputStream;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class TestStructBinaryInputStream {
 

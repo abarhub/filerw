@@ -1,11 +1,11 @@
 package org.abarhub.filerw.binary;
 
-import java.io.PrintStream;
-import java.util.List;
-
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
+
+import java.io.PrintStream;
+import java.util.List;
 
 public class LineContentBinary<T extends Field> extends LineContent<T> {
 
@@ -38,9 +38,7 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		} else {
 			len2 = len;
 		}
-		for (int i = 0; i < len2; i++) {
-			this.line[i] = line[i];
-		}
+        System.arraycopy(line, 0, this.line, 0, len2);
 	}
 
 	public LineContentBinary(Class<T> clazz) {

@@ -1,16 +1,11 @@
 package org.abarhub.filerw.binary;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.List;
-
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.Tools;
+
+import java.io.*;
+import java.text.ParseException;
+import java.util.List;
 
 public class ReadWriteBinary<T extends Field> {
 

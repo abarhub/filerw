@@ -1,13 +1,13 @@
 package org.abarhub.filerw.text;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.Tools;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.text.ParseException;
 import java.util.List;
-
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.Tools;
 
 public class StructTextReader<T extends Field> extends BufferedReader {
 

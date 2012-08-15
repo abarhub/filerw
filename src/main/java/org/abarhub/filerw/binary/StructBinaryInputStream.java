@@ -1,13 +1,13 @@
 package org.abarhub.filerw.binary;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.Tools;
+
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.util.List;
-
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.Tools;
 
 public class StructBinaryInputStream<T extends Field> extends FilterInputStream {
 
@@ -56,9 +56,7 @@ public class StructBinaryInputStream<T extends Field> extends FilterInputStream 
 					if (nb == -1) {
 						return res;
 					} else if (nb > 0) {
-						for (int i = len; i < len + nb; i++) {
-							buf[i] = buf2[i - len];
-						}
+                        System.arraycopy(buf2, len - len, buf, len, len + nb - len);
 						len += nb;
 					}
 				}

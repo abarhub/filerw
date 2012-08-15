@@ -1,12 +1,10 @@
 package org.abarhub.filerw.test.binary;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.abarhub.filerw.binary.FileContentBinary;
 import org.abarhub.filerw.binary.LineContentBinary;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TestFileContentBinary {
 

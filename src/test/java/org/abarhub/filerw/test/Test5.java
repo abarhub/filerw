@@ -1,15 +1,12 @@
 package org.abarhub.filerw.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.abarhub.filerw.Tools;
 import org.abarhub.filerw.test.text.FieldsListChamps1;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class Test5 {
 

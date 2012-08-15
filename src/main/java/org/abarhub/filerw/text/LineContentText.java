@@ -1,11 +1,11 @@
 package org.abarhub.filerw.text;
 
-import java.io.PrintStream;
-import java.util.List;
-
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
+
+import java.io.PrintStream;
+import java.util.List;
 
 public class LineContentText<T extends Field> extends LineContent<T> {
 

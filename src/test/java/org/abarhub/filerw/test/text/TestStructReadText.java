@@ -1,24 +1,20 @@
 package org.abarhub.filerw.test.text;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.abarhub.filerw.text.FileContentText;
+import org.abarhub.filerw.text.LineContentText;
+import org.abarhub.filerw.text.ReadWriteText;
+import org.abarhub.filerw.text.StructTextReader;
+import org.junit.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.abarhub.filerw.text.FileContentText;
-import org.abarhub.filerw.text.LineContentText;
-import org.abarhub.filerw.text.ReadWriteText;
-import org.abarhub.filerw.text.StructTextReader;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestStructReadText {
 

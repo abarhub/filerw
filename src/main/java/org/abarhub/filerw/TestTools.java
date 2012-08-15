@@ -1,6 +1,7 @@
 package org.abarhub.filerw;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TestTools<T extends Enum<T> & Field> {
@@ -15,9 +16,7 @@ public class TestTools<T extends Enum<T> & Field> {
 
 	public TestTools(Class<T> clazz) {
 		this.listFields = new ArrayList<T>();
-		for (T option : clazz.getEnumConstants()) {
-			listFields.add(option);
-		}
+        Collections.addAll(listFields, clazz.getEnumConstants());
 	}
 
 	public boolean testBasic() {

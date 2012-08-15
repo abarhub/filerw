@@ -1,13 +1,11 @@
 package org.abarhub.filerw.test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import static junit.framework.Assert.*;
 
 public class ToolBox {
 

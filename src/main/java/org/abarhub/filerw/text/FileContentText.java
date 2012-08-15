@@ -4,15 +4,15 @@
  */
 package org.abarhub.filerw.text;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.LineContent;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.LineContent;
-
 /**
- * 
+ *
  * @author abarhub
  */
 public class FileContentText<T extends Field> {

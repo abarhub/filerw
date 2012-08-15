@@ -1,6 +1,7 @@
 package org.abarhub.filerw;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class Tools {
@@ -30,9 +31,7 @@ public final class Tools {
 	public static <T> List<T> convClassEnum(Class<T> clazz) {
 		List<T> fieldsList;
 		fieldsList = new ArrayList<T>();
-		for (T option : clazz.getEnumConstants()) {
-			fieldsList.add(option);
-		}
+        Collections.addAll(fieldsList, clazz.getEnumConstants());
 		return fieldsList;
 	}
 

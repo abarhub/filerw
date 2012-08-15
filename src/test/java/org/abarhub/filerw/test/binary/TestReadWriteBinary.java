@@ -1,8 +1,10 @@
 package org.abarhub.filerw.test.binary;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.abarhub.filerw.Tools;
+import org.abarhub.filerw.binary.FileContentBinary;
+import org.abarhub.filerw.binary.ReadWriteBinary;
+import org.abarhub.filerw.test.ToolBox;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,11 +13,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 
-import org.abarhub.filerw.Tools;
-import org.abarhub.filerw.binary.FileContentBinary;
-import org.abarhub.filerw.binary.ReadWriteBinary;
-import org.abarhub.filerw.test.ToolBox;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class TestReadWriteBinary {
 

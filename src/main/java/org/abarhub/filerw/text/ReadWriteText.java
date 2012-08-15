@@ -4,20 +4,15 @@
  */
 package org.abarhub.filerw.text;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.List;
-
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.Tools;
 
+import java.io.*;
+import java.text.ParseException;
+import java.util.List;
+
 /**
- * 
+ *
  * @author abarhub
  */
 public class ReadWriteText<T extends Field> {
