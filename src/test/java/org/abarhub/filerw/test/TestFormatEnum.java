@@ -1,11 +1,11 @@
 package org.abarhub.filerw.test;
 
-import static org.junit.Assert.assertTrue;
-
 import org.abarhub.filerw.TestTools;
 import org.abarhub.filerw.test.binary.FieldsListChamps2;
 import org.abarhub.filerw.test.text.FieldsListChamps1;
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
 
 public class TestFormatEnum {
 

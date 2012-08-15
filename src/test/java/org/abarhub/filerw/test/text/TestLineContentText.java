@@ -1,10 +1,10 @@
 package org.abarhub.filerw.test.text;
 
-import static org.junit.Assert.assertEquals;
-
 import org.abarhub.filerw.Tools;
 import org.abarhub.filerw.text.LineContentText;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestLineContentText {
 

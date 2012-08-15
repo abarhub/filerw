@@ -1,12 +1,12 @@
 package org.abarhub.filerw.test.text;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.StringWriter;
-
 import org.abarhub.filerw.text.LineContentText;
 import org.abarhub.filerw.text.StructTextWriter;
 import org.junit.Test;
+
+import java.io.StringWriter;
+
+import static org.junit.Assert.assertEquals;
 
 public class TestStructWriteText {
 

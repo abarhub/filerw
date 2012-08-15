@@ -1,12 +1,12 @@
 package org.abarhub.filerw.binary;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.Tools;
+
 import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
-
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.Tools;
 
 public class StructBinaryOutpoutStream<T extends Field> extends
 		FilterOutputStream {

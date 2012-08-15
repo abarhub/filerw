@@ -1,14 +1,14 @@
 package org.abarhub.filerw.test.binary;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.abarhub.filerw.Tools;
+import org.abarhub.filerw.binary.LineContentBinary;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.abarhub.filerw.Tools;
-import org.abarhub.filerw.binary.LineContentBinary;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TestLineContentBinary {
 

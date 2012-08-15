@@ -1,11 +1,11 @@
 package org.abarhub.filerw.binary;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.LineContent;
+
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.LineContent;
 
 public class FileContentBinary<T extends Field> {
 

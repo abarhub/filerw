@@ -1,11 +1,11 @@
 package org.abarhub.filerw.text;
 
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.Tools;
+
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
-
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.Tools;
 
 public class StructTextWriter<T extends Field> extends PrintWriter {
 
