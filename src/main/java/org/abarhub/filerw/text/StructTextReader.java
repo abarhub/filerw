@@ -11,6 +11,7 @@ import org.abarhub.filerw.Tools;
 
 public class StructTextReader<T extends Field> extends BufferedReader {
 
+	private static final int SIZEBUFFER = 512;
 	private final List<T> fieldsList;
 	
 	public List<T> getFieldsList() {
@@ -26,7 +27,7 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 	}
 
 	private static <T extends Field> int defaultSize(List<T> fieldsList2) {
-		int res=512,i;
+		int res=SIZEBUFFER,i;
 		if(fieldsList2!=null&&!fieldsList2.isEmpty())
 		{
 			i=Tools.getSize(fieldsList2);
@@ -74,17 +75,14 @@ public class StructTextReader<T extends Field> extends BufferedReader {
     	String ligne;
     	
     	len=read(buf);
-    	if(len!=-1)
+    	if(len!=-1&&len>0)
         {
-            if(len>0)
-            {
-            	if(len!=Tools.getSize(fieldsList))
-            	{
-            		throw new ParseException("Invalid Size ("+len+"!="+Tools.getSize(fieldsList)+")",len);
-            	}
-            	ligne=new String(buf);
-            	res=new LineContentText<T>(fieldsList, ligne);
-            }
+        	if(len!=Tools.getSize(fieldsList))
+        	{
+        		throw new ParseException("Invalid Size ("+len+"!="+Tools.getSize(fieldsList)+")",len);
+        	}
+        	ligne=new String(buf);
+        	res=new LineContentText<T>(fieldsList, ligne);
         }
     	
     	return res;

@@ -9,9 +9,9 @@ public class TestTools<T extends Enum<T>&Field> {
 
 	private String messageError;
 	
-	public TestTools(List<T> liste_champs)
+	public TestTools(List<T> listfields)
 	{
-		this.listFields=liste_champs;
+		this.listFields=listfields;
 	}
 	
 	public TestTools(Class<T> clazz)

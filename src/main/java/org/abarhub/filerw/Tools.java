@@ -3,7 +3,7 @@ package org.abarhub.filerw;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tools {
+public final class Tools {
 
 	private Tools() {
 		// TODO Auto-generated constructor stub
@@ -60,7 +60,9 @@ public class Tools {
 			for(int i=0;i<tab.length;i++)
 			{
 				if(tab[i]!=tab2[i])
+				{
 					return false;
+				}
 			}
 			return true;
 		}

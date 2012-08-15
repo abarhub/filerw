@@ -4,7 +4,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
@@ -29,7 +28,7 @@ public class ReadWriteBinary<T extends Field> {
     }
 	
 
-	public FileContentBinary<T> readFile() throws FileNotFoundException, IOException, ParseException
+	public FileContentBinary<T> readFile() throws IOException, ParseException
     {
 		FileContentBinary<T> res;
         LineContentBinary<T> line;
@@ -56,15 +55,12 @@ public class ReadWriteBinary<T extends Field> {
     	StructBinaryOutpoutStream<T> out=null;
     	try{
     		out=new StructBinaryOutpoutStream<T>(new BufferedOutputStream(new FileOutputStream(fileName)),fieldsList);
-    		if(fileContent!=null)
+    		if(fileContent!=null&&fileContent.getListe()!=null)
     		{
-    			if(fileContent.getListe()!=null)
-    			{
-    				for(LineContentBinary<T> ligne:fileContent.getListe())
-    				{
-    					out.writeLine(ligne);
-    				}
-    			}
+				for(LineContentBinary<T> ligne:fileContent.getListe())
+				{
+					out.writeLine(ligne);
+				}
     		}
     	}finally{
     		if(out!=null)

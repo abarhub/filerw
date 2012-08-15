@@ -10,7 +10,7 @@ package org.abarhub.filerw;
  */
 public interface Field {
     
-    public int getPosition();
-    public int getLength();
-    public String name();
+    int getPosition();
+    int getLength();
+    String name();
 }

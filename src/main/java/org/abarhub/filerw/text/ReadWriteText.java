@@ -33,7 +33,7 @@ public class ReadWriteText<T extends Field> {
     	this(file,Tools.convClassEnum(clazz));
     }
 
-	public FileContentText<T> readFile() throws FileNotFoundException, IOException, ParseException
+	public FileContentText<T> readFile() throws IOException, ParseException
     {
         FileContentText<T> res;
         LineContentText<T> line;
@@ -96,34 +96,31 @@ public class ReadWriteText<T extends Field> {
     	StructTextWriter<T> out=null;
     	try{
     		out=new StructTextWriter<T>(new BufferedWriter(new FileWriter(fileName)),fieldsList);
-    		if(fileContent!=null)
+    		if(fileContent!=null&&fileContent.getListe()!=null)
     		{
-    			if(fileContent.getListe()!=null)
-    			{
-    				for(LineContentText<T> ligne:fileContent.getListe())
-    				{
-    					out.writeLine(ligne);
-    					if(separator==Separator.NewLine)
-    					{
-    						out.println();
-    					}
-    					else if(separator==Separator.NoSeparator)
-    					{
-    						
-    					}
-    					else if(separator==Separator.String)
-    					{
-    						if(stringSeparator!=null&&stringSeparator.length()>0)
-    						{
-    							out.print(stringSeparator);
-    						}
-    					}
-    					else
-    					{
-    						assert(false);
-    					}
-    				}
-    			}
+				for(LineContentText<T> ligne:fileContent.getListe())
+				{
+					out.writeLine(ligne);
+					if(separator==Separator.NewLine)
+					{
+						out.println();
+					}
+					else if(separator==Separator.NoSeparator)
+					{
+						
+					}
+					else if(separator==Separator.String)
+					{
+						if(stringSeparator!=null&&stringSeparator.length()>0)
+						{
+							out.print(stringSeparator);
+						}
+					}
+					else
+					{
+						assert(false);
+					}
+				}
     		}
     	}finally{
     		if(out!=null)
