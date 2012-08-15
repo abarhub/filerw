@@ -27,11 +27,11 @@ public class TestStructBinaryInputStream {
 			line=in.readLn();
 			assertNotNull(line);
 			
-			assertTrue(equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
-			assertTrue(equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
-			assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
+			assertTrue(Tools.equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
+			assertTrue(Tools.equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
+			assertTrue(Tools.equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
 			
-			assertTrue(equals(buf0,line.getLine()));
+			assertTrue(Tools.equals(buf0,line.getLine()));
 			
 			line=in.readLn();
 			assertNull(line);
@@ -42,25 +42,6 @@ public class TestStructBinaryInputStream {
 		}
 	}
 
-	private boolean equals(byte[] tab,byte[] tab2)
-	{
-		if(tab==null)
-			return tab2==null;
-		else
-		{
-			if(tab2==null)
-				return false;
-			if(tab.length!=tab2.length)
-				return false;
-			for(int i=0;i<tab.length;i++)
-			{
-				if(tab[i]!=tab2[i])
-					return false;
-			}
-			return true;
-		}
-	}
-	
 
 	@Test
 	public void testStructBinaryInputStreamInputStreamClassOfT2() throws IOException, ParseException {
@@ -76,11 +57,11 @@ public class TestStructBinaryInputStream {
 			line=in.readLn();
 			assertNotNull(line);
 			
-			assertTrue(equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
-			assertTrue(equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
-			assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
+			assertTrue(Tools.equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
+			assertTrue(Tools.equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
+			assertTrue(Tools.equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
 			
-			assertTrue(equals(buf0,line.getLine()));
+			assertTrue(Tools.equals(buf0,line.getLine()));
 			
 			line=in.readLn();
 			assertNull(line);
@@ -107,23 +88,23 @@ public class TestStructBinaryInputStream {
 			line=in.readLn();
 			assertNotNull(line);
 			
-			assertTrue(equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
-			assertTrue(equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
-			assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
+			assertTrue(Tools.equals(new byte[]{31,32,33,34},line.get(FieldsListChamps2.Code1)));
+			assertTrue(Tools.equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
+			assertTrue(Tools.equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
 			
 			line=in.readLn();
 			assertNotNull(line);
 			
-			assertTrue(equals(new byte[]{121,32,33,34},line.get(FieldsListChamps2.Code1)));
-			assertTrue(equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
-			assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
+			assertTrue(Tools.equals(new byte[]{121,32,33,34},line.get(FieldsListChamps2.Code1)));
+			assertTrue(Tools.equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
+			assertTrue(Tools.equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
 			
 			line=in.readLn();
 			assertNotNull(line);
 			
-			assertTrue(equals(new byte[]{-124,32,33,34},line.get(FieldsListChamps2.Code1)));
-			assertTrue(equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
-			assertTrue(equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
+			assertTrue(Tools.equals(new byte[]{-124,32,33,34},line.get(FieldsListChamps2.Code1)));
+			assertTrue(Tools.equals(new byte[]{35,36,92,38,39,40},line.get(FieldsListChamps2.Code2)));
+			assertTrue(Tools.equals(new byte[]{41,42,43,44,45,46,47},line.get(FieldsListChamps2.Code3)));
 			
 			line=in.readLn();
 			assertNull(line);
