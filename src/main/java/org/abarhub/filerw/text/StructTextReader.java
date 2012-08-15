@@ -11,34 +11,18 @@ import org.abarhub.filerw.Tools;
 
 public class StructTextReader<T extends Field> extends BufferedReader {
 
-	protected List<T> fieldsList;
+	private final List<T> fieldsList;
 	
+	public List<T> getFieldsList() {
+		return fieldsList;
+	}
+
 	public StructTextReader(Reader reader,Class<T> clazz) {
 		this(reader,clazz,defaultSize(Tools.convClassEnum(clazz)));
-		/*super(reader,defaultSize(Tools.convClassEnum(clazz)));
-		if(reader==null)
-		{
-			throw new IllegalArgumentException();
-		}
-		if(clazz==null||!clazz.isEnum())
-		{
-			throw new IllegalArgumentException();
-		}
-		this.fieldsList=Tools.convClassEnum(clazz);*/
 	}
 	
 	public StructTextReader(Reader reader,List<T> fieldsList) {
 		this(reader,fieldsList,defaultSize(fieldsList));
-		/*super(reader,defaultSize(fieldsList));
-		if(reader==null)
-		{
-			throw new IllegalArgumentException();
-		}
-		if(fieldsList==null||fieldsList.isEmpty())
-		{
-			throw new IllegalArgumentException();
-		}
-		this.fieldsList=fieldsList;*/
 	}
 
 	private static <T extends Field> int defaultSize(List<T> fieldsList2) {
@@ -47,7 +31,9 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 		{
 			i=Tools.getSize(fieldsList2);
 			if(i>0)
+			{
 				res=i;
+			}
 		}
 		return res;
 	}

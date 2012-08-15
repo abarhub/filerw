@@ -5,27 +5,27 @@ import java.util.List;
 
 public class TestTools<T extends Enum<T>&Field> {
 
-	private List<T> liste_champs;
+	private List<T> listFields;
 
 	private String messageError;
 	
 	public TestTools(List<T> liste_champs)
 	{
-		this.liste_champs=liste_champs;
+		this.listFields=liste_champs;
 	}
 	
 	public TestTools(Class<T> clazz)
 	{
-		this.liste_champs=new ArrayList<T>();
+		this.listFields=new ArrayList<T>();
         for (T option : clazz.getEnumConstants()) {
-            liste_champs.add(option);
+            listFields.add(option);
         }
 	}
 	
 	public boolean testBasic()
 	{
-		T premier_debut=null;
-		for(T tmp:liste_champs)
+		T first=null;
+		for(T tmp:listFields)
 		{
 			if(tmp.getPosition()<0)
 			{
@@ -39,10 +39,10 @@ public class TestTools<T extends Enum<T>&Field> {
 			}
 			if(tmp.getPosition()==0)
 			{
-				premier_debut=tmp;
+				first=tmp;
 			}
 		}
-		if(premier_debut==null)
+		if(first==null)
 		{
 			messageError="il n'y a aucun champs pour la colonne no 0";
 			return false;
@@ -66,7 +66,7 @@ public class TestTools<T extends Enum<T>&Field> {
 			tab.add(null);
 		}
 		
-		for(T tmp:liste_champs)
+		for(T tmp:listFields)
 		{
 			for(int i=tmp.getPosition();i<tmp.getPosition()+tmp.getLength();i++)
 			{
@@ -91,7 +91,7 @@ public class TestTools<T extends Enum<T>&Field> {
 	
 	private int getSize() {
 		int res=0;
-    	for(T champs:liste_champs)
+    	for(T champs:listFields)
     	{
     		res=Math.max(res, champs.getPosition()+champs.getLength());
     	}

@@ -9,8 +9,12 @@ import org.abarhub.filerw.Tools;
 
 public class StructTextWriter<T extends Field> extends PrintWriter {
 
-	protected List<T> fieldsList;
+	private final List<T> fieldsList;
 	
+	public List<T> getFieldsList() {
+		return fieldsList;
+	}
+
 	public StructTextWriter(Writer out,Class<T> clazz) {
 		super(out);
 		if(out==null)

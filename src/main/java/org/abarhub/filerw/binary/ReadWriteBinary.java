@@ -18,9 +18,9 @@ public class ReadWriteBinary<T extends Field> {
 	private File file;
     private final List<T> fieldsList;
     
-	public ReadWriteBinary(File file,List<T> liste_champs) {
+	public ReadWriteBinary(File file,List<T> listFields) {
 		this.file=file;
-        this.fieldsList=liste_champs;
+        this.fieldsList=listFields;
 	}
 
 	public ReadWriteBinary(File file,Class<T> clazz){

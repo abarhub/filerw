@@ -34,11 +34,17 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		}
 		this.line=new byte[len];
 		if(line==null)
+		{
 			len2=0;
+		}
 		else if(line.length<len)
+		{
 			len2=line.length;
+		}
 		else
+		{
 			len2=len;
+		}
 		for(int i=0;i<len2;i++)
 		{
 			this.line[i]=line[i];
@@ -68,7 +74,9 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
             	for(byte b:tab)
             	{
             		if(!start)
+            		{
             			out.print(',');
+            		}
             		out.print(b);
             		start=false;
             	}

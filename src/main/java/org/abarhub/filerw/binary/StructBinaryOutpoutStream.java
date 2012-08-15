@@ -10,8 +10,12 @@ import org.abarhub.filerw.Tools;
 
 public class StructBinaryOutpoutStream<T extends Field> extends FilterOutputStream {
 
-	protected List<T> fieldsList;
+	private final List<T> fieldsList;
 	
+	public List<T> getFieldsList() {
+		return fieldsList;
+	}
+
 	public StructBinaryOutpoutStream(OutputStream out,Class<T> clazz) {
 		super(out);
 		if(out==null)

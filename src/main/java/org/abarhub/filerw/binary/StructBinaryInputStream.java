@@ -11,8 +11,12 @@ import org.abarhub.filerw.Tools;
 
 public class StructBinaryInputStream<T extends Field> extends FilterInputStream {
 
-	protected List<T> fieldsList;
+	private final List<T> fieldsList;
 	
+	public List<T> getFieldsList() {
+		return fieldsList;
+	}
+
 	public StructBinaryInputStream(InputStream in,Class<T> clazz) {
 		super(in);
 		if(in==null)
