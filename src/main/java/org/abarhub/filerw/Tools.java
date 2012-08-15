@@ -12,20 +12,20 @@ public class Tools {
 
 	public static <T extends Field> int getSize(Class<T> clazz) {
 		int res=0;
-		List<T> liste_champs;
-		liste_champs=convClassEnum(clazz);
-    	for(T champs:liste_champs)
+		List<T> listFields;
+		listFields=convClassEnum(clazz);
+    	for(T champs:listFields)
     	{
     		res=Math.max(res, champs.getPosition()+champs.getLength());
     	}
     	return res;
 	}
 
-	public static <T extends Field> int getSize(List<T> liste_champs) {
+	public static <T extends Field> int getSize(List<T> listFields) {
 		int res=0;
-    	for(T champs:liste_champs)
+    	for(T field:listFields)
     	{
-    		res=Math.max(res, champs.getPosition()+champs.getLength());
+    		res=Math.max(res, field.getPosition()+field.getLength());
     	}
     	return res;
 	}
@@ -44,13 +44,19 @@ public class Tools {
 	public static boolean equals(byte[] tab,byte[] tab2)
 	{
 		if(tab==null)
+		{
 			return tab2==null;
+		}
 		else
 		{
 			if(tab2==null)
+			{
 				return false;
+			}
 			if(tab.length!=tab2.length)
+			{
 				return false;
+			}
 			for(int i=0;i<tab.length;i++)
 			{
 				if(tab[i]!=tab2[i])

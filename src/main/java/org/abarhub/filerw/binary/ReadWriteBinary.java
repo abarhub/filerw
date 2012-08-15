@@ -32,14 +32,14 @@ public class ReadWriteBinary<T extends Field> {
 	public FileContentBinary<T> readFile() throws FileNotFoundException, IOException, ParseException
     {
 		FileContentBinary<T> res;
-        LineContentBinary<T> ligne;
+        LineContentBinary<T> line;
         StructBinaryInputStream<T> buf=null;
         res=new FileContentBinary<T>();
         try{
         	buf=new StructBinaryInputStream<T>(new BufferedInputStream(new FileInputStream(file)),fieldsList);
-        	while((ligne=buf.readLn())!=null)
+        	while((line=buf.readLn())!=null)
             {
-            	res.add(ligne);
+            	res.add(line);
             }
 		}finally{
             if(buf!=null)
@@ -51,16 +51,16 @@ public class ReadWriteBinary<T extends Field> {
         return res;
     }
 
-    public void writeFile(File fileName,FileContentBinary<T> contenu_fichier) throws IOException
+    public void writeFile(File fileName,FileContentBinary<T> fileContent) throws IOException
     {
     	StructBinaryOutpoutStream<T> out=null;
     	try{
     		out=new StructBinaryOutpoutStream<T>(new BufferedOutputStream(new FileOutputStream(fileName)),fieldsList);
-    		if(contenu_fichier!=null)
+    		if(fileContent!=null)
     		{
-    			if(contenu_fichier.getListe()!=null)
+    			if(fileContent.getListe()!=null)
     			{
-    				for(LineContentBinary<T> ligne:contenu_fichier.getListe())
+    				for(LineContentBinary<T> ligne:fileContent.getListe())
     				{
     					out.writeLine(ligne);
     				}

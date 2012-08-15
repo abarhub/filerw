@@ -24,30 +24,28 @@ public class ReadWriteText<T extends Field> {
     private Separator separator=Separator.NewLine;
     private String stringSeparator;
     
-    public ReadWriteText(File file,List<T> liste_champs){
+    public ReadWriteText(File file,List<T> listFields){
         this.file=file;
-        this.fieldsList=liste_champs;
+        this.fieldsList=listFields;
     }
     
     public ReadWriteText(File file,Class<T> clazz){
     	this(file,Tools.convClassEnum(clazz));
-        /*this.file=file;
-        this.fieldsList=Tools.convClassEnum(clazz);*/
     }
 
 	public FileContentText<T> readFile() throws FileNotFoundException, IOException, ParseException
     {
         FileContentText<T> res;
-        LineContentText<T> ligne;
+        LineContentText<T> line;
         StructTextReader<T> buf=null;
         int i;
         res=new FileContentText<T>();
         try{
         	buf=new StructTextReader<T>(new BufferedReader(new FileReader(file)),fieldsList);
         	loop:{
-            while((ligne=buf.readLn())!=null)
+            while((line=buf.readLn())!=null)
             {
-            	res.add(ligne);
+            	res.add(line);
             	if(separator==Separator.NewLine)
                 {
             		i=buf.read();
@@ -93,16 +91,16 @@ public class ReadWriteText<T extends Field> {
         return res;
     }
 
-    public void writeFile(File fileName,FileContentText<T> contenu_fichier) throws IOException
+    public void writeFile(File fileName,FileContentText<T> fileContent) throws IOException
     {
     	StructTextWriter<T> out=null;
     	try{
     		out=new StructTextWriter<T>(new BufferedWriter(new FileWriter(fileName)),fieldsList);
-    		if(contenu_fichier!=null)
+    		if(fileContent!=null)
     		{
-    			if(contenu_fichier.getListe()!=null)
+    			if(fileContent.getListe()!=null)
     			{
-    				for(LineContentText<T> ligne:contenu_fichier.getListe())
+    				for(LineContentText<T> ligne:fileContent.getListe())
     				{
     					out.writeLine(ligne);
     					if(separator==Separator.NewLine)
@@ -116,7 +114,9 @@ public class ReadWriteText<T extends Field> {
     					else if(separator==Separator.String)
     					{
     						if(stringSeparator!=null&&stringSeparator.length()>0)
+    						{
     							out.print(stringSeparator);
+    						}
     					}
     					else
     					{
@@ -159,7 +159,9 @@ public class ReadWriteText<T extends Field> {
     public void setStringSeparator(String sep)
     {
     	if(sep==null)
+    	{
     		throw new IllegalArgumentException();
+    	}
     	separator=Separator.String;
     	stringSeparator=sep;
     }
