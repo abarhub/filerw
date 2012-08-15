@@ -5,12 +5,14 @@
 package org.abarhub.filerw;
 
 /**
- *
+ * 
  * @author abarhub
  */
 public interface Field {
-    
-    int getPosition();
-    int getLength();
-    String name();
+
+	int getPosition();
+
+	int getLength();
+
+	String name();
 }

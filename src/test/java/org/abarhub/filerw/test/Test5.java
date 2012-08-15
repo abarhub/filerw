@@ -1,6 +1,9 @@
 package org.abarhub.filerw.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -13,14 +16,14 @@ public class Test5 {
 	@Test
 	public void testGetSizeClassOfT() {
 		int len;
-		len=Tools.getSize(FieldsListChamps1.class);
+		len = Tools.getSize(FieldsListChamps1.class);
 		assertEquals(48, len);
 	}
 
 	@Test
 	public void testConvClassEnum() {
 		List<FieldsListChamps1> liste;
-		liste=Tools.convClassEnum(FieldsListChamps1.class);
+		liste = Tools.convClassEnum(FieldsListChamps1.class);
 		assertNotNull(liste);
 		assertFalse(liste.isEmpty());
 		assertEquals(3, liste.size());

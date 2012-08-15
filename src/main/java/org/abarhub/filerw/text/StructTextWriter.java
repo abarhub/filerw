@@ -10,38 +10,34 @@ import org.abarhub.filerw.Tools;
 public class StructTextWriter<T extends Field> extends PrintWriter {
 
 	private final List<T> fieldsList;
-	
+
 	public List<T> getFieldsList() {
 		return fieldsList;
 	}
 
-	public StructTextWriter(Writer out,Class<T> clazz) {
+	public StructTextWriter(Writer out, Class<T> clazz) {
 		super(out);
-		if(out==null)
-		{
+		if (out == null) {
 			throw new IllegalArgumentException();
 		}
-		if(clazz==null||!clazz.isEnum())
-		{
+		if (clazz == null || !clazz.isEnum()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=Tools.convClassEnum(clazz);
+		this.fieldsList = Tools.convClassEnum(clazz);
 	}
-	
-	public StructTextWriter(Writer out,List<T> fieldsList) {
+
+	public StructTextWriter(Writer out, List<T> fieldsList) {
 		super(out);
-		if(out==null)
-		{
+		if (out == null) {
 			throw new IllegalArgumentException();
 		}
-		if(fieldsList==null||fieldsList.isEmpty())
-		{
+		if (fieldsList == null || fieldsList.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=fieldsList;
+		this.fieldsList = fieldsList;
 	}
-	
-	public void writeLine(LineContentText<T> line){
+
+	public void writeLine(LineContentText<T> line) {
 		print(line.getLine());
 	}
 

@@ -8,41 +8,38 @@ import java.util.List;
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.Tools;
 
-public class StructBinaryOutpoutStream<T extends Field> extends FilterOutputStream {
+public class StructBinaryOutpoutStream<T extends Field> extends
+		FilterOutputStream {
 
 	private final List<T> fieldsList;
-	
+
 	public List<T> getFieldsList() {
 		return fieldsList;
 	}
 
-	public StructBinaryOutpoutStream(OutputStream out,Class<T> clazz) {
+	public StructBinaryOutpoutStream(OutputStream out, Class<T> clazz) {
 		super(out);
-		if(out==null)
-		{
+		if (out == null) {
 			throw new IllegalArgumentException();
 		}
-		if(clazz==null||!clazz.isEnum())
-		{
+		if (clazz == null || !clazz.isEnum()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=Tools.convClassEnum(clazz);
+		this.fieldsList = Tools.convClassEnum(clazz);
 	}
 
-	public StructBinaryOutpoutStream(OutputStream out,List<T> fieldsList) {
+	public StructBinaryOutpoutStream(OutputStream out, List<T> fieldsList) {
 		super(out);
-		if(out==null)
-		{
+		if (out == null) {
 			throw new IllegalArgumentException();
 		}
-		if(fieldsList==null||fieldsList.isEmpty())
-		{
+		if (fieldsList == null || fieldsList.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=fieldsList;
+		this.fieldsList = fieldsList;
 	}
-	
-	public void writeLine(LineContentBinary<T> line) throws IOException{
+
+	public void writeLine(LineContentBinary<T> line) throws IOException {
 		write(line.getLine());
 	}
 }

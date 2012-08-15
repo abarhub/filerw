@@ -13,78 +13,68 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 
 	private static final int SIZEBUFFER = 512;
 	private final List<T> fieldsList;
-	
+
 	public List<T> getFieldsList() {
 		return fieldsList;
 	}
 
-	public StructTextReader(Reader reader,Class<T> clazz) {
-		this(reader,clazz,defaultSize(Tools.convClassEnum(clazz)));
+	public StructTextReader(Reader reader, Class<T> clazz) {
+		this(reader, clazz, defaultSize(Tools.convClassEnum(clazz)));
 	}
-	
-	public StructTextReader(Reader reader,List<T> fieldsList) {
-		this(reader,fieldsList,defaultSize(fieldsList));
+
+	public StructTextReader(Reader reader, List<T> fieldsList) {
+		this(reader, fieldsList, defaultSize(fieldsList));
 	}
 
 	private static <T extends Field> int defaultSize(List<T> fieldsList2) {
-		int res=SIZEBUFFER,i;
-		if(fieldsList2!=null&&!fieldsList2.isEmpty())
-		{
-			i=Tools.getSize(fieldsList2);
-			if(i>0)
-			{
-				res=i;
+		int res = SIZEBUFFER, i;
+		if (fieldsList2 != null && !fieldsList2.isEmpty()) {
+			i = Tools.getSize(fieldsList2);
+			if (i > 0) {
+				res = i;
 			}
 		}
 		return res;
 	}
 
-	public StructTextReader(Reader reader,Class<T> clazz,int sz) {
-		super(reader,sz);
-		if(reader==null)
-		{
+	public StructTextReader(Reader reader, Class<T> clazz, int sz) {
+		super(reader, sz);
+		if (reader == null) {
 			throw new IllegalArgumentException();
 		}
-		if(clazz==null||!clazz.isEnum())
-		{
+		if (clazz == null || !clazz.isEnum()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=Tools.convClassEnum(clazz);
+		this.fieldsList = Tools.convClassEnum(clazz);
 	}
-	
-	public StructTextReader(Reader reader,List<T> fieldsList,int sz) {
-		super(reader,sz);
-		if(reader==null)
-		{
+
+	public StructTextReader(Reader reader, List<T> fieldsList, int sz) {
+		super(reader, sz);
+		if (reader == null) {
 			throw new IllegalArgumentException();
 		}
-		if(fieldsList==null||fieldsList.isEmpty())
-		{
+		if (fieldsList == null || fieldsList.isEmpty()) {
 			throw new IllegalArgumentException();
 		}
-		this.fieldsList=fieldsList;
+		this.fieldsList = fieldsList;
 	}
-	
-	
-	
-	public LineContentText<T> readLn() throws IOException, ParseException
-	{
-		char buf[]=new char[Tools.getSize(fieldsList)];
-    	int len;
-    	LineContentText<T> res=null;
-    	String ligne;
-    	
-    	len=read(buf);
-    	if(len!=-1&&len>0)
-        {
-        	if(len!=Tools.getSize(fieldsList))
-        	{
-        		throw new ParseException("Invalid Size ("+len+"!="+Tools.getSize(fieldsList)+")",len);
-        	}
-        	ligne=new String(buf);
-        	res=new LineContentText<T>(fieldsList, ligne);
-        }
-    	
-    	return res;
+
+	public LineContentText<T> readLn() throws IOException, ParseException {
+		char buf[] = new char[Tools.getSize(fieldsList)];
+		int len;
+		LineContentText<T> res = null;
+		String ligne;
+
+		len = read(buf);
+		if (len != -1 && len > 0) {
+			if (len != Tools.getSize(fieldsList)) {
+				throw new ParseException("Invalid Size (" + len + "!="
+						+ Tools.getSize(fieldsList) + ")", len);
+			}
+			ligne = new String(buf);
+			res = new LineContentText<T>(fieldsList, ligne);
+		}
+
+		return res;
 	}
 }

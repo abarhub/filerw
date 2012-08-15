@@ -7,28 +7,25 @@ package org.abarhub.filerw.test.text;
 import org.abarhub.filerw.Field;
 
 /**
- *
+ * 
  * @author abarhub
  */
 public enum FieldsListChamps1 implements Field {
-    Nom(0,20),Prenom(20,20),DateNaissance(40,8);
-    
-    private FieldsListChamps1(int position,int length)
-    {
-        this.position=position;
-        this.length=length;
-    }
+	Nom(0, 20), Prenom(20, 20), DateNaissance(40, 8);
 
-    //@Override
-    public int getLength() {
-        return length;
-    }
+	private FieldsListChamps1(int position, int length) {
+		this.position = position;
+		this.length = length;
+	}
 
-    //@Override
-    public int getPosition() {
-        return position;
-    }
-        
-    private int position;
-    private int length;
+	public int getLength() {
+		return length;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	private int position;
+	private int length;
 }
