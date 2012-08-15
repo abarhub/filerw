@@ -1,8 +1,6 @@
 package org.abarhub.filerw.test.text;
 
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
