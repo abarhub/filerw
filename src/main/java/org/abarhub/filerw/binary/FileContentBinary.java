@@ -1,11 +1,11 @@
 package org.abarhub.filerw.binary;
 
-import org.abarhub.filerw.Field;
-import org.abarhub.filerw.LineContent;
-
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.abarhub.filerw.Field;
+import org.abarhub.filerw.LineContent;
 
 public class FileContentBinary<T extends Field> {
 
@@ -35,5 +35,45 @@ public class FileContentBinary<T extends Field> {
 				line.show(out);
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((liste == null) ? 0 : liste.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof FileContentBinary)) {
+			return false;
+		}
+		FileContentBinary<T> other = (FileContentBinary<T>) obj;
+		if (liste == null) {
+			if (other.liste != null) {
+				return false;
+			}
+		} else if (!liste.equals(other.liste)) {
+			return false;
+		}
+		return true;
 	}
 }

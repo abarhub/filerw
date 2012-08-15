@@ -1,11 +1,11 @@
 package org.abarhub.filerw.text;
 
+import java.io.PrintStream;
+import java.util.List;
+
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
-
-import java.io.PrintStream;
-import java.util.List;
 
 public class LineContentText<T extends Field> extends LineContent<T> {
 
@@ -102,6 +102,46 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 				line.setCharAt(i, ' ');
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((line == null) ? 0 : line.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof LineContentText)) {
+			return false;
+		}
+		LineContentText<T> other = (LineContentText<T>) obj;
+		if (line == null) {
+			if (other.line != null) {
+				return false;
+			}
+		} else if (!line.equals(other.line)) {
+			return false;
+		}
+		return true;
 	}
 
 }

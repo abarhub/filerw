@@ -27,4 +27,45 @@ public abstract class LineContent<T extends Field> {
 
 	public abstract void show(PrintStream out);
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((fieldsList == null) ? 0 : fieldsList.hashCode());
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof LineContent)) {
+			return false;
+		}
+		LineContent<T> other = (LineContent<T>) obj;
+		if (fieldsList == null) {
+			if (other.fieldsList != null) {
+				return false;
+			}
+		} else if (!fieldsList.equals(other.fieldsList)) {
+			return false;
+		}
+		return true;
+	}
+
 }

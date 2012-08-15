@@ -1,11 +1,12 @@
 package org.abarhub.filerw.binary;
 
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
+
 import org.abarhub.filerw.Field;
 import org.abarhub.filerw.LineContent;
 import org.abarhub.filerw.Tools;
-
-import java.io.PrintStream;
-import java.util.List;
 
 public class LineContentBinary<T extends Field> extends LineContent<T> {
 
@@ -38,7 +39,7 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		} else {
 			len2 = len;
 		}
-        System.arraycopy(line, 0, this.line, 0, len2);
+		System.arraycopy(line, 0, this.line, 0, len2);
 	}
 
 	public LineContentBinary(Class<T> clazz) {
@@ -97,5 +98,41 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 
 	public byte[] getLine() {
 		return line;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Arrays.hashCode(line);
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!super.equals(obj)) {
+			return false;
+		}
+		if (!(obj instanceof LineContentBinary)) {
+			return false;
+		}
+		LineContentBinary<T> other = (LineContentBinary<T>) obj;
+		if (!Arrays.equals(line, other.line)) {
+			return false;
+		}
+		return true;
 	}
 }
