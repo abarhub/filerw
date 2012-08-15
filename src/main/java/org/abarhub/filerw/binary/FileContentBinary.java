@@ -66,6 +66,7 @@ public class FileContentBinary<T extends Field> {
 		if (!(obj instanceof FileContentBinary)) {
 			return false;
 		}
+		@SuppressWarnings("unchecked")
 		FileContentBinary<T> other = (FileContentBinary<T>) obj;
 		if (liste == null) {
 			if (other.liste != null) {

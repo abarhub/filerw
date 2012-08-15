@@ -133,6 +133,7 @@ public class LineContentText<T extends Field> extends LineContent<T> {
 		if (!(obj instanceof LineContentText)) {
 			return false;
 		}
+		@SuppressWarnings("unchecked")
 		LineContentText<T> other = (LineContentText<T>) obj;
 		if (line == null) {
 			if (other.line != null) {

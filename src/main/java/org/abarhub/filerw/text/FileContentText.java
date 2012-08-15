@@ -74,6 +74,7 @@ public class FileContentText<T extends Field> {
 		if (!(obj instanceof FileContentText)) {
 			return false;
 		}
+		@SuppressWarnings("unchecked")
 		FileContentText<T> other = (FileContentText<T>) obj;
 		if (liste == null) {
 			if (other.liste != null) {

@@ -129,6 +129,7 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		if (!(obj instanceof LineContentBinary)) {
 			return false;
 		}
+		@SuppressWarnings("unchecked")
 		LineContentBinary<T> other = (LineContentBinary<T>) obj;
 		if (!Arrays.equals(line, other.line)) {
 			return false;
