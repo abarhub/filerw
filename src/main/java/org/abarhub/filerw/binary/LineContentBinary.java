@@ -39,7 +39,9 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 		} else {
 			len2 = len;
 		}
-		System.arraycopy(line, 0, this.line, 0, len2);
+		if (line != null) {
+			System.arraycopy(line, 0, this.line, 0, len2);
+		}
 	}
 
 	public LineContentBinary(Class<T> clazz) {
