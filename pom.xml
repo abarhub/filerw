@@ -2,24 +2,40 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github.abarhub</groupId>
+  <groupId>com.github.abarhub.filerw</groupId>
   <artifactId>filerw</artifactId>
-  <version>0.0.21-SNAPSHOT</version>
+  <version>0.0.22-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>filerw</name>
+  <description>file read write</description>
   <url>https://github.com/abarhub/filerw</url>
+  
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
 <scm>
-<connection>scm:git:https://github.com/abarhub/filerw.git</connection>
-<developerConnection>scm:git:https://github.com/abarhub/filerw.git</developerConnection>
-<url>git:https://github.com/abarhub/filerw.git</url>
+	<connection>scm:git:https://github.com/abarhub/filerw.git</connection>
+	<developerConnection>scm:git:https://github.com/abarhub/filerw.git</developerConnection>
+	<url>git:https://github.com/abarhub/filerw.git</url>
 </scm>
 
+  <developers>
+    <developer>
+      <id>alain.barret</id>
+      <name>Alain Barret</name>
+      <email>abarhub@gmail.com</email>
+    </developer>
+  </developers>
           
   <dependencies>
     <dependency>
