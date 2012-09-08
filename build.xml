@@ -16,5 +16,12 @@
 	  <arg line="/c mvn sonar:sonar"/>
 	</exec>
   </target>
+	
+
+	  <target name="release">
+	    <exec dir="${basedir}" executable="cmd.exe">
+		  <arg line="/c mvn clean release:prepare release:perform"/>
+		</exec>
+	  </target>
   
 </project>
