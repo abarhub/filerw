@@ -2,13 +2,13 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.abarhub</groupId>
+  <groupId>com.github.abarhub</groupId>
   <artifactId>filerw</artifactId>
-  <version>0.0.20-SNAPSHOT</version>
+  <version>0.0.21-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>filerw</name>
-  <url>http://maven.apache.org</url>
+  <url>https://github.com/abarhub/filerw</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,6 +20,7 @@
 <url>git:https://github.com/abarhub/filerw.git</url>
 </scm>
 
+          
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -28,4 +29,18 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
+  <build>
+             <plugins>
+             <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-compiler-plugin</artifactId>
+                 <configuration>
+                     <source>1.5</source>
+                     <target>1.5</target>
+                 </configuration>
+              </plugin>
+          </plugins>
+  </build>
+          
 </project>
