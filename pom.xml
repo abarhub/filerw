@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
 
   <name>filerw</name>
-  <description>file read write</description>
+  <description>file read write with enum class</description>
   <url>https://github.com/abarhub/filerw</url>
   
   <licenses>
