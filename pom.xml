@@ -110,4 +110,20 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+	
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Repository</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+	
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Sonatype Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+	
+  </distributionManagement>
+  
 </project>
