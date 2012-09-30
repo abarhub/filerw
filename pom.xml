@@ -4,7 +4,7 @@
 
 	<groupId>com.github.abarhub.filerw</groupId>
 	<artifactId>filerw</artifactId>
-	<version>0.0.26-SNAPSHOT</version>
+	<version>0.0.26</version>
 	<packaging>jar</packaging>
 
 	<name>filerw</name>
@@ -27,7 +27,7 @@
 		<connection>scm:git:https://github.com/abarhub/filerw.git</connection>
 		<developerConnection>scm:git:https://github.com/abarhub/filerw.git</developerConnection>
 		<url>git:https://github.com/abarhub/filerw.git</url>
-	  <tag>filerw-0.0.24</tag>
+	  <tag>filerw-0.0.26</tag>
   </scm>
 
 	<developers>
