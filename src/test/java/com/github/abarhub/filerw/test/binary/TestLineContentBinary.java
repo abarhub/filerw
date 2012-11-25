@@ -112,6 +112,8 @@ public class TestLineContentBinary {
 		val = buf.toString();
 		ref = "Code1=31,32,33,34\r\n" + "Code2=35,36,92,38,39,40\r\n"
 				+ "Code3=41,42,43,44,45,46,47\r\n";
+		val=val.replaceAll("\\r\\n","\n");
+		ref=ref.replaceAll("\\r\\n","\n");
 		assertEquals(ref, val);
 	}
 
