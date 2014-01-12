@@ -16,22 +16,23 @@ Exemple d'utilisation
 =====================
 
 Pour un fichier avec le format suivant :
-|Nom du champs|position sur une ligne| taille de la ligne|
+| Nom du champs | position sur une ligne | taille de la ligne |
 | ------------- |:-------------:| -----:|
-|nom     |0|30|
-|prenom  |30|30|
-|date de naissance|60|8|
+| nom     | 0 | 30 |
+| prenom  | 30 | 30 |
+| date de naissance | 60 | 8 |
 
-Le séparateur est le retour à la ligne.
+Le sï¿½parateur est le retour ï¿½ la ligne.
 
 Exemple de fichier:
+
 Newton                        Isaac                         04011643
 
 Einstein                      Albert                        14103879
 
 Copernic                      Nicolas                       19021473
 
-Voici la classe pour définir le format du fichier :
+Voici la classe pour dï¿½finir le format du fichier :
 ```java
 public enum FormatPersonnes implements Field {
 	Nom(0, 30), Prenom(30, 30), DateNaissance(60, 8);
@@ -54,7 +55,7 @@ public enum FormatPersonnes implements Field {
 }
 ```
 
-Voici la classe pour lire et écrire ce fichier :
+Voici la classe pour lire et ï¿½crire ce fichier :
 ```java
 public class LectureEcriturePersonnes{
 
