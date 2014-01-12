@@ -28,7 +28,7 @@ Le séparateur est le retour à la ligne.
 
 Exemple de fichier:
 
->Newton                        Isaac                         04011643
+>Newton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Isaac                         04011643
 
 >Einstein                      Albert                        14103879
 
