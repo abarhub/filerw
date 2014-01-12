@@ -57,7 +57,7 @@ public enum FormatPersonnes implements Field {
 }
 ```
 
-Voici la classe pour lire et �crire ce fichier :
+Voici la classe pour lire et écrire ce fichier :
 ```java
 public class LectureEcriturePersonnes{
 
@@ -65,11 +65,16 @@ public class LectureEcriturePersonnes{
 			IOException, ParseException {
 		ReadWriteText<FieldsListChamps1> lecture;
 		FileContentText<FieldsListChamps1> fichier;
+		
+		// lecture du fichier f
 		System.out.println("Lecture du fichier " + f.getPath() + " :");
 		lecture = new ReadWriteText<FieldsListChamps1>(f,FormatPersonnes.class);
 		fichier = lecture.readFile();
-		assertTrue(fichier != null);
+		
+		// affichage du contenu du fichier
 		fichier.show();
+		
+		// ecriture du fichier vers f_out
 		System.out.println("Ecriture du fichier " + f_out.getPath());
 		lecture.writeFile(f_out, fichier);
 	}
