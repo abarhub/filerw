@@ -26,11 +26,11 @@ Le s�parateur est le retour � la ligne.
 
 Exemple de fichier:
 
-Newton                        Isaac                         04011643
+>Newton                        Isaac                         04011643
 
-Einstein                      Albert                        14103879
+>Einstein                      Albert                        14103879
 
-Copernic                      Nicolas                       19021473
+>Copernic                      Nicolas                       19021473
 
 Voici la classe pour d�finir le format du fichier :
 ```java
