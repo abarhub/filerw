@@ -18,17 +18,10 @@ Exemple d'utilisation
 Pour un fichier avec le format suivant :
 
 | Nom du champs | position sur une ligne | taille de la ligne |
-| ------------- |:-------------:| -----:|
+| ------------- |--------------:| -----:|
 | nom     | 0 | 30 |
 | prenom  | 30 | 30 |
 | date de naissance | 60 | 8 |
-
-
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
 
 
 Le séparateur est le retour à la ligne.
