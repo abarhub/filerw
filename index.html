@@ -1,41 +1,54 @@
-filerw
-======
+<html>
+<body>
+<h1>filerw</h1><br>
 
-File read write with enum class  
+<br>
+File read write with enum class<br>
+<br>
+<h1>Javadoc</h1><br>
+<br/>
 
-Javadoc
-=======
+<a href="documentation/version_0.27/apidocs/index.html">Javadoc 0.27</a>
 
-
-
-Explication
-===========
-
-
-Exemple d'utilisation
-=====================
-
-Pour un fichier avec le format suivant :
-
-| Nom du champs | position sur une ligne | taille de la ligne |
-| ------------- |--------------:| -----:|
-| nom     | 0 | 30 |
-| prenom  | 30 | 30 |
-| date de naissance | 60 | 8 |
+<h1>Explication</h1>
 
 
-Le séparateur est le retour à la ligne.
 
-Exemple de fichier:
+<h2>Exemple d'utilisation</h2>
 
-```
+<br/>
+Pour un fichier avec le format suivant :<br/>
+<br/>
+<table border="1">
+<tr><th>Nom du champs</th><th>position sur une ligne</th><th>taille de la ligne</th></tr>
+<tr><td>nom</td><td>0</td><td>30</td></tr>
+<tr><td>prenom</td><td>30</td><td>30</td></tr>
+<tr><td>date de naissance</td><td>60</td><td>8</td></tr>
+</table>
+
+<br/>
+<br/>
+Le s&eacute;parateur est le retour &agrave; la ligne.<br/>
+<br/>
+Exemple de fichier:<br/>
+<br/>
+<table border="1">
+<tr><td><!--
+Newton&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Isaac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;04011643<br/>
+Einstein&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Albert&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14103879<br/>
+Copernic&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nicolas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19021473<br/>
+-->
+<pre>
 Newton                        Isaac                         04011643
 Einstein                      Albert                        14103879
 Copernic                      Nicolas                       19021473
-```
-
-Voici la classe pour définir le format du fichier :
-```java
+</pre></td></tr>
+</table>
+<br/>
+Voici la classe pour d&eacute;finir le format du fichier :<br/>
+<table border="1">
+<tr><td>
+<pre>
 public enum FormatPersonnes implements Field {
 	Nom(0, 30), Prenom(30, 30), DateNaissance(60, 8);
 
@@ -55,10 +68,13 @@ public enum FormatPersonnes implements Field {
 	private int position;
 	private int length;
 }
-```
-
-Voici la classe pour lire et écrire ce fichier :
-```java
+</pre></td></tr>
+</table>
+<br/>
+Voici la classe pour lire et &eacute;crire ce fichier :<br/>
+<table border="1">
+<tr><td>
+<pre>
 public class LectureEcriturePersonnes{
 
 	public void lecture(File f,File f_out) throws URISyntaxException, FileNotFoundException,
@@ -80,5 +96,8 @@ public class LectureEcriturePersonnes{
 	}
 
 }
-```
+</pre></td></tr>
+</table>
 
+</body>
+</html>
