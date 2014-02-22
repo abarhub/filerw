@@ -6,11 +6,12 @@ File read write with enum class
 Javadoc
 =======
 
-
+[Javadoc version 0.27](https://abarhub.github.io/filerw/documentation/version_0.27/apidocs)
 
 Explication
 ===========
 
+[Documentation](https://abarhub.github.io/filerw/)
 
 Exemple d'utilisation
 =====================
