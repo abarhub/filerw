@@ -56,6 +56,7 @@ public class ToolBox {
 		assertNotNull(s2);
 		assertTrue(s2.length() > 0);
 		s = s.replaceAll("\\r\\n", "\n");
+		s2 = s2.replaceAll("\\r\\n", "\n");
 		assertEquals(s, s2);
 		return s.equals(s2);
 	}
