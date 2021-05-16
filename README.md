@@ -1,7 +1,20 @@
 filerw
 ======
 
+[![Latest release](https://img.shields.io/github/release/abarhub/filerw.svg)](https://github.com/abarhub/filerw/releases/latest)
+
 File read write with enum class  
+
+Dépendance Maven
+================
+
+```xml
+<dependency>
+  <groupId>com.github.abarhub.filerw</groupId>
+  <artifactId>filerw</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
 
 Javadoc
 =======
@@ -15,8 +28,10 @@ Explication
 
 [Documentation](https://abarhub.github.io/filerw/)
 
-version 0.0.24 : compatible avec java 5
 version 0.1.0 : compatible avec java 8
+
+Pour l'utiliser avec une version inferieur à java 5, il faut utiliser une version inférieure à la version 0.1.0.
+
 
 Exemple d'utilisation
 =====================
