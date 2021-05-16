@@ -8,10 +8,15 @@ Javadoc
 
 [Javadoc version 0.1.0](https://abarhub.github.io/filerw/documentation/version_0.1.0/apidocs)
 
+[Javadoc version 0.27](https://abarhub.github.io/filerw/documentation/version_0.27/apidocs)
+
 Explication
 ===========
 
 [Documentation](https://abarhub.github.io/filerw/)
+
+version 0.0.24 : compatible avec java 5
+version 0.1.0 : compatible avec java 8
 
 Exemple d'utilisation
 =====================
