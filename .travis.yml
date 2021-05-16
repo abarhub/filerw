@@ -8,5 +8,6 @@ cache:
 
 script:
   - java --version
-  - mvn clean install
+  - mvn clean install -Pcoverage
+  - bash <(curl -s https://codecov.io/bash)
 
