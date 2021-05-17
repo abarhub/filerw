@@ -3,8 +3,9 @@ filerw
 
 [![Latest release](https://img.shields.io/github/release/abarhub/filerw.svg)](https://github.com/abarhub/filerw/releases/latest)
 [![Build Status](https://travis-ci.com/abarhub/filerw.svg?branch=master)](https://travis-ci.com/abarhub/filerw)
-[![codecov](https://codecov.io/gh/abarhub/filerw/branch/master/graph/badge.svg)](https://codecov.io/gh/abarhub/filerw)
-![build workflow](https://github.com/abarhub/filerw/actions/workflows/maven.yml/badge.svg)
+[![Codecov](https://codecov.io/gh/abarhub/filerw/branch/master/graph/badge.svg)](https://codecov.io/gh/abarhub/filerw)
+![Build workflow](https://github.com/abarhub/filerw/actions/workflows/maven.yml/badge.svg)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.abarhub.filerw/filerw/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.abarhub.filerw/filerw)
 
 File read write with enum class  
 
