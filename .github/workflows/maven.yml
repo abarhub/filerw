@@ -23,3 +23,9 @@ jobs:
         distribution: 'adopt'
     - name: Build with Maven
       run: mvn -B clean install --file pom.xml
+    - name: Build with Maven and coverage
+      run: mvn -B clean install --file pom.xml -Pcoverage
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        verbose: true
