@@ -11,3 +11,4 @@ script:
   - mvn clean install -Pcoverage
   - bash <(curl -s https://codecov.io/bash)
 
+# ajout de codecov
