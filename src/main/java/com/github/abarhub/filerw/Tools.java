@@ -23,7 +23,7 @@ import java.util.List;
 public final class Tools {
 
 	private Tools() {
-		// TODO Auto-generated constructor
+		// constructeur privé
 	}
 
 	public static <T extends Field> int getSize(Class<T> clazz) {
@@ -51,22 +51,4 @@ public final class Tools {
 		return fieldsList;
 	}
 
-	public static boolean equals(byte[] tab, byte[] tab2) {
-		if (tab == null) {
-			return tab2 == null;
-		} else {
-			if (tab2 == null) {
-				return false;
-			}
-			if (tab.length != tab2.length) {
-				return false;
-			}
-			for (int i = 0; i < tab.length; i++) {
-				if (tab[i] != tab2[i]) {
-					return false;
-				}
-			}
-			return true;
-		}
-	}
 }

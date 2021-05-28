@@ -43,14 +43,14 @@ public class TestStructBinaryInputStream {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3)));
+			assertArrayEquals(new byte[]{31, 32, 33, 34},
+					line.get(FieldsListChamps2.Code1));
+			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+					line.get(FieldsListChamps2.Code2));
+			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+					line.get(FieldsListChamps2.Code3));
 
-			assertTrue(Tools.equals(buf0, line.getLine()));
+			assertArrayEquals(buf0, line.getLine());
 
 			line = in.readLn();
 			assertNull(line);
@@ -72,14 +72,14 @@ public class TestStructBinaryInputStream {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3)));
+			assertArrayEquals(new byte[]{31, 32, 33, 34},
+					line.get(FieldsListChamps2.Code1));
+			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+					line.get(FieldsListChamps2.Code2));
+			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+					line.get(FieldsListChamps2.Code3));
 
-			assertTrue(Tools.equals(buf0, line.getLine()));
+			assertArrayEquals(buf0, line.getLine());
 
 			line = in.readLn();
 			assertNull(line);
@@ -103,32 +103,32 @@ public class TestStructBinaryInputStream {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3)));
+			assertArrayEquals(new byte[]{31, 32, 33, 34},
+					line.get(FieldsListChamps2.Code1));
+			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+					line.get(FieldsListChamps2.Code2));
+			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+					line.get(FieldsListChamps2.Code3));
 
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[]{121, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3)));
+			assertArrayEquals(new byte[]{121, 32, 33, 34},
+					line.get(FieldsListChamps2.Code1));
+			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+					line.get(FieldsListChamps2.Code2));
+			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+					line.get(FieldsListChamps2.Code3));
 
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[]{-124, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3)));
+			assertArrayEquals(new byte[]{-124, 32, 33, 34},
+					line.get(FieldsListChamps2.Code1));
+			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+					line.get(FieldsListChamps2.Code2));
+			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+					line.get(FieldsListChamps2.Code3));
 
 			line = in.readLn();
 			assertNull(line);

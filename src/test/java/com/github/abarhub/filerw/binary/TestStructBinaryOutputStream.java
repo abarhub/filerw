@@ -23,8 +23,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TestStructBinaryOutputStream {
 
@@ -44,7 +43,7 @@ public class TestStructBinaryOutputStream {
 
 			out.writeLine(line);
 
-			assertTrue(Tools.equals(buf0, buf.toByteArray()));
+			assertArrayEquals(buf0, buf.toByteArray());
 
 		}
 	}
@@ -65,7 +64,7 @@ public class TestStructBinaryOutputStream {
 
 			out.writeLine(line);
 
-			assertTrue(Tools.equals(buf0, buf.toByteArray()));
+			assertArrayEquals(buf0, buf.toByteArray());
 
 		}
 	}

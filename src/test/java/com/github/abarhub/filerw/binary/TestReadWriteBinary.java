@@ -49,9 +49,9 @@ public class TestReadWriteBinary {
 		assertNotNull(fichier.getListe());
 		assertFalse(fichier.getListe().isEmpty());
 		assertEquals(1, fichier.getListe().size());
-		assertTrue(Tools.equals(fichier.getListe().get(0).getLine(),
+		assertArrayEquals(fichier.getListe().get(0).getLine(),
 				new byte[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
-						51, 52, 53, 54, 55 }));
+						51, 52, 53, 54, 55 });
 	}
 
 	@Test
@@ -72,12 +72,12 @@ public class TestReadWriteBinary {
 		assertNotNull(fichier.getListe());
 		assertFalse(fichier.getListe().isEmpty());
 		assertEquals(2, fichier.getListe().size());
-		assertTrue(Tools.equals(fichier.getListe().get(0).getLine(),
+		assertArrayEquals(fichier.getListe().get(0).getLine(),
 				new byte[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
-						51, 52, 53, 54, 55 }));
-		assertTrue(Tools.equals(fichier.getListe().get(1).getLine(),
+						51, 52, 53, 54, 55 });
+		assertArrayEquals(fichier.getListe().get(1).getLine(),
 				new byte[] { 56, 57, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
-						48, 49, 50, 51, 52 }));
+						48, 49, 50, 51, 52 });
 
 		f2 = new File(f.getAbsoluteFile().getParentFile(), "exemplebin2_1.txt");
 		lecture.writeFile(f2, fichier);
