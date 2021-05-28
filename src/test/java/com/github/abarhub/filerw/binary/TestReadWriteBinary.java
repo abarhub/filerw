@@ -17,8 +17,6 @@
 package com.github.abarhub.filerw.binary;
 
 import com.github.abarhub.filerw.ToolBox;
-
-import com.github.abarhub.filerw.Tools;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -32,73 +30,73 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestReadWriteBinary {
 
-	@Test
-	public void testReadFile() throws URISyntaxException,
-			IOException, ParseException {
-		ReadWriteBinary<FieldsListChamps2> lecture;
-		FileContentBinary<FieldsListChamps2> fichier;
-		File f;
-		f = getFile1();
-		System.out.println("Lecture du fichier " + f.getPath() + " :");
-		lecture = new ReadWriteBinary<>(f,
-				FieldsListChamps2.class);
-		fichier = lecture.readFile();
-		assertNotNull(fichier);
-		fichier.show();
+    @Test
+    public void testReadFile() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteBinary<FieldsListChamps2> lecture;
+        FileContentBinary<FieldsListChamps2> fichier;
+        File f;
+        f = getFile1();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteBinary<>(f,
+                FieldsListChamps2.class);
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
 
-		assertNotNull(fichier.getListe());
-		assertFalse(fichier.getListe().isEmpty());
-		assertEquals(1, fichier.getListe().size());
-		assertArrayEquals(fichier.getListe().get(0).getLine(),
-				new byte[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
-						51, 52, 53, 54, 55 });
-	}
+        assertNotNull(fichier.getListe());
+        assertFalse(fichier.getListe().isEmpty());
+        assertEquals(1, fichier.getListe().size());
+        assertArrayEquals(fichier.getListe().get(0).getLine(),
+                new byte[]{49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
+                        51, 52, 53, 54, 55});
+    }
 
-	@Test
-	public void testWriteFile() throws URISyntaxException,
-			IOException, ParseException {
-		ReadWriteBinary<FieldsListChamps2> lecture;
-		FileContentBinary<FieldsListChamps2> fichier;
-		File f, f2;
-		f = getFile2();
-		System.out.println("Lecture du fichier " + f.getPath() + " :");
-		lecture = new ReadWriteBinary<>(f,
-				FieldsListChamps2.class);
+    @Test
+    public void testWriteFile() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteBinary<FieldsListChamps2> lecture;
+        FileContentBinary<FieldsListChamps2> fichier;
+        File f, f2;
+        f = getFile2();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteBinary<>(f,
+                FieldsListChamps2.class);
 
-		fichier = lecture.readFile();
-		assertNotNull(fichier);
-		fichier.show();
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
 
-		assertNotNull(fichier.getListe());
-		assertFalse(fichier.getListe().isEmpty());
-		assertEquals(2, fichier.getListe().size());
-		assertArrayEquals(fichier.getListe().get(0).getLine(),
-				new byte[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
-						51, 52, 53, 54, 55 });
-		assertArrayEquals(fichier.getListe().get(1).getLine(),
-				new byte[] { 56, 57, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
-						48, 49, 50, 51, 52 });
+        assertNotNull(fichier.getListe());
+        assertFalse(fichier.getListe().isEmpty());
+        assertEquals(2, fichier.getListe().size());
+        assertArrayEquals(fichier.getListe().get(0).getLine(),
+                new byte[]{49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
+                        51, 52, 53, 54, 55});
+        assertArrayEquals(fichier.getListe().get(1).getLine(),
+                new byte[]{56, 57, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
+                        48, 49, 50, 51, 52});
 
-		f2 = new File(f.getAbsoluteFile().getParentFile(), "exemplebin2_1.txt");
-		lecture.writeFile(f2, fichier);
+        f2 = new File(f.getAbsoluteFile().getParentFile(), "exemplebin2_1.txt");
+        lecture.writeFile(f2, fichier);
 
-		assertTrue(ToolBox.compare(f, f2));
-	}
+        assertTrue(ToolBox.compare(f, f2));
+    }
 
-	public File getFile1() throws URISyntaxException {
-		File f;
-		URL url = getClass().getResource("/data/exemplebin1.txt");
-		assertNotNull(url);
-		f = new File(url.toURI());
-		return f;
-	}
+    public File getFile1() throws URISyntaxException {
+        File f;
+        URL url = getClass().getResource("/data/exemplebin1.txt");
+        assertNotNull(url);
+        f = new File(url.toURI());
+        return f;
+    }
 
-	public File getFile2() throws URISyntaxException {
-		File f;
-		URL url = getClass().getResource("/data/exemplebin2.txt");
-		assertNotNull(url);
-		f = new File(url.toURI());
-		return f;
-	}
+    public File getFile2() throws URISyntaxException {
+        File f;
+        URL url = getClass().getResource("/data/exemplebin2.txt");
+        assertNotNull(url);
+        f = new File(url.toURI());
+        return f;
+    }
 
 }

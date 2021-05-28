@@ -21,14 +21,13 @@
 package com.github.abarhub.filerw;
 
 /**
- *
  * @author abarhub
  */
 public interface Field {
 
-	int getPosition();
+    int getPosition();
 
-	int getLength();
+    int getLength();
 
-	String name();
+    String name();
 }

@@ -19,22 +19,22 @@ package com.github.abarhub.filerw.binary;
 import com.github.abarhub.filerw.Field;
 
 public enum FieldsListChamps2 implements Field {
-	Code1(0, 4), Code2(4, 6), Code3(10, 7);
+    Code1(0, 4), Code2(4, 6), Code3(10, 7);
 
-	private FieldsListChamps2(int position, int length) {
-		this.position = position;
-		this.length = length;
-	}
+    private FieldsListChamps2(int position, int length) {
+        this.position = position;
+        this.length = length;
+    }
 
-	public int getLength() {
-		return length;
-	}
+    public int getLength() {
+        return length;
+    }
 
-	public int getPosition() {
-		return position;
-	}
+    public int getPosition() {
+        return position;
+    }
 
-	private int position;
-	private int length;
+    private int position;
+    private int length;
 
 }

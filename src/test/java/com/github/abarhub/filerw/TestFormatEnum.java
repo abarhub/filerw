@@ -16,9 +16,8 @@
 
 package com.github.abarhub.filerw;
 
-import com.github.abarhub.filerw.text.FieldsListChamps1;
-
 import com.github.abarhub.filerw.binary.FieldsListChamps2;
+import com.github.abarhub.filerw.text.FieldsListChamps1;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,18 +25,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestFormatEnum {
 
-	@Test
-	public void test1() {
-		TestTools<FieldsListChamps1> test;
-		test = new TestTools<>(FieldsListChamps1.class);
-		assertTrue(test.testAll());
-	}
+    @Test
+    public void test1() {
+        TestTools<FieldsListChamps1> test;
+        test = new TestTools<>(FieldsListChamps1.class);
+        assertTrue(test.testAll());
+    }
 
-	@Test
-	public void test2() {
-		TestTools<FieldsListChamps2> test;
-		test = new TestTools<>(FieldsListChamps2.class);
-		assertTrue(test.testAll());
-	}
+    @Test
+    public void test2() {
+        TestTools<FieldsListChamps2> test;
+        test = new TestTools<>(FieldsListChamps2.class);
+        assertTrue(test.testAll());
+    }
 
 }

@@ -27,46 +27,46 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class TestStructBinaryOutputStream {
 
-	@Test
-	public void test1() throws IOException {
-		ByteArrayOutputStream buf;
-		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
-				42, 43, 44, 45, 46, 47 };
-		LineContentBinary<FieldsListChamps2> line;
+    @Test
+    public void test1() throws IOException {
+        ByteArrayOutputStream buf;
+        byte[] buf0 = new byte[]{31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
+                42, 43, 44, 45, 46, 47};
+        LineContentBinary<FieldsListChamps2> line;
 
-		buf = new ByteArrayOutputStream();
-		try (StructBinaryOutpoutStream<FieldsListChamps2> out = new StructBinaryOutpoutStream<>(buf,
-				FieldsListChamps2.class)) {
+        buf = new ByteArrayOutputStream();
+        try (StructBinaryOutpoutStream<FieldsListChamps2> out = new StructBinaryOutpoutStream<>(buf,
+                FieldsListChamps2.class)) {
 
-			line = new LineContentBinary<>(
-					FieldsListChamps2.class, buf0);
+            line = new LineContentBinary<>(
+                    FieldsListChamps2.class, buf0);
 
-			out.writeLine(line);
+            out.writeLine(line);
 
-			assertArrayEquals(buf0, buf.toByteArray());
+            assertArrayEquals(buf0, buf.toByteArray());
 
-		}
-	}
+        }
+    }
 
-	@Test
-	public void test2() throws IOException {
-		ByteArrayOutputStream buf;
-		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
-				42, 43, 44, 45, 46, 47 };
-		LineContentBinary<FieldsListChamps2> line;
+    @Test
+    public void test2() throws IOException {
+        ByteArrayOutputStream buf;
+        byte[] buf0 = new byte[]{31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
+                42, 43, 44, 45, 46, 47};
+        LineContentBinary<FieldsListChamps2> line;
 
-		buf = new ByteArrayOutputStream();
-		try (StructBinaryOutpoutStream<FieldsListChamps2> out = new StructBinaryOutpoutStream<>(buf,
-				Tools.convClassEnum(FieldsListChamps2.class))) {
+        buf = new ByteArrayOutputStream();
+        try (StructBinaryOutpoutStream<FieldsListChamps2> out = new StructBinaryOutpoutStream<>(buf,
+                Tools.convClassEnum(FieldsListChamps2.class))) {
 
-			line = new LineContentBinary<>(
-					FieldsListChamps2.class, buf0);
+            line = new LineContentBinary<>(
+                    FieldsListChamps2.class, buf0);
 
-			out.writeLine(line);
+            out.writeLine(line);
 
-			assertArrayEquals(buf0, buf.toByteArray());
+            assertArrayEquals(buf0, buf.toByteArray());
 
-		}
-	}
+        }
+    }
 
 }

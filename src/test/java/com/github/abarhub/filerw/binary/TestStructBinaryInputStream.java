@@ -29,111 +29,111 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestStructBinaryInputStream {
 
-	@Test
-	public void testStructBinaryInputStreamInputStreamClassOfT()
-			throws IOException, ParseException {
-		ByteArrayInputStream buf;
-		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
-				42, 43, 44, 45, 46, 47 };
-		LineContentBinary<FieldsListChamps2> line;
+    @Test
+    public void testStructBinaryInputStreamInputStreamClassOfT()
+            throws IOException, ParseException {
+        ByteArrayInputStream buf;
+        byte[] buf0 = new byte[]{31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
+                42, 43, 44, 45, 46, 47};
+        LineContentBinary<FieldsListChamps2> line;
 
-		buf = new ByteArrayInputStream(buf0);
-		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
-				FieldsListChamps2.class)) {
-			line = in.readLn();
-			assertNotNull(line);
+        buf = new ByteArrayInputStream(buf0);
+        try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+                FieldsListChamps2.class)) {
+            line = in.readLn();
+            assertNotNull(line);
 
-			assertArrayEquals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1));
-			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2));
-			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3));
+            assertArrayEquals(new byte[]{31, 32, 33, 34},
+                    line.get(FieldsListChamps2.Code1));
+            assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+                    line.get(FieldsListChamps2.Code2));
+            assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+                    line.get(FieldsListChamps2.Code3));
 
-			assertArrayEquals(buf0, line.getLine());
+            assertArrayEquals(buf0, line.getLine());
 
-			line = in.readLn();
-			assertNull(line);
+            line = in.readLn();
+            assertNull(line);
 
-		}
-	}
+        }
+    }
 
-	@Test
-	public void testStructBinaryInputStreamInputStreamClassOfT2()
-			throws IOException, ParseException {
-		ByteArrayInputStream buf;
-		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
-				42, 43, 44, 45, 46, 47 };
-		LineContentBinary<FieldsListChamps2> line;
+    @Test
+    public void testStructBinaryInputStreamInputStreamClassOfT2()
+            throws IOException, ParseException {
+        ByteArrayInputStream buf;
+        byte[] buf0 = new byte[]{31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
+                42, 43, 44, 45, 46, 47};
+        LineContentBinary<FieldsListChamps2> line;
 
-		buf = new ByteArrayInputStream(buf0);
-		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
-				Tools.convClassEnum(FieldsListChamps2.class))) {
-			line = in.readLn();
-			assertNotNull(line);
+        buf = new ByteArrayInputStream(buf0);
+        try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+                Tools.convClassEnum(FieldsListChamps2.class))) {
+            line = in.readLn();
+            assertNotNull(line);
 
-			assertArrayEquals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1));
-			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2));
-			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3));
+            assertArrayEquals(new byte[]{31, 32, 33, 34},
+                    line.get(FieldsListChamps2.Code1));
+            assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+                    line.get(FieldsListChamps2.Code2));
+            assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+                    line.get(FieldsListChamps2.Code3));
 
-			assertArrayEquals(buf0, line.getLine());
+            assertArrayEquals(buf0, line.getLine());
 
-			line = in.readLn();
-			assertNull(line);
+            line = in.readLn();
+            assertNull(line);
 
-		}
-	}
+        }
+    }
 
-	@Test
-	public void testStructBinaryInputStreamInputStreamClassOfT3()
-			throws IOException, ParseException {
-		ByteArrayInputStream buf;
-		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
-				42, 43, 44, 45, 46, 47, 121, 32, 33, 34, 35, 36, 92, 38, 39,
-				40, 41, 42, 43, 44, 45, 46, 47, -124, 32, 33, 34, 35, 36, 92,
-				38, 39, 40, 41, 42, 43, 44, 45, 46, 47 };
-		LineContentBinary<FieldsListChamps2> line;
+    @Test
+    public void testStructBinaryInputStreamInputStreamClassOfT3()
+            throws IOException, ParseException {
+        ByteArrayInputStream buf;
+        byte[] buf0 = new byte[]{31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
+                42, 43, 44, 45, 46, 47, 121, 32, 33, 34, 35, 36, 92, 38, 39,
+                40, 41, 42, 43, 44, 45, 46, 47, -124, 32, 33, 34, 35, 36, 92,
+                38, 39, 40, 41, 42, 43, 44, 45, 46, 47};
+        LineContentBinary<FieldsListChamps2> line;
 
-		buf = new ByteArrayInputStream(buf0);
-		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
-				FieldsListChamps2.class)) {
-			line = in.readLn();
-			assertNotNull(line);
+        buf = new ByteArrayInputStream(buf0);
+        try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+                FieldsListChamps2.class)) {
+            line = in.readLn();
+            assertNotNull(line);
 
-			assertArrayEquals(new byte[]{31, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1));
-			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2));
-			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3));
+            assertArrayEquals(new byte[]{31, 32, 33, 34},
+                    line.get(FieldsListChamps2.Code1));
+            assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+                    line.get(FieldsListChamps2.Code2));
+            assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+                    line.get(FieldsListChamps2.Code3));
 
-			line = in.readLn();
-			assertNotNull(line);
+            line = in.readLn();
+            assertNotNull(line);
 
-			assertArrayEquals(new byte[]{121, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1));
-			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2));
-			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3));
+            assertArrayEquals(new byte[]{121, 32, 33, 34},
+                    line.get(FieldsListChamps2.Code1));
+            assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+                    line.get(FieldsListChamps2.Code2));
+            assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+                    line.get(FieldsListChamps2.Code3));
 
-			line = in.readLn();
-			assertNotNull(line);
+            line = in.readLn();
+            assertNotNull(line);
 
-			assertArrayEquals(new byte[]{-124, 32, 33, 34},
-					line.get(FieldsListChamps2.Code1));
-			assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
-					line.get(FieldsListChamps2.Code2));
-			assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
-					line.get(FieldsListChamps2.Code3));
+            assertArrayEquals(new byte[]{-124, 32, 33, 34},
+                    line.get(FieldsListChamps2.Code1));
+            assertArrayEquals(new byte[]{35, 36, 92, 38, 39, 40},
+                    line.get(FieldsListChamps2.Code2));
+            assertArrayEquals(new byte[]{41, 42, 43, 44, 45, 46, 47},
+                    line.get(FieldsListChamps2.Code3));
 
-			line = in.readLn();
-			assertNull(line);
+            line = in.readLn();
+            assertNull(line);
 
-		}
-	}
+        }
+    }
 
 }

@@ -26,39 +26,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestStructWriteText {
 
-	@Test
-	public void testWriteLine() {
-		StructTextWriter<FieldsListChamps1> out = null;
-		StringWriter out2;
-		LineContentText<FieldsListChamps1> line;
-		String nom = "Martin", prenom = "Pierre", date = "01011960";
-		out2 = new StringWriter();
-		try {
-			out = new StructTextWriter<>(out2,
-					FieldsListChamps1.class);
-			line = new LineContentText<>(
-					FieldsListChamps1.class);
-			line.setString(FieldsListChamps1.Nom, nom);
-			line.setString(FieldsListChamps1.Prenom, prenom);
-			line.setString(FieldsListChamps1.DateNaissance, date);
-			out.writeLine(line);
-			assertEquals(
-					padding(nom, FieldsListChamps1.Nom)
-							+ padding(prenom, FieldsListChamps1.Prenom)
-							+ padding(date, FieldsListChamps1.DateNaissance),
-					out2.toString());
-		} finally {
-			if (out != null)
-				out.close();
-		}
-	}
+    @Test
+    public void testWriteLine() {
+        StructTextWriter<FieldsListChamps1> out = null;
+        StringWriter out2;
+        LineContentText<FieldsListChamps1> line;
+        String nom = "Martin", prenom = "Pierre", date = "01011960";
+        out2 = new StringWriter();
+        try {
+            out = new StructTextWriter<>(out2,
+                    FieldsListChamps1.class);
+            line = new LineContentText<>(
+                    FieldsListChamps1.class);
+            line.setString(FieldsListChamps1.Nom, nom);
+            line.setString(FieldsListChamps1.Prenom, prenom);
+            line.setString(FieldsListChamps1.DateNaissance, date);
+            out.writeLine(line);
+            assertEquals(
+                    padding(nom, FieldsListChamps1.Nom)
+                            + padding(prenom, FieldsListChamps1.Prenom)
+                            + padding(date, FieldsListChamps1.DateNaissance),
+                    out2.toString());
+        } finally {
+            if (out != null)
+                out.close();
+        }
+    }
 
-	private String padding(String nom, FieldsListChamps1 nom2) {
-		StringBuilder res;
-		res = new StringBuilder(nom);
-		while (res.length() < nom2.getLength())
-			res.append(" ");
-		return res.toString();
-	}
+    private String padding(String nom, FieldsListChamps1 nom2) {
+        StringBuilder res;
+        res = new StringBuilder(nom);
+        while (res.length() < nom2.getLength())
+            res.append(" ");
+        return res.toString();
+    }
 
 }

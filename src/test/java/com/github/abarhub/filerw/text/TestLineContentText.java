@@ -25,63 +25,63 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestLineContentText {
 
-	@Test
-	public void test1() {
-		LineContentText<FieldsListChamps1> line;
-		int len;
-		line = new LineContentText<>(FieldsListChamps1.class,
-				"ABC");
-		len = Tools.getSize(FieldsListChamps1.class);
-		assertEquals(padding("ABC", len), line.getLine());
-	}
+    @Test
+    public void test1() {
+        LineContentText<FieldsListChamps1> line;
+        int len;
+        line = new LineContentText<>(FieldsListChamps1.class,
+                "ABC");
+        len = Tools.getSize(FieldsListChamps1.class);
+        assertEquals(padding("ABC", len), line.getLine());
+    }
 
-	@Test
-	public void test2() {
-		LineContentText<FieldsListChamps1> line;
-		int len;
-		line = new LineContentText<>(FieldsListChamps1.class);
-		len = Tools.getSize(FieldsListChamps1.class);
-		assertEquals(padding("", len), line.getLine());
-	}
+    @Test
+    public void test2() {
+        LineContentText<FieldsListChamps1> line;
+        int len;
+        line = new LineContentText<>(FieldsListChamps1.class);
+        len = Tools.getSize(FieldsListChamps1.class);
+        assertEquals(padding("", len), line.getLine());
+    }
 
-	@Test
-	public void test3() {
-		LineContentText<FieldsListChamps1> line;
-		line = new LineContentText<>(FieldsListChamps1.class,
-				"ABC");
-		line.setString(FieldsListChamps1.Prenom, "AAA");
-		assertEquals(
-				padding("ABC", FieldsListChamps1.Nom)
-						+ padding("AAA", FieldsListChamps1.Prenom)
-						+ padding("", FieldsListChamps1.DateNaissance),
-				line.getLine());
-	}
+    @Test
+    public void test3() {
+        LineContentText<FieldsListChamps1> line;
+        line = new LineContentText<>(FieldsListChamps1.class,
+                "ABC");
+        line.setString(FieldsListChamps1.Prenom, "AAA");
+        assertEquals(
+                padding("ABC", FieldsListChamps1.Nom)
+                        + padding("AAA", FieldsListChamps1.Prenom)
+                        + padding("", FieldsListChamps1.DateNaissance),
+                line.getLine());
+    }
 
-	@Test
-	public void test4() {
-		LineContentText<FieldsListChamps1> line;
-		line = new LineContentText<>(FieldsListChamps1.class);
-		line.setString(FieldsListChamps1.Prenom, "BBC");
-		assertEquals(
-				padding("", FieldsListChamps1.Nom)
-						+ padding("BBC", FieldsListChamps1.Prenom)
-						+ padding("", FieldsListChamps1.DateNaissance),
-				line.getLine());
-	}
+    @Test
+    public void test4() {
+        LineContentText<FieldsListChamps1> line;
+        line = new LineContentText<>(FieldsListChamps1.class);
+        line.setString(FieldsListChamps1.Prenom, "BBC");
+        assertEquals(
+                padding("", FieldsListChamps1.Nom)
+                        + padding("BBC", FieldsListChamps1.Prenom)
+                        + padding("", FieldsListChamps1.DateNaissance),
+                line.getLine());
+    }
 
-	private String padding(String nom, int len) {
-		StringBuilder res;
-		res = new StringBuilder(nom);
-		while (res.length() < len)
-			res.append(" ");
-		return res.toString();
-	}
+    private String padding(String nom, int len) {
+        StringBuilder res;
+        res = new StringBuilder(nom);
+        while (res.length() < len)
+            res.append(" ");
+        return res.toString();
+    }
 
-	private String padding(String nom, FieldsListChamps1 nom2) {
-		StringBuilder res;
-		res = new StringBuilder(nom);
-		while (res.length() < nom2.getLength())
-			res.append(" ");
-		return res.toString();
-	}
+    private String padding(String nom, FieldsListChamps1 nom2) {
+        StringBuilder res;
+        res = new StringBuilder(nom);
+        while (res.length() < nom2.getLength())
+            res.append(" ");
+        return res.toString();
+    }
 }

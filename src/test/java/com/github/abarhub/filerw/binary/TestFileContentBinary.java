@@ -23,50 +23,50 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFileContentBinary {
 
-	@Test
-	public void testAdd() {
-		byte[] tab = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-				17 };
-		LineContentBinary<FieldsListChamps2> line;
-		FileContentBinary<FieldsListChamps2> file;
-		line = new LineContentBinary<>(
-				FieldsListChamps2.class, tab);
+    @Test
+    public void testAdd() {
+        byte[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17};
+        LineContentBinary<FieldsListChamps2> line;
+        FileContentBinary<FieldsListChamps2> file;
+        line = new LineContentBinary<>(
+                FieldsListChamps2.class, tab);
 
-		file = new FileContentBinary<>();
+        file = new FileContentBinary<>();
 
-		assertNotNull(file.getListe());
-		assertTrue(file.getListe().isEmpty());
+        assertNotNull(file.getListe());
+        assertTrue(file.getListe().isEmpty());
 
-		file.add(line);
+        file.add(line);
 
-		assertNotNull(file.getListe());
-		assertFalse(file.getListe().isEmpty());
-		assertEquals(1, file.getListe().size());
-	}
+        assertNotNull(file.getListe());
+        assertFalse(file.getListe().isEmpty());
+        assertEquals(1, file.getListe().size());
+    }
 
-	@Test
-	public void testShow() {
-		byte[] tab = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-				17 };
-		LineContentBinary<FieldsListChamps2> line;
-		FileContentBinary<FieldsListChamps2> file;
-		line = new LineContentBinary<>(
-				FieldsListChamps2.class, tab);
+    @Test
+    public void testShow() {
+        byte[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17};
+        LineContentBinary<FieldsListChamps2> line;
+        FileContentBinary<FieldsListChamps2> file;
+        line = new LineContentBinary<>(
+                FieldsListChamps2.class, tab);
 
-		file = new FileContentBinary<>();
+        file = new FileContentBinary<>();
 
-		assertNotNull(file.getListe());
-		assertTrue(file.getListe().isEmpty());
+        assertNotNull(file.getListe());
+        assertTrue(file.getListe().isEmpty());
 
-		file.show();
+        file.show();
 
-		file.add(line);
+        file.add(line);
 
-		assertNotNull(file.getListe());
-		assertFalse(file.getListe().isEmpty());
-		assertEquals(1, file.getListe().size());
+        assertNotNull(file.getListe());
+        assertFalse(file.getListe().isEmpty());
+        assertEquals(1, file.getListe().size());
 
-		file.show();
-	}
+        file.show();
+    }
 
 }

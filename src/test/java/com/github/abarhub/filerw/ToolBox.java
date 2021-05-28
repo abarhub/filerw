@@ -26,40 +26,40 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ToolBox {
 
-	private ToolBox() {
+    private ToolBox() {
 
-	}
+    }
 
-	public static String lecture(File f) throws IOException {
-		BufferedInputStream in = null;
-		int len;
-		byte[] buf;
-		StringBuilder res = new StringBuilder();
-		try {
-			in = new BufferedInputStream(new FileInputStream(f));
-			buf = new byte[512];
-			while ((len = in.read(buf)) != -1) {
-				res.append(new String(buf, 0, len));
-			}
-		} finally {
-			if (in != null)
-				in.close();
-		}
-		return res.toString();
-	}
+    public static String lecture(File f) throws IOException {
+        BufferedInputStream in = null;
+        int len;
+        byte[] buf;
+        StringBuilder res = new StringBuilder();
+        try {
+            in = new BufferedInputStream(new FileInputStream(f));
+            buf = new byte[512];
+            while ((len = in.read(buf)) != -1) {
+                res.append(new String(buf, 0, len));
+            }
+        } finally {
+            if (in != null)
+                in.close();
+        }
+        return res.toString();
+    }
 
-	public static boolean compare(File f, File f2) throws IOException {
-		String s, s2;
-		s = lecture(f);
-		assertNotNull(s);
-		assertTrue(s.length() > 0);
-		s2 = lecture(f2);
-		assertNotNull(s2);
-		assertTrue(s2.length() > 0);
-		s = s.replaceAll("\\r\\n", "\n");
-		s2 = s2.replaceAll("\\r\\n", "\n");
-		assertEquals(s, s2);
-		return s.equals(s2);
-	}
+    public static boolean compare(File f, File f2) throws IOException {
+        String s, s2;
+        s = lecture(f);
+        assertNotNull(s);
+        assertTrue(s.length() > 0);
+        s2 = lecture(f2);
+        assertNotNull(s2);
+        assertTrue(s2.length() > 0);
+        s = s.replaceAll("\\r\\n", "\n");
+        s2 = s2.replaceAll("\\r\\n", "\n");
+        assertEquals(s, s2);
+        return s.equals(s2);
+    }
 
 }

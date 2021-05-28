@@ -22,33 +22,33 @@ import java.util.List;
 
 public final class Tools {
 
-	private Tools() {
-		// constructeur privé
-	}
+    private Tools() {
+        // constructeur privé
+    }
 
-	public static <T extends Field> int getSize(Class<T> clazz) {
-		int res = 0;
-		List<T> listFields;
-		listFields = convClassEnum(clazz);
-		for (T champs : listFields) {
-			res = Math.max(res, champs.getPosition() + champs.getLength());
-		}
-		return res;
-	}
+    public static <T extends Field> int getSize(Class<T> clazz) {
+        int res = 0;
+        List<T> listFields;
+        listFields = convClassEnum(clazz);
+        for (T champs : listFields) {
+            res = Math.max(res, champs.getPosition() + champs.getLength());
+        }
+        return res;
+    }
 
-	public static <T extends Field> int getSize(List<T> listFields) {
-		int res = 0;
-		for (T field : listFields) {
-			res = Math.max(res, field.getPosition() + field.getLength());
-		}
-		return res;
-	}
+    public static <T extends Field> int getSize(List<T> listFields) {
+        int res = 0;
+        for (T field : listFields) {
+            res = Math.max(res, field.getPosition() + field.getLength());
+        }
+        return res;
+    }
 
-	public static <T> List<T> convClassEnum(Class<T> clazz) {
-		List<T> fieldsList;
-		fieldsList = new ArrayList<T>();
+    public static <T> List<T> convClassEnum(Class<T> clazz) {
+        List<T> fieldsList;
+        fieldsList = new ArrayList<T>();
         Collections.addAll(fieldsList, clazz.getEnumConstants());
-		return fieldsList;
-	}
+        return fieldsList;
+    }
 
 }
