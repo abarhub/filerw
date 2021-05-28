@@ -14,34 +14,29 @@
  * limitations under the License.
  */
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.github.abarhub.filerw.test.text;
+package com.github.abarhub.filerw;
 
-import com.github.abarhub.filerw.Field;
+import com.github.abarhub.filerw.text.FieldsListChamps1;
+import org.junit.Test;
 
-/**
- *
- * @author abarhub
- */
-public enum FieldsListChamps1 implements Field {
-	Nom(0, 20), Prenom(20, 20), DateNaissance(40, 8);
+import com.github.abarhub.filerw.binary.FieldsListChamps2;
 
-	private FieldsListChamps1(int position, int length) {
-		this.position = position;
-		this.length = length;
+import static org.junit.Assert.assertTrue;
+
+public class TestFormatEnum {
+
+	@Test
+	public void test1() {
+		TestTools<FieldsListChamps1> test;
+		test = new TestTools<FieldsListChamps1>(FieldsListChamps1.class);
+		assertTrue(test.testAll());
 	}
 
-	public int getLength() {
-		return length;
+	@Test
+	public void test2() {
+		TestTools<FieldsListChamps2> test;
+		test = new TestTools<FieldsListChamps2>(FieldsListChamps2.class);
+		assertTrue(test.testAll());
 	}
 
-	public int getPosition() {
-		return position;
-	}
-
-	private int position;
-	private int length;
 }
