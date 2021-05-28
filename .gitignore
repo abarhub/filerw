@@ -2,3 +2,7 @@ target/
 /doc
 /.idea
 /classes/
+.classpath
+.project
+filerw.iml
+.settings/
