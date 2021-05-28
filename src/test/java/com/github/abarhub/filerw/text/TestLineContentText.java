@@ -17,11 +17,15 @@
 package com.github.abarhub.filerw.text;
 
 
+import com.github.abarhub.filerw.ToolBox;
 import com.github.abarhub.filerw.Tools;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestLineContentText {
@@ -111,6 +115,72 @@ public class TestLineContentText {
         assertNotEquals(line, "abc");
     }
 
+    @Nested
+    class TestConstructor {
+
+        @Test
+        public void testConstructor1() {
+
+            String s = getLine1() + "0";
+
+            assertThrows(IllegalArgumentException.class,
+                    () -> new LineContentText<>(FieldsListChamps1.class, s));
+        }
+
+        @Test
+        public void testConstructor2() {
+
+            String s = getLine1() + "0";
+
+            assertThrows(IllegalArgumentException.class,
+                    () -> new LineContentText<>(Tools.convClassEnum(FieldsListChamps1.class), s));
+        }
+
+        @Test
+        public void testConstructor3() {
+
+            String s = getLine1();
+
+            LineContentText<FieldsListChamps1> lineContentText = new LineContentText<>(FieldsListChamps1.class, s);
+
+            assertNotNull(lineContentText);
+            assertEquals(s, lineContentText.getLine());
+        }
+
+        @Test
+        public void testConstructor4() {
+
+            String s = getLine1();
+
+            LineContentText<FieldsListChamps1> lineContentText = new LineContentText<>(Tools.convClassEnum(FieldsListChamps1.class), s);
+
+            assertNotNull(lineContentText);
+            assertEquals(s, lineContentText.getLine());
+        }
+    }
+
+    @Test
+    public void testShow() {
+        // arrange
+        String s = getLine1();
+
+        LineContentText<FieldsListChamps1> lineContentText = new LineContentText<>(Tools.convClassEnum(FieldsListChamps1.class), s);
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(out);
+
+        // act
+        lineContentText.show(printStream);
+
+        // assert
+        String s2 = out.toString();
+        assertNotNull(s2);
+        assertEquals(ToolBox.convertNewLine("Nom=abc12345123123145412\n" +
+                        "Prenom=31212312300000000000\n" +
+                        "DateNaissance=00000000\n"),
+                ToolBox.convertNewLine(s2));
+    }
+
     private String padding(String nom, int len) {
         StringBuilder res;
         res = new StringBuilder(nom);
@@ -126,4 +196,10 @@ public class TestLineContentText {
             res.append(" ");
         return res.toString();
     }
+
+    private String getLine1() {
+        return "abc123451231231454123121231230000000000" +
+                "000000000";
+    }
+
 }

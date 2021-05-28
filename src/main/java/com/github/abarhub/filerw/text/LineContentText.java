@@ -147,9 +147,6 @@ public class LineContentText<T extends Field> extends LineContent<T> {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof LineContentText)) {
-            return false;
-        }
         @SuppressWarnings("unchecked")
         LineContentText<T> other = (LineContentText<T>) obj;
         return Objects.equals(getLine(),other.getLine());

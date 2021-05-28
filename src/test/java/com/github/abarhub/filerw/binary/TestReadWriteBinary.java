@@ -47,7 +47,7 @@ public class TestReadWriteBinary {
 
         assertNotNull(fichier.getListe());
         assertFalse(fichier.getListe().isEmpty());
-        assertEquals(1, fichier.getListe().size());
+        assertEquals(2, fichier.getListe().size());
         assertArrayEquals(fichier.getListe().get(0).getLine(),
                 new byte[]{49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
                         51, 52, 53, 54, 55});
@@ -69,7 +69,7 @@ public class TestReadWriteBinary {
 
         assertNotNull(fichier.getListe());
         assertFalse(fichier.getListe().isEmpty());
-        assertEquals(1, fichier.getListe().size());
+        assertEquals(2, fichier.getListe().size());
         assertArrayEquals(fichier.getListe().get(0).getLine(),
                 new byte[]{49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
                         51, 52, 53, 54, 55});

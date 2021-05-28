@@ -84,15 +84,15 @@ public class TestFileContentBinary {
         assertNotNull(file.getListe());
         assertTrue(file.getListe().isEmpty());
 
-        file2=new FileContentBinary<>();
-        assertEquals(file.hashCode(),file2.hashCode());
+        file2 = new FileContentBinary<>();
+        assertEquals(file.hashCode(), file2.hashCode());
 
         file.add(line);
 
         assertNotNull(file.getListe());
         assertFalse(file.getListe().isEmpty());
         assertEquals(1, file.getListe().size());
-        assertNotEquals(file.hashCode(),file2.hashCode());
+        assertNotEquals(file.hashCode(), file2.hashCode());
     }
 
     @Test
@@ -110,19 +110,21 @@ public class TestFileContentBinary {
 
         assertNotNull(file.getListe());
         assertTrue(file.getListe().isEmpty());
-        assertEquals(file,file2);
+        assertEquals(file, file2);
+        assertEquals(file, file);
+        assertNotEquals(file, "abc");
 
         file.add(line);
 
         assertNotNull(file.getListe());
         assertFalse(file.getListe().isEmpty());
         assertEquals(1, file.getListe().size());
-        assertNotEquals(file,file2);
+        assertNotEquals(file, file2);
 
         file2.add(new LineContentBinary<>(
                 FieldsListChamps2.class, tab));
 
-        assertEquals(file,file2);
+        assertEquals(file, file2);
     }
 
 }
