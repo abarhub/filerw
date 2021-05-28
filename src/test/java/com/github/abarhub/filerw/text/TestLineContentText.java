@@ -21,6 +21,7 @@ import com.github.abarhub.filerw.Tools;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 public class TestLineContentText {
@@ -67,6 +68,47 @@ public class TestLineContentText {
                         + padding("BBC", FieldsListChamps1.Prenom)
                         + padding("", FieldsListChamps1.DateNaissance),
                 line.getLine());
+    }
+
+    @Test
+    public void test5() {
+        LineContentText<FieldsListChamps1> line;
+        line = new LineContentText<>(Tools.convClassEnum(FieldsListChamps1.class));
+        line.setString(FieldsListChamps1.Prenom, "BBC");
+        assertEquals(
+                padding("", FieldsListChamps1.Nom)
+                        + padding("BBC", FieldsListChamps1.Prenom)
+                        + padding("", FieldsListChamps1.DateNaissance),
+                line.getLine());
+    }
+
+    @Test
+    public void testHash() {
+        LineContentText<FieldsListChamps1> line = new LineContentText<>(FieldsListChamps1.class, "abc");
+        LineContentText<FieldsListChamps1> line2 = new LineContentText<>(FieldsListChamps1.class, "abc");
+
+        assertEquals(line.hashCode(), line.hashCode());
+        assertEquals(line.hashCode(), line2.hashCode());
+
+        line.setString(FieldsListChamps1.Prenom, "BBC");
+
+        assertEquals(line.hashCode(), line.hashCode());
+        assertNotEquals(line.hashCode(), line2.hashCode());
+    }
+
+    @Test
+    public void testEquals() {
+        LineContentText<FieldsListChamps1> line = new LineContentText<>(FieldsListChamps1.class, "abc");
+        LineContentText<FieldsListChamps1> line2 = new LineContentText<>(FieldsListChamps1.class, "abc");
+
+        assertEquals(line, line);
+        assertEquals(line, line2);
+
+        line.setString(FieldsListChamps1.Prenom, "BBC");
+
+        assertEquals(line, line);
+        assertNotEquals(line, line2);
+        assertNotEquals(line, "abc");
     }
 
     private String padding(String nom, int len) {

@@ -18,6 +18,7 @@ package com.github.abarhub.filerw;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class LineContent<T extends Field> {
 
@@ -75,11 +76,7 @@ public abstract class LineContent<T extends Field> {
         }
         @SuppressWarnings("unchecked")
         LineContent<T> other = (LineContent<T>) obj;
-        if (fieldsList == null) {
-            return other.fieldsList == null;
-        } else {
-            return fieldsList.equals(other.fieldsList);
-        }
+        return Objects.equals(fieldsList, other.fieldsList);
     }
 
 }

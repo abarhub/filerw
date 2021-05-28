@@ -22,10 +22,11 @@ import com.github.abarhub.filerw.LineContent;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FileContentBinary<T extends Field> {
 
-    private List<LineContentBinary<T>> liste;
+    private final List<LineContentBinary<T>> liste;
 
     public FileContentBinary() {
         liste = new ArrayList<>();
@@ -44,7 +45,7 @@ public class FileContentBinary<T extends Field> {
     }
 
     public void show(PrintStream out) {
-        if (liste != null && !liste.isEmpty()) {
+        if (!liste.isEmpty()) {
             for (int i = 0; i < liste.size(); i++) {
                 LineContent<T> line = liste.get(i);
                 out.println("Line no " + i);
@@ -62,7 +63,7 @@ public class FileContentBinary<T extends Field> {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((liste == null) ? 0 : liste.hashCode());
+        result = prime * result + liste.hashCode();
         return result;
     }
 
@@ -84,13 +85,6 @@ public class FileContentBinary<T extends Field> {
         }
         @SuppressWarnings("unchecked")
         FileContentBinary<T> other = (FileContentBinary<T>) obj;
-        if (liste == null) {
-            if (other.liste != null) {
-                return false;
-            }
-        } else if (!liste.equals(other.liste)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(liste, other.liste);
     }
 }

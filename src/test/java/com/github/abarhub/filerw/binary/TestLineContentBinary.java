@@ -16,13 +16,13 @@
 
 package com.github.abarhub.filerw.binary;
 
+import com.github.abarhub.filerw.Tools;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestLineContentBinary {
@@ -183,4 +183,55 @@ public class TestLineContentBinary {
                 line.get(FieldsListChamps2.Code3));
 
     }
+
+    @Test
+    public void test7() {
+        byte[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17};
+        LineContentBinary<FieldsListChamps2> line;
+        line = new LineContentBinary<>(
+                Tools.convClassEnum(FieldsListChamps2.class), tab);
+        assertEquals(FieldsListChamps2.Code1.getLength(),
+                size(line.get(FieldsListChamps2.Code1)));
+        assertEquals(FieldsListChamps2.Code2.getLength(),
+                size(line.get(FieldsListChamps2.Code2)));
+        assertEquals(FieldsListChamps2.Code3.getLength(),
+                size(line.get(FieldsListChamps2.Code3)));
+
+        assertArrayEquals(new byte[]{1, 2, 3, 4},
+                line.get(FieldsListChamps2.Code1));
+        assertArrayEquals(new byte[]{5, 6, 7, 8, 9, 10},
+                line.get(FieldsListChamps2.Code2));
+        assertArrayEquals(new byte[]{11, 12, 13, 14, 15, 16, 17},
+                line.get(FieldsListChamps2.Code3));
+    }
+
+    @Test
+    public void test8() {
+        LineContentBinary<FieldsListChamps2> line;
+        line = new LineContentBinary<>(Tools.convClassEnum(FieldsListChamps2.class));
+
+        assertArrayEquals(new byte[]{0, 0, 0, 0},
+                line.get(FieldsListChamps2.Code1));
+        assertArrayEquals(new byte[]{0, 0, 0, 0, 0, 0},
+                line.get(FieldsListChamps2.Code2));
+        assertArrayEquals(new byte[]{0, 0, 0, 0, 0, 0, 0},
+                line.get(FieldsListChamps2.Code3));
+
+        line.show(System.out);
+    }
+
+    @Test
+    public void test9() {
+        LineContentBinary<FieldsListChamps2> line = new LineContentBinary<>(FieldsListChamps2.class);
+        LineContentBinary<FieldsListChamps2> line2 = new LineContentBinary<>(FieldsListChamps2.class);
+
+        assertEquals(line, line);
+        assertEquals(line, line2);
+        assertEquals(line2, line);
+        assertNotEquals(line, null);
+        assertNotEquals(line, "abc");
+        assertEquals(line.hashCode(), line2.hashCode());
+    }
+
 }

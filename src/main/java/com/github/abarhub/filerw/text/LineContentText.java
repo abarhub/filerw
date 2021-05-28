@@ -22,6 +22,7 @@ import com.github.abarhub.filerw.Tools;
 
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Objects;
 
 public class LineContentText<T extends Field> extends LineContent<T> {
 
@@ -129,7 +130,7 @@ public class LineContentText<T extends Field> extends LineContent<T> {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((line == null) ? 0 : line.hashCode());
+        result = prime * result + getLine().hashCode();
         return result;
     }
 
@@ -151,11 +152,7 @@ public class LineContentText<T extends Field> extends LineContent<T> {
         }
         @SuppressWarnings("unchecked")
         LineContentText<T> other = (LineContentText<T>) obj;
-        if (line == null) {
-            return other.line == null;
-        } else {
-            return line.equals(other.line);
-        }
+        return Objects.equals(getLine(),other.getLine());
     }
 
 }

@@ -69,4 +69,60 @@ public class TestFileContentBinary {
         file.show();
     }
 
+    @Test
+    public void testHash() {
+        byte[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17};
+        LineContentBinary<FieldsListChamps2> line;
+        FileContentBinary<FieldsListChamps2> file;
+        FileContentBinary<FieldsListChamps2> file2;
+        line = new LineContentBinary<>(
+                FieldsListChamps2.class, tab);
+
+        file = new FileContentBinary<>();
+
+        assertNotNull(file.getListe());
+        assertTrue(file.getListe().isEmpty());
+
+        file2=new FileContentBinary<>();
+        assertEquals(file.hashCode(),file2.hashCode());
+
+        file.add(line);
+
+        assertNotNull(file.getListe());
+        assertFalse(file.getListe().isEmpty());
+        assertEquals(1, file.getListe().size());
+        assertNotEquals(file.hashCode(),file2.hashCode());
+    }
+
+    @Test
+    public void testEquals() {
+        byte[] tab = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                17};
+        LineContentBinary<FieldsListChamps2> line;
+        FileContentBinary<FieldsListChamps2> file;
+        FileContentBinary<FieldsListChamps2> file2;
+        line = new LineContentBinary<>(
+                FieldsListChamps2.class, tab);
+
+        file = new FileContentBinary<>();
+        file2 = new FileContentBinary<>();
+
+        assertNotNull(file.getListe());
+        assertTrue(file.getListe().isEmpty());
+        assertEquals(file,file2);
+
+        file.add(line);
+
+        assertNotNull(file.getListe());
+        assertFalse(file.getListe().isEmpty());
+        assertEquals(1, file.getListe().size());
+        assertNotEquals(file,file2);
+
+        file2.add(new LineContentBinary<>(
+                FieldsListChamps2.class, tab));
+
+        assertEquals(file,file2);
+    }
+
 }

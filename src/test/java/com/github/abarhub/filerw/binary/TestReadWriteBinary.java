@@ -17,6 +17,7 @@
 package com.github.abarhub.filerw.binary;
 
 import com.github.abarhub.filerw.ToolBox;
+import com.github.abarhub.filerw.Tools;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -40,6 +41,28 @@ public class TestReadWriteBinary {
         System.out.println("Lecture du fichier " + f.getPath() + " :");
         lecture = new ReadWriteBinary<>(f,
                 FieldsListChamps2.class);
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
+
+        assertNotNull(fichier.getListe());
+        assertFalse(fichier.getListe().isEmpty());
+        assertEquals(1, fichier.getListe().size());
+        assertArrayEquals(fichier.getListe().get(0).getLine(),
+                new byte[]{49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
+                        51, 52, 53, 54, 55});
+    }
+
+    @Test
+    public void testReadFile2() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteBinary<FieldsListChamps2> lecture;
+        FileContentBinary<FieldsListChamps2> fichier;
+        File f;
+        f = getFile1();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteBinary<>(f,
+                Tools.convClassEnum(FieldsListChamps2.class));
         fichier = lecture.readFile();
         assertNotNull(fichier);
         fichier.show();
