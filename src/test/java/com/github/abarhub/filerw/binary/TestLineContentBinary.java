@@ -16,24 +16,24 @@
 
 package com.github.abarhub.filerw.binary;
 
-import org.junit.Test;
-
 import com.github.abarhub.filerw.Tools;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 public class TestLineContentBinary {
 
 	@Test
-	public void test() {
+	public void test1() {
 		byte[] tab = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
 				17 };
 		LineContentBinary<FieldsListChamps2> line;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 		assertEquals(FieldsListChamps2.Code1.getLength(),
 				size(line.get(FieldsListChamps2.Code1)));
@@ -55,7 +55,7 @@ public class TestLineContentBinary {
 		byte[] tab = { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41, 42, 43, 44,
 				45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 		assertEquals(FieldsListChamps2.Code1.getLength(),
 				size(line.get(FieldsListChamps2.Code1)));
@@ -94,7 +94,7 @@ public class TestLineContentBinary {
 	public void test3() {
 		// byte[] tab={31,32,33,34,35,36,92,38,39,40,41,42,43,44,45,46,47};
 		LineContentBinary<FieldsListChamps2> line;
-		line = new LineContentBinary<FieldsListChamps2>(FieldsListChamps2.class);
+		line = new LineContentBinary<>(FieldsListChamps2.class);
 
 		assertTrue(Tools.equals(new byte[] { 0, 0, 0, 0 },
 				line.get(FieldsListChamps2.Code1)));
@@ -113,7 +113,7 @@ public class TestLineContentBinary {
 				45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
 		String ref, val;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 		assertEquals(FieldsListChamps2.Code1.getLength(),
 				size(line.get(FieldsListChamps2.Code1)));
@@ -137,7 +137,7 @@ public class TestLineContentBinary {
 		byte[] tab = { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41, 42, 43, 44,
 				45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 		assertEquals(FieldsListChamps2.Code1.getLength(),
 				size(line.get(FieldsListChamps2.Code1)));
@@ -154,7 +154,7 @@ public class TestLineContentBinary {
 		byte[] tab = { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41, 42, 43, 44,
 				45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 
 		assertTrue(Tools.equals(new byte[] { 31, 32, 33, 34 },

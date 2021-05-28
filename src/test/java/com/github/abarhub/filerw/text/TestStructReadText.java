@@ -16,11 +16,10 @@
 
 package com.github.abarhub.filerw.text;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
@@ -30,7 +29,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TestStructReadText {
 
@@ -44,12 +44,13 @@ public class TestStructReadText {
 		LineContentText<FieldsListChamps1> line;
 		char c;
 		int i, no;
+		assertNotNull(url);
 		f = new File(url.toURI());
 		System.out.println("Lecture du fichier " + f.getPath() + " :");
 		try {
-			in = new StructTextReader<FieldsListChamps1>(new FileReader(f),
+			in = new StructTextReader<>(new FileReader(f),
 					FieldsListChamps1.class);
-			list = new ArrayList<LineContentText<FieldsListChamps1>>();
+			list = new ArrayList<>();
 			no = 1;
 			while ((line = in.readLn()) != null) {
 				list.add(line);
@@ -63,7 +64,7 @@ public class TestStructReadText {
 				assertEquals('\n', c);
 				no++;
 			}
-			assertEquals("Error in line " + no, 3, list.size());
+			assertEquals( 3, list.size(), "Error in line " + no);
 		} finally {
 			if (in != null)
 				in.close();
@@ -72,7 +73,7 @@ public class TestStructReadText {
 
 	@Test
 	public void testReadLine2() throws URISyntaxException,
-			FileNotFoundException, IOException, ParseException {
+			IOException, ParseException {
 		File f;
 		StructTextReader<FieldsListChamps1> in = null;
 		URL url = getClass().getResource("/data/exemple1.txt");
@@ -80,16 +81,17 @@ public class TestStructReadText {
 		LineContentText<FieldsListChamps1> line;
 		int no;
 		StringReader in_str;
-		String tab[] = { "Newton2             Isaac               04011643",
+		String[] tab = { "Newton2             Isaac               04011643",
 				"Einstein            Albert              14103879",
 				"Copernic            Nicolas             19021473" };
+		assertNotNull(url);
 		f = new File(url.toURI());
 		System.out.println("Lecture du fichier " + f.getPath() + " :");
 		in_str = new StringReader(tab[0] + tab[1] + tab[2]);
 		try {
-			in = new StructTextReader<FieldsListChamps1>(in_str,
+			in = new StructTextReader<>(in_str,
 					FieldsListChamps1.class);
-			list = new ArrayList<LineContentText<FieldsListChamps1>>();
+			list = new ArrayList<>();
 			no = 1;
 			while ((line = in.readLn()) != null) {
 				assertTrue(no <= tab.length);
@@ -97,7 +99,7 @@ public class TestStructReadText {
 				list.add(line);
 				no++;
 			}
-			assertEquals("Error in line " + no, 3, list.size());
+			assertEquals(3, list.size(), "Error in line " + no);
 		} finally {
 			if (in != null)
 				in.close();

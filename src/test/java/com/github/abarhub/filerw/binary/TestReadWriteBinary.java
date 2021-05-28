@@ -17,38 +17,38 @@
 package com.github.abarhub.filerw.binary;
 
 import com.github.abarhub.filerw.ToolBox;
-import org.junit.Test;
 
 import com.github.abarhub.filerw.Tools;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TestReadWriteBinary {
 
 	@Test
 	public void testReadFile() throws URISyntaxException,
-			FileNotFoundException, IOException, ParseException {
+			IOException, ParseException {
 		ReadWriteBinary<FieldsListChamps2> lecture;
 		FileContentBinary<FieldsListChamps2> fichier;
 		File f;
 		f = getFile1();
 		System.out.println("Lecture du fichier " + f.getPath() + " :");
-		lecture = new ReadWriteBinary<FieldsListChamps2>(f,
+		lecture = new ReadWriteBinary<>(f,
 				FieldsListChamps2.class);
 		fichier = lecture.readFile();
-		assertTrue(fichier != null);
+		assertNotNull(fichier);
 		fichier.show();
 
-		assertTrue(fichier.getListe() != null);
+		assertNotNull(fichier.getListe());
 		assertFalse(fichier.getListe().isEmpty());
-		assertTrue(fichier.getListe().size() == 1);
+		assertEquals(1, fichier.getListe().size());
 		assertTrue(Tools.equals(fichier.getListe().get(0).getLine(),
 				new byte[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 49, 50,
 						51, 52, 53, 54, 55 }));
@@ -56,20 +56,20 @@ public class TestReadWriteBinary {
 
 	@Test
 	public void testWriteFile() throws URISyntaxException,
-			FileNotFoundException, IOException, ParseException {
+			IOException, ParseException {
 		ReadWriteBinary<FieldsListChamps2> lecture;
 		FileContentBinary<FieldsListChamps2> fichier;
 		File f, f2;
 		f = getFile2();
 		System.out.println("Lecture du fichier " + f.getPath() + " :");
-		lecture = new ReadWriteBinary<FieldsListChamps2>(f,
+		lecture = new ReadWriteBinary<>(f,
 				FieldsListChamps2.class);
 
 		fichier = lecture.readFile();
-		assertTrue(fichier != null);
+		assertNotNull(fichier);
 		fichier.show();
 
-		assertTrue(fichier.getListe() != null);
+		assertNotNull(fichier.getListe());
 		assertFalse(fichier.getListe().isEmpty());
 		assertEquals(2, fichier.getListe().size());
 		assertTrue(Tools.equals(fichier.getListe().get(0).getLine(),
@@ -88,6 +88,7 @@ public class TestReadWriteBinary {
 	public File getFile1() throws URISyntaxException {
 		File f;
 		URL url = getClass().getResource("/data/exemplebin1.txt");
+		assertNotNull(url);
 		f = new File(url.toURI());
 		return f;
 	}
@@ -95,6 +96,7 @@ public class TestReadWriteBinary {
 	public File getFile2() throws URISyntaxException {
 		File f;
 		URL url = getClass().getResource("/data/exemplebin2.txt");
+		assertNotNull(url);
 		f = new File(url.toURI());
 		return f;
 	}

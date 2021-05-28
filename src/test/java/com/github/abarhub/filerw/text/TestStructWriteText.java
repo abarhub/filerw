@@ -16,11 +16,13 @@
 
 package com.github.abarhub.filerw.text;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 
 import java.io.StringWriter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class TestStructWriteText {
 
@@ -32,9 +34,9 @@ public class TestStructWriteText {
 		String nom = "Martin", prenom = "Pierre", date = "01011960";
 		out2 = new StringWriter();
 		try {
-			out = new StructTextWriter<FieldsListChamps1>(out2,
+			out = new StructTextWriter<>(out2,
 					FieldsListChamps1.class);
-			line = new LineContentText<FieldsListChamps1>(
+			line = new LineContentText<>(
 					FieldsListChamps1.class);
 			line.setString(FieldsListChamps1.Nom, nom);
 			line.setString(FieldsListChamps1.Prenom, prenom);
@@ -48,16 +50,15 @@ public class TestStructWriteText {
 		} finally {
 			if (out != null)
 				out.close();
-			out = null;
 		}
 	}
 
 	private String padding(String nom, FieldsListChamps1 nom2) {
-		String res;
-		res = nom;
+		StringBuilder res;
+		res = new StringBuilder(nom);
 		while (res.length() < nom2.getLength())
-			res += " ";
-		return res;
+			res.append(" ");
+		return res.toString();
 	}
 
 }

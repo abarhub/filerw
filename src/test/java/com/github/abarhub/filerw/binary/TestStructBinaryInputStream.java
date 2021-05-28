@@ -16,15 +16,16 @@
 
 package com.github.abarhub.filerw.binary;
 
-import org.junit.Test;
 
 import com.github.abarhub.filerw.Tools;
+import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class TestStructBinaryInputStream {
 
@@ -35,21 +36,18 @@ public class TestStructBinaryInputStream {
 		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
 				42, 43, 44, 45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		StructBinaryInputStream<FieldsListChamps2> in = null;
 
 		buf = new ByteArrayInputStream(buf0);
-
-		try {
-			in = new StructBinaryInputStream<FieldsListChamps2>(buf,
-					FieldsListChamps2.class);
+		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+				FieldsListChamps2.class)) {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[] { 31, 32, 33, 34 },
+			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
 					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[] { 35, 36, 92, 38, 39, 40 },
+			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
 					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[] { 41, 42, 43, 44, 45, 46, 47 },
+			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
 					line.get(FieldsListChamps2.Code3)));
 
 			assertTrue(Tools.equals(buf0, line.getLine()));
@@ -57,9 +55,6 @@ public class TestStructBinaryInputStream {
 			line = in.readLn();
 			assertNull(line);
 
-		} finally {
-			if (in != null)
-				in.close();
 		}
 	}
 
@@ -70,21 +65,18 @@ public class TestStructBinaryInputStream {
 		byte[] buf0 = new byte[] { 31, 32, 33, 34, 35, 36, 92, 38, 39, 40, 41,
 				42, 43, 44, 45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		StructBinaryInputStream<FieldsListChamps2> in = null;
 
 		buf = new ByteArrayInputStream(buf0);
-
-		try {
-			in = new StructBinaryInputStream<FieldsListChamps2>(buf,
-					Tools.convClassEnum(FieldsListChamps2.class));
+		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+				Tools.convClassEnum(FieldsListChamps2.class))) {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[] { 31, 32, 33, 34 },
+			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
 					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[] { 35, 36, 92, 38, 39, 40 },
+			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
 					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[] { 41, 42, 43, 44, 45, 46, 47 },
+			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
 					line.get(FieldsListChamps2.Code3)));
 
 			assertTrue(Tools.equals(buf0, line.getLine()));
@@ -92,9 +84,6 @@ public class TestStructBinaryInputStream {
 			line = in.readLn();
 			assertNull(line);
 
-		} finally {
-			if (in != null)
-				in.close();
 		}
 	}
 
@@ -107,49 +96,43 @@ public class TestStructBinaryInputStream {
 				40, 41, 42, 43, 44, 45, 46, 47, -124, 32, 33, 34, 35, 36, 92,
 				38, 39, 40, 41, 42, 43, 44, 45, 46, 47 };
 		LineContentBinary<FieldsListChamps2> line;
-		StructBinaryInputStream<FieldsListChamps2> in = null;
 
 		buf = new ByteArrayInputStream(buf0);
-
-		try {
-			in = new StructBinaryInputStream<FieldsListChamps2>(buf,
-					FieldsListChamps2.class);
+		try (StructBinaryInputStream<FieldsListChamps2> in = new StructBinaryInputStream<>(buf,
+				FieldsListChamps2.class)) {
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[] { 31, 32, 33, 34 },
+			assertTrue(Tools.equals(new byte[]{31, 32, 33, 34},
 					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[] { 35, 36, 92, 38, 39, 40 },
+			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
 					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[] { 41, 42, 43, 44, 45, 46, 47 },
+			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
 					line.get(FieldsListChamps2.Code3)));
 
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[] { 121, 32, 33, 34 },
+			assertTrue(Tools.equals(new byte[]{121, 32, 33, 34},
 					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[] { 35, 36, 92, 38, 39, 40 },
+			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
 					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[] { 41, 42, 43, 44, 45, 46, 47 },
+			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
 					line.get(FieldsListChamps2.Code3)));
 
 			line = in.readLn();
 			assertNotNull(line);
 
-			assertTrue(Tools.equals(new byte[] { -124, 32, 33, 34 },
+			assertTrue(Tools.equals(new byte[]{-124, 32, 33, 34},
 					line.get(FieldsListChamps2.Code1)));
-			assertTrue(Tools.equals(new byte[] { 35, 36, 92, 38, 39, 40 },
+			assertTrue(Tools.equals(new byte[]{35, 36, 92, 38, 39, 40},
 					line.get(FieldsListChamps2.Code2)));
-			assertTrue(Tools.equals(new byte[] { 41, 42, 43, 44, 45, 46, 47 },
+			assertTrue(Tools.equals(new byte[]{41, 42, 43, 44, 45, 46, 47},
 					line.get(FieldsListChamps2.Code3)));
 
 			line = in.readLn();
 			assertNull(line);
 
-		} finally {
-			if (in != null)
-				in.close();
 		}
 	}
 

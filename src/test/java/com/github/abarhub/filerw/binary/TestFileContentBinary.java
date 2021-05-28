@@ -16,9 +16,10 @@
 
 package com.github.abarhub.filerw.binary;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFileContentBinary {
 
@@ -28,17 +29,17 @@ public class TestFileContentBinary {
 				17 };
 		LineContentBinary<FieldsListChamps2> line;
 		FileContentBinary<FieldsListChamps2> file;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 
-		file = new FileContentBinary<FieldsListChamps2>();
+		file = new FileContentBinary<>();
 
-		assertTrue(file.getListe() != null);
+		assertNotNull(file.getListe());
 		assertTrue(file.getListe().isEmpty());
 
 		file.add(line);
 
-		assertTrue(file.getListe() != null);
+		assertNotNull(file.getListe());
 		assertFalse(file.getListe().isEmpty());
 		assertEquals(1, file.getListe().size());
 	}
@@ -49,19 +50,19 @@ public class TestFileContentBinary {
 				17 };
 		LineContentBinary<FieldsListChamps2> line;
 		FileContentBinary<FieldsListChamps2> file;
-		line = new LineContentBinary<FieldsListChamps2>(
+		line = new LineContentBinary<>(
 				FieldsListChamps2.class, tab);
 
-		file = new FileContentBinary<FieldsListChamps2>();
+		file = new FileContentBinary<>();
 
-		assertTrue(file.getListe() != null);
+		assertNotNull(file.getListe());
 		assertTrue(file.getListe().isEmpty());
 
 		file.show();
 
 		file.add(line);
 
-		assertTrue(file.getListe() != null);
+		assertNotNull(file.getListe());
 		assertFalse(file.getListe().isEmpty());
 		assertEquals(1, file.getListe().size());
 

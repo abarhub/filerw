@@ -29,13 +29,15 @@
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-release-plugin.version>3.0.0-M4</maven-release-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <junit-platform-launcher.version>1.7.2</junit-platform-launcher.version>
+        <junit-jupiter.version>5.7.2</junit-jupiter.version>
     </properties>
 
     <scm>
         <connection>scm:git:https://github.com/abarhub/filerw.git</connection>
         <developerConnection>scm:git:https://github.com/abarhub/filerw.git</developerConnection>
         <url>git:https://github.com/abarhub/filerw.git</url>
-        <tag>filerw-0.0.28</tag>
+        <tag>filerw-0.2.0</tag>
     </scm>
 
     <developers>
@@ -48,9 +50,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform-launcher.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -92,7 +100,6 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
-
 
             <build>
                 <plugins>
