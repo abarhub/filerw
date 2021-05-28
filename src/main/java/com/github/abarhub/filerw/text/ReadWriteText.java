@@ -31,16 +31,13 @@ import java.util.List;
  * @author abarhub
  */
 public class ReadWriteText<T extends Field> {
-    // <T extends Enum<T>&Field>
     // le enum n'est pas necessaire, et peut être enlevé
-    private File file;
+    private final File file;
     private final List<T> fieldsList;
 
     private enum Separator {
         NewLine, NoSeparator, String
     }
-
-    ;
 
     private Separator separator = Separator.NewLine;
     private String stringSeparator;
@@ -57,12 +54,10 @@ public class ReadWriteText<T extends Field> {
     public FileContentText<T> readFile() throws IOException, ParseException {
         FileContentText<T> res;
         LineContentText<T> line;
-        StructTextReader<T> buf = null;
         int i;
-        res = new FileContentText<T>();
-        try {
-            buf = new StructTextReader<T>(new BufferedReader(new FileReader(
-                    file)), fieldsList);
+        res = new FileContentText<>();
+        try (StructTextReader<T> buf = new StructTextReader<>(new BufferedReader(new FileReader(
+                file)), fieldsList)) {
             loop:
             {
                 while ((line = buf.readLn()) != null) {
@@ -96,11 +91,6 @@ public class ReadWriteText<T extends Field> {
                     }
                 }
             }
-        } finally {
-            if (buf != null) {
-                buf.close();
-                buf = null;
-            }
         }
         return res;
     }
@@ -109,7 +99,7 @@ public class ReadWriteText<T extends Field> {
             throws IOException {
         StructTextWriter<T> out = null;
         try {
-            out = new StructTextWriter<T>(new BufferedWriter(new FileWriter(
+            out = new StructTextWriter<>(new BufferedWriter(new FileWriter(
                     fileName)), fieldsList);
             if (fileContent != null && fileContent.getListe() != null) {
                 for (LineContentText<T> ligne : fileContent.getListe()) {

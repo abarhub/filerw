@@ -57,7 +57,7 @@ public class StructBinaryInputStream<T extends Field> extends FilterInputStream 
 
     public LineContentBinary<T> readLn() throws IOException, ParseException {
         final int len0 = Tools.getSize(fieldsList);
-        byte buf[] = new byte[len0];
+        byte[] buf = new byte[len0];
         int len;
         LineContentBinary<T> res = null;
 
@@ -66,13 +66,12 @@ public class StructBinaryInputStream<T extends Field> extends FilterInputStream 
             if (len > 0) {
                 if (len < len0) {
                     int nb;
-                    nb = len0 - len;
-                    byte buf2[] = new byte[len0];
+                    byte[] buf2 = new byte[len0];
                     nb = read(buf2);
                     if (nb == -1) {
-                        return res;
+                        return null;
                     } else if (nb > 0) {
-                        System.arraycopy(buf2, len - len, buf, len, len + nb - len);
+                        System.arraycopy(buf2, 0, buf, len, len + nb - len);
                         len += nb;
                     }
                 }
@@ -80,7 +79,7 @@ public class StructBinaryInputStream<T extends Field> extends FilterInputStream 
                     throw new ParseException("Invalid Size (" + len + "!="
                             + len0 + ")", len);
                 }
-                res = new LineContentBinary<T>(fieldsList, buf);
+                res = new LineContentBinary<>(fieldsList, buf);
             }
         }
 

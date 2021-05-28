@@ -152,13 +152,10 @@ public class LineContentText<T extends Field> extends LineContent<T> {
         @SuppressWarnings("unchecked")
         LineContentText<T> other = (LineContentText<T>) obj;
         if (line == null) {
-            if (other.line != null) {
-                return false;
-            }
-        } else if (!line.equals(other.line)) {
-            return false;
+            return other.line == null;
+        } else {
+            return line.equals(other.line);
         }
-        return true;
     }
 
 }

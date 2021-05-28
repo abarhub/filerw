@@ -46,7 +46,7 @@ public final class Tools {
 
     public static <T> List<T> convClassEnum(Class<T> clazz) {
         List<T> fieldsList;
-        fieldsList = new ArrayList<T>();
+        fieldsList = new ArrayList<>();
         Collections.addAll(fieldsList, clazz.getEnumConstants());
         return fieldsList;
     }

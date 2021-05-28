@@ -28,7 +28,7 @@ public class FileContentBinary<T extends Field> {
     private List<LineContentBinary<T>> liste;
 
     public FileContentBinary() {
-        liste = new ArrayList<LineContentBinary<T>>();
+        liste = new ArrayList<>();
     }
 
     public void add(LineContentBinary<T> line) {

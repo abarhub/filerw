@@ -76,19 +76,19 @@ public class StructTextReader<T extends Field> extends BufferedReader {
     }
 
     public LineContentText<T> readLn() throws IOException, ParseException {
-        char buf[] = new char[Tools.getSize(fieldsList)];
+        char[] buf = new char[Tools.getSize(fieldsList)];
         int len;
         LineContentText<T> res = null;
         String ligne;
 
         len = read(buf);
-        if (len != -1 && len > 0) {
+        if (len > 0) {
             if (len != Tools.getSize(fieldsList)) {
                 throw new ParseException("Invalid Size (" + len + "!="
                         + Tools.getSize(fieldsList) + ")", len);
             }
             ligne = new String(buf);
-            res = new LineContentText<T>(fieldsList, ligne);
+            res = new LineContentText<>(fieldsList, ligne);
         }
 
         return res;

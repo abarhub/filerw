@@ -22,7 +22,7 @@ import java.util.List;
 
 public class TestTools<T extends Enum<T> & Field> {
 
-    private List<T> listFields;
+    private final List<T> listFields;
 
     private String messageError;
 
@@ -62,7 +62,7 @@ public class TestTools<T extends Enum<T> & Field> {
     public boolean testDuplicate() {
         List<T> tab;
         int len;
-        tab = new ArrayList<T>();// [ChampsFixes.taille_ligne()];
+        tab = new ArrayList<>();
         len = getSize();
         if (len <= 0) {
             messageError = "La taille n'est pas correcte";

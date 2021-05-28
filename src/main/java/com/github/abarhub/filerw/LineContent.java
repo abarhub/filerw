@@ -76,13 +76,10 @@ public abstract class LineContent<T extends Field> {
         @SuppressWarnings("unchecked")
         LineContent<T> other = (LineContent<T>) obj;
         if (fieldsList == null) {
-            if (other.fieldsList != null) {
-                return false;
-            }
-        } else if (!fieldsList.equals(other.fieldsList)) {
-            return false;
+            return other.fieldsList == null;
+        } else {
+            return fieldsList.equals(other.fieldsList);
         }
-        return true;
     }
 
 }

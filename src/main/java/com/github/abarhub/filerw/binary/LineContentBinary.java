@@ -50,10 +50,8 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
         this.line = new byte[len];
         if (line == null) {
             len2 = 0;
-        } else if (line.length < len) {
-            len2 = line.length;
         } else {
-            len2 = len;
+            len2 = Math.min(line.length, len);
         }
         if (line != null) {
             System.arraycopy(line, 0, this.line, 0, len2);
@@ -72,7 +70,7 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
 
     @Override
     public void show(PrintStream out) {
-        byte tab[];
+        byte[] tab;
         for (T champs : fieldsList) {
             tab = get(champs);
             out.print(champs.name() + "=");
@@ -149,9 +147,6 @@ public class LineContentBinary<T extends Field> extends LineContent<T> {
         }
         @SuppressWarnings("unchecked")
         LineContentBinary<T> other = (LineContentBinary<T>) obj;
-        if (!Arrays.equals(line, other.line)) {
-            return false;
-        }
-        return true;
+        return Arrays.equals(line, other.line);
     }
 }
