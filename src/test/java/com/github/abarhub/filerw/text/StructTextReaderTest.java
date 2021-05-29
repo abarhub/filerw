@@ -20,6 +20,9 @@ package com.github.abarhub.filerw.text;
 import com.github.abarhub.filerw.Tools;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledOnOs;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -99,8 +102,22 @@ public class StructTextReaderTest {
     }
 
     @Test
-    public void testReadLine3() throws URISyntaxException,
+    @EnabledOnOs({OS.WINDOWS})
+    @DisabledOnOs(OS.LINUX)
+    public void testReadLine3Windows() throws URISyntaxException,
             IOException, ParseException {
+        testReadLinue3("Invalid Size (12!=48)");
+    }
+
+    @Test
+    @EnabledOnOs({OS.LINUX})
+    @DisabledOnOs(OS.WINDOWS)
+    public void testReadLine3Linux() throws URISyntaxException,
+            IOException, ParseException {
+        testReadLinue3("Invalid Size (10!=48)");
+    }
+
+    private void testReadLinue3(String message) throws URISyntaxException, IOException, ParseException {
         File f;
         URL url = getClass().getResource("/data/exemple3.txt");
         LineContentText<FieldsListChamps1> line;
@@ -115,23 +132,24 @@ public class StructTextReaderTest {
 
             ParseException exception = assertThrows(ParseException.class, in::readLn);
 
-            assertEquals("Invalid Size (12!=48)", exception.getMessage());
+            // Pour gérer le code sous linux et windows
+            assertEquals(message, exception.getMessage());
         }
     }
 
     private void avanceNewLine(Reader reader) throws IOException {
-        int c=reader.read();
-        if(c=='\r'){
-            c=reader.read();
-            if(c=='\n'){
+        int c = reader.read();
+        if (c == '\r') {
+            c = reader.read();
+            if (c == '\n') {
                 // cas normal
             } else {
-                fail("Caractere invalide : '"+c+"'");
+                fail("Caractere invalide : '" + c + "'");
             }
-        } else if(c=='\n'){
+        } else if (c == '\n') {
             // cas normal
         } else {
-            fail("Caractere invalide : '"+c+"'");
+            fail("Caractere invalide : '" + c + "'");
         }
     }
 
@@ -377,20 +395,20 @@ public class StructTextReaderTest {
                 // assert
                 assertNotNull(line);
                 assertEquals(s1, line.getLine());
-                assertEquals('\r',in.read());
-                assertEquals('\n',in.read());
+                assertEquals('\r', in.read());
+                assertEquals('\n', in.read());
 
                 LineContentText<FieldsListChamps1> line2 = in.readLn();
                 assertNotNull(line2);
                 assertEquals(s2, line2.getLine());
-                assertEquals('\r',in.read());
-                assertEquals('\n',in.read());
+                assertEquals('\r', in.read());
+                assertEquals('\n', in.read());
 
                 LineContentText<FieldsListChamps1> line3 = in.readLn();
                 assertNotNull(line3);
                 assertEquals(s3, line3.getLine());
-                assertEquals('\r',in.read());
-                assertEquals('\n',in.read());
+                assertEquals('\r', in.read());
+                assertEquals('\n', in.read());
 
                 assertEquals(-1, str.read());
             }
@@ -412,17 +430,17 @@ public class StructTextReaderTest {
                 // assert
                 assertNotNull(line);
                 assertEquals(s1, line.getLine());
-                assertEquals('\r',in.read());
+                assertEquals('\r', in.read());
 
                 LineContentText<FieldsListChamps1> line2 = in.readLn();
                 assertNotNull(line2);
                 assertEquals(s2, line2.getLine());
-                assertEquals('\r',in.read());
+                assertEquals('\r', in.read());
 
                 LineContentText<FieldsListChamps1> line3 = in.readLn();
                 assertNotNull(line3);
                 assertEquals(s3, line3.getLine());
-                assertEquals('\r',in.read());
+                assertEquals('\r', in.read());
 
                 assertEquals(-1, str.read());
             }
