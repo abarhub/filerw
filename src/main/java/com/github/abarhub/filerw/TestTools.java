@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TestTools<T extends Enum<T> & Field> {
+public class TestTools<T extends Field> {
 
     private final List<T> listFields;
 
@@ -31,8 +31,7 @@ public class TestTools<T extends Enum<T> & Field> {
     }
 
     public TestTools(Class<T> clazz) {
-        this.listFields = new ArrayList<T>();
-        Collections.addAll(listFields, clazz.getEnumConstants());
+        this.listFields = new ArrayList<>(Tools.convClassEnum(clazz));
     }
 
     public boolean testBasic() {
@@ -44,7 +43,7 @@ public class TestTools<T extends Enum<T> & Field> {
                 return false;
             }
             if (tmp.getLength() <= 0) {
-                messageError = "la longueur du champs " + tmp
+                messageError = "La longueur du champs " + tmp
                         + " est trop petite";
                 return false;
             }
@@ -53,7 +52,7 @@ public class TestTools<T extends Enum<T> & Field> {
             }
         }
         if (first == null) {
-            messageError = "il n'y a aucun champs pour la colonne no 0";
+            messageError = "Il n'y a aucun champs pour la colonne no 0";
             return false;
         }
         return true;
@@ -87,7 +86,7 @@ public class TestTools<T extends Enum<T> & Field> {
         for (int i = 0; i < tab.size(); i++) {
             if (tab.get(i) == null) {
                 messageError = "La case n°" + i
-                        + " n'est associée a aucun champs ";
+                        + " n'est associée a aucun champs";
                 return false;
             }
         }
