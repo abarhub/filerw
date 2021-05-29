@@ -55,9 +55,6 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 
     public StructTextReader(Reader reader, Class<T> clazz, int sz) {
         super(reader, sz);
-        if (reader == null) {
-            throw new IllegalArgumentException();
-        }
         if (clazz == null || !clazz.isEnum()) {
             throw new IllegalArgumentException();
         }
@@ -66,9 +63,6 @@ public class StructTextReader<T extends Field> extends BufferedReader {
 
     public StructTextReader(Reader reader, List<T> fieldsList, int sz) {
         super(reader, sz);
-        if (reader == null) {
-            throw new IllegalArgumentException();
-        }
         if (fieldsList == null || fieldsList.isEmpty()) {
             throw new IllegalArgumentException();
         }
