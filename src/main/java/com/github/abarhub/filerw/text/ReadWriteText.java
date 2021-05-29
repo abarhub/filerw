@@ -53,10 +53,8 @@ public class ReadWriteText<T extends Field> {
     }
 
     public FileContentText<T> readFile() throws IOException, ParseException {
-        FileContentText<T> res;
         LineContentText<T> line;
-        int i;
-        res = new FileContentText<>();
+        FileContentText<T> res = new FileContentText<>();
         try (StructTextReader<T> buf = new StructTextReader<>(new BufferedReader(new FileReader(
                 file)), fieldsList)) {
             loop:
@@ -64,50 +62,61 @@ public class ReadWriteText<T extends Field> {
                 while ((line = buf.readLn()) != null) {
                     res.add(line);
                     if (separator == Separator.NewLine) {
-                        i = buf.read();
-                        switch (i) {
-                            case -1:// EOF
-                                break loop;
-                            case '\n':
-                                break;
-                            case '\r':
-                                i = buf.read();
-                                switch (i) {
-                                    case -1: // EOF
-                                        break loop;
-                                    case '\n':
-                                        break;
-                                    default:
-                                        throw new IOException("Bad format");
-                                }
-                                break;
-                            default:
-                                throw new IOException("Bad format");
+                        if (readNewLine(buf)) {
+                            break loop;
                         }
                     } else if (separator == Separator.NoSeparator) {// nothing
                         // to do
                     } else if (separator == Separator.String) {
-                        if (stringSeparator == null) {
-                            throw new IllegalArgumentException("LA string de separation est nulle");
-                        }
-                        char[] buf2 = new char[stringSeparator.length()];
-                        int nb = buf.read(buf2);
-                        if (nb == -1) {
+                        if (readLineSeparator(buf)) {
                             break loop;
-                        } else {
-                            if (nb < stringSeparator.length()) {
-                                throw new IOException("Le separateur n'a pas la bonne taille");
-                            } else if (!Arrays.equals(buf2, stringSeparator.toCharArray())) {
-                                throw new IOException("Le séparateur n'est pas correcte (attendu='" + stringSeparator + "',reel='" + new String(buf2) + "')");
-                            }
                         }
                     } else {
-                        assert (false);
+                        throw new IOException("Type de separateur inconnu");
                     }
                 }
             }
         }
         return res;
+    }
+
+    private boolean readLineSeparator(StructTextReader<T> buf) throws IOException {
+        char[] buf2 = new char[stringSeparator.length()];
+        int nb = buf.read(buf2);
+        if (nb == -1) {
+            return true;
+        } else {
+            if (nb < stringSeparator.length()) {
+                throw new IOException("Le separateur n'a pas la bonne taille");
+            } else if (!Arrays.equals(buf2, stringSeparator.toCharArray())) {
+                throw new IOException("Le séparateur n'est pas correcte (attendu='" + stringSeparator + "',reel='" + new String(buf2) + "')");
+            }
+        }
+        return false;
+    }
+
+    private boolean readNewLine(StructTextReader<T> buf) throws IOException {
+        int i = buf.read();
+        switch (i) {
+            case -1:// EOF
+                return true;
+            case '\n':
+                break;
+            case '\r':
+                i = buf.read();
+                switch (i) {
+                    case -1: // EOF
+                        return true;
+                    case '\n':
+                        break;
+                    default:
+                        throw new IOException("Bad format");
+                }
+                break;
+            default:
+                throw new IOException("Bad format");
+        }
+        return false;
     }
 
     public void writeFile(File fileName, FileContentText<T> fileContent)
@@ -129,7 +138,7 @@ public class ReadWriteText<T extends Field> {
                             out.print(stringSeparator);
                         }
                     } else {
-                        assert (false);
+                        throw new IOException("Type de separateur inconnu");
                     }
                 }
             }

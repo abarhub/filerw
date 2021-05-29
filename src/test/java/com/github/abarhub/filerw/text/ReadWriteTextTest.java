@@ -17,12 +17,16 @@
 package com.github.abarhub.filerw.text;
 
 import com.github.abarhub.filerw.ToolBox;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -143,6 +147,7 @@ public class ReadWriteTextTest {
     }
 
     @Test
+    @DisplayName("lecture/ecriture fihcier avec separateur")
     public void test7() throws URISyntaxException,
             IOException, ParseException {
         ReadWriteText<FieldsListChamps1> lecture;
@@ -161,27 +166,176 @@ public class ReadWriteTextTest {
         assertTrue(ToolBox.compare(f, f2));
     }
 
-    public File getFile1() throws URISyntaxException {
+    @Test
+    @DisplayName("Lecture fichier d'une seule ligne sans séparateur avec configuration newline")
+    public void test8() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteText<FieldsListChamps1> lecture;
+        FileContentText<FieldsListChamps1> fichier;
         File f;
-        URL url = getClass().getResource("/data/exemple1.txt");
-        assertNotNull(url);
-        f = new File(url.toURI());
-        return f;
+        f = getFile5();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setNewLineSeparator();
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
     }
 
-    public File getFile2() throws URISyntaxException {
+    @Test
+    @DisplayName("Lecture fichier d'une seule ligne sans séparateur avec configuration string")
+    public void test9() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteText<FieldsListChamps1> lecture;
+        FileContentText<FieldsListChamps1> fichier;
         File f;
-        URL url = getClass().getResource("/data/exemple2.txt");
-        assertNotNull(url);
-        f = new File(url.toURI());
-        return f;
+        f = getFile5();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setStringSeparator("ABC");
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
     }
 
-    public File getFile4() throws URISyntaxException {
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec configuration newline")
+    public void test10() throws URISyntaxException {
+        ReadWriteText<FieldsListChamps1> lecture;
         File f;
-        URL url = getClass().getResource("/data/exemple4.txt");
+        f = getFile4();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setNewLineSeparator();
+        IOException exception = assertThrows(IOException.class, lecture::readFile);
+        assertNotNull(exception);
+        assertEquals("Bad format", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec séparateur invalide")
+    public void test11() throws URISyntaxException {
+        ReadWriteText<FieldsListChamps1> lecture;
+        File f;
+        f = getFile1();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setStringSeparator("ABC");
+        IOException exception = assertThrows(IOException.class, lecture::readFile);
+        assertNotNull(exception);
+        assertTrue(exception.getMessage().startsWith("Le séparateur n'est pas correcte (attendu='ABC',reel='"));
+    }
+
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec fichier fini trop tot (separateur tronqué)")
+    public void test12() throws URISyntaxException {
+        ReadWriteText<FieldsListChamps1> lecture;
+        File f;
+        f = getFile6();
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setStringSeparator("ABC");
+        IOException exception = assertThrows(IOException.class, lecture::readFile);
+        assertNotNull(exception);
+        assertEquals("Le separateur n'a pas la bonne taille", exception.getMessage());
+    }
+
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec separateur=\n")
+    public void test13() throws Exception {
+        ReadWriteText<FieldsListChamps1> lecture;
+        Path f;
+        String s = "Newton2             Isaac               04011643\n" +
+                "Einstein            Albert              14103879\n" +
+                "Copernic            Nicolas             19021473\n";
+        f = getNewFile();
+        Files.write(f, s.getBytes(StandardCharsets.UTF_8));
+        System.out.println("Lecture du fichier " + f + " :");
+        lecture = new ReadWriteText<>(f.toFile(),
+                FieldsListChamps1.class);
+        lecture.setNewLineSeparator();
+        FileContentText<FieldsListChamps1> fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
+        assertEquals(3, fichier.getListe().size());
+        assertEquals("Newton2             ", fichier.getListe().get(0).getString(FieldsListChamps1.Nom));
+        assertEquals("Copernic            ", fichier.getListe().get(2).getString(FieldsListChamps1.Nom));
+    }
+
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec separateur=\\r\\n")
+    public void test14() throws Exception {
+        ReadWriteText<FieldsListChamps1> lecture;
+        Path f;
+        String s = "Newton2             Isaac               04011643\r\n" +
+                "Einstein            Albert              14103879\r\n" +
+                "Copernic            Nicolas             19021473\r\n";
+        f = getNewFile();
+        Files.write(f, s.getBytes(StandardCharsets.UTF_8));
+        System.out.println("Lecture du fichier " + f + " :");
+        lecture = new ReadWriteText<>(f.toFile(),
+                FieldsListChamps1.class);
+        lecture.setNewLineSeparator();
+        FileContentText<FieldsListChamps1> fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
+        assertEquals(3, fichier.getListe().size());
+        assertEquals("Newton2             ", fichier.getListe().get(0).getString(FieldsListChamps1.Nom));
+        assertEquals("Copernic            ", fichier.getListe().get(2).getString(FieldsListChamps1.Nom));
+    }
+
+    @Test
+    @DisplayName("Lecture d'un fichier avec separateur string avec separateur=\\r et une seule ligne")
+    public void test15() throws Exception {
+        ReadWriteText<FieldsListChamps1> lecture;
+        Path f;
+        String s = "Newton2             Isaac               04011643\r";
+        f = getNewFile();
+        Files.write(f, s.getBytes(StandardCharsets.UTF_8));
+        System.out.println("Lecture du fichier " + f + " :");
+        lecture = new ReadWriteText<>(f.toFile(),
+                FieldsListChamps1.class);
+        lecture.setNewLineSeparator();
+        FileContentText<FieldsListChamps1> fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
+        assertEquals(1, fichier.getListe().size());
+        assertEquals("Newton2             ", fichier.getListe().get(0).getString(FieldsListChamps1.Nom));
+    }
+
+    private File getFile1() throws URISyntaxException {
+        return getFile("exemple1.txt");
+    }
+
+    private File getFile2() throws URISyntaxException {
+        return getFile("exemple2.txt");
+    }
+
+    private File getFile4() throws URISyntaxException {
+        return getFile("exemple4.txt");
+    }
+
+    private File getFile5() throws URISyntaxException {
+        return getFile("exemple5.txt");
+    }
+
+    private File getFile6() throws URISyntaxException {
+        return getFile("exemple6.txt");
+    }
+
+    private Path getNewFile() throws IOException {
+        Path p = Files.createTempFile("filerw", "test");
+        return p;
+    }
+
+    private File getFile(String nomFichier) throws URISyntaxException {
+        URL url = getClass().getResource("/data/" + nomFichier);
         assertNotNull(url);
-        f = new File(url.toURI());
-        return f;
+        return new File(url.toURI());
     }
 }
