@@ -28,7 +28,7 @@ import java.text.ParseException;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestReadWriteText {
+public class ReadWriteTextTest {
 
     @Test
     public void test1() throws URISyntaxException,

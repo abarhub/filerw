@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TestFileContentBinary {
+public class FileContentBinaryTest {
 
     @Test
     public void testAdd() {

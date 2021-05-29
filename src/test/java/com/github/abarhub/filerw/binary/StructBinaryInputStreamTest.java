@@ -32,7 +32,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestStructBinaryInputStream {
+public class StructBinaryInputStreamTest {
 
     @Test
     public void testStructBinaryInputStreamInputStreamClassOfT()

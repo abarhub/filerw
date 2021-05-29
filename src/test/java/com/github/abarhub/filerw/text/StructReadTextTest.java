@@ -32,7 +32,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestStructReadText {
+public class StructReadTextTest {
 
     @Test
     public void testReadLine() throws URISyntaxException, IOException,

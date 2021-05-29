@@ -29,7 +29,7 @@ import java.text.ParseException;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestReadWriteBinary {
+public class ReadWriteBinaryTest {
 
     @Test
     public void testReadFile() throws URISyntaxException,

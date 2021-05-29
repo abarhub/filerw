@@ -28,7 +28,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestLineContentText {
+public class LineContentTextTest {
 
     @Test
     public void test1() {

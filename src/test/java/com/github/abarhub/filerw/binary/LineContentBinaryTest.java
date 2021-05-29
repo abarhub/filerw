@@ -25,7 +25,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class TestLineContentBinary {
+public class LineContentBinaryTest {
 
     @Test
     public void test1() {

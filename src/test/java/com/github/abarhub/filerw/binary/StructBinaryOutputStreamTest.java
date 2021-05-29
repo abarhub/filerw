@@ -25,7 +25,7 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class TestStructBinaryOutputStream {
+public class StructBinaryOutputStreamTest {
 
     @Test
     public void test1() throws IOException {
