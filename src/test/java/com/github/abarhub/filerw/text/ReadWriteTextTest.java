@@ -130,7 +130,35 @@ public class ReadWriteTextTest {
         assertTrue(tmp.isNewLineSeparator());
         assertFalse(tmp.isNoSeparator());
         assertFalse(tmp.isStringSeparator());
+    }
 
+    @Test
+    public void test6() throws URISyntaxException {
+        ReadWriteText<FieldsListChamps1> tmp;
+
+        tmp = new ReadWriteText<>(getFile1(),
+                FieldsListChamps1.class);
+
+        assertThrows(IllegalArgumentException.class, () -> tmp.setStringSeparator(null));
+    }
+
+    @Test
+    public void test7() throws URISyntaxException,
+            IOException, ParseException {
+        ReadWriteText<FieldsListChamps1> lecture;
+        FileContentText<FieldsListChamps1> fichier;
+        File f, f2;
+        f = getFile4();
+        f2 = new File(f.getAbsoluteFile().getParentFile(), "exemple4_1.txt");
+        System.out.println("Lecture du fichier " + f.getPath() + " :");
+        lecture = new ReadWriteText<>(f,
+                FieldsListChamps1.class);
+        lecture.setStringSeparator("ABC");
+        fichier = lecture.readFile();
+        assertNotNull(fichier);
+        fichier.show();
+        lecture.writeFile(f2, fichier);
+        assertTrue(ToolBox.compare(f, f2));
     }
 
     public File getFile1() throws URISyntaxException {
@@ -144,6 +172,14 @@ public class ReadWriteTextTest {
     public File getFile2() throws URISyntaxException {
         File f;
         URL url = getClass().getResource("/data/exemple2.txt");
+        assertNotNull(url);
+        f = new File(url.toURI());
+        return f;
+    }
+
+    public File getFile4() throws URISyntaxException {
+        File f;
+        URL url = getClass().getResource("/data/exemple4.txt");
         assertNotNull(url);
         f = new File(url.toURI());
         return f;

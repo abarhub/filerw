@@ -33,9 +33,6 @@ public class StructTextWriter<T extends Field> extends PrintWriter {
 
     public StructTextWriter(Writer out, Class<T> clazz) {
         super(out);
-        if (out == null) {
-            throw new IllegalArgumentException();
-        }
         if (clazz == null || !clazz.isEnum()) {
             throw new IllegalArgumentException();
         }
@@ -44,9 +41,6 @@ public class StructTextWriter<T extends Field> extends PrintWriter {
 
     public StructTextWriter(Writer out, List<T> fieldsList) {
         super(out);
-        if (out == null) {
-            throw new IllegalArgumentException();
-        }
         if (fieldsList == null || fieldsList.isEmpty()) {
             throw new IllegalArgumentException();
         }

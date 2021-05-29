@@ -17,11 +17,15 @@
 package com.github.abarhub.filerw.text;
 
 
+import com.github.abarhub.filerw.Tools;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class StructTextWriterTest {
@@ -51,6 +55,81 @@ public class StructTextWriterTest {
             if (out != null)
                 out.close();
         }
+    }
+
+    @Nested
+    class TestConstructeur {
+
+        @Test
+        void test1() {
+            // arrange
+            StringWriter out2 = new StringWriter();
+
+            // act
+            StructTextWriter<FieldsListChamps1> out = new StructTextWriter<>(out2,
+                    FieldsListChamps1.class);
+
+            // assert
+            assertNotNull(out);
+            assertNotNull(out.getFieldsList());
+            assertEquals(3, out.getFieldsList().size());
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.Nom));
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.Prenom));
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.DateNaissance));
+        }
+
+        @Test
+        void test2() {
+            // arrange
+            StringWriter out2 = new StringWriter();
+
+            // act
+            StructTextWriter<FieldsListChamps1> out = new StructTextWriter<>(out2,
+                    Tools.convClassEnum(FieldsListChamps1.class));
+
+            // assert
+            assertNotNull(out);
+            assertNotNull(out.getFieldsList());
+            assertEquals(3, out.getFieldsList().size());
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.Nom));
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.Prenom));
+            assertTrue(out.getFieldsList().contains(FieldsListChamps1.DateNaissance));
+        }
+
+        @Test
+        void test3() {
+            // act
+            assertThrows(NullPointerException.class,()-> new StructTextWriter<>(null,
+                    FieldsListChamps1.class));
+        }
+
+        @Test
+        void test4() {
+            // arrange
+            StringWriter out2 = new StringWriter();
+
+            // act
+            assertThrows(IllegalArgumentException.class,()-> new StructTextWriter<>(out2,
+                    (Class<FieldsListChamps1>) null));
+        }
+
+        @Test
+        void test5() {
+            // act
+            assertThrows(NullPointerException.class,()-> new StructTextWriter<>(null,
+                    new ArrayList<FieldsListChamps1>()));
+        }
+
+        @Test
+        void test6() {
+            // arrange
+            StringWriter out2 = new StringWriter();
+
+            // act
+            assertThrows(IllegalArgumentException.class,()-> new StructTextWriter<>(out2,
+                    (List<FieldsListChamps1>) null));
+        }
+
     }
 
     private String padding(String nom, FieldsListChamps1 nom2) {

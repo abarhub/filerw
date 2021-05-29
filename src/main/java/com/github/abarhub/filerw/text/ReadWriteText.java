@@ -25,6 +25,7 @@ import com.github.abarhub.filerw.Tools;
 
 import java.io.*;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -85,7 +86,21 @@ public class ReadWriteText<T extends Field> {
                         }
                     } else if (separator == Separator.NoSeparator) {// nothing
                         // to do
-
+                    } else if (separator == Separator.String) {
+                        if (stringSeparator == null) {
+                            throw new IllegalArgumentException("LA string de separation est nulle");
+                        }
+                        char[] buf2 = new char[stringSeparator.length()];
+                        int nb = buf.read(buf2);
+                        if (nb == -1) {
+                            break loop;
+                        } else {
+                            if (nb < stringSeparator.length()) {
+                                throw new IOException("Le separateur n'a pas la bonne taille");
+                            } else if (!Arrays.equals(buf2, stringSeparator.toCharArray())) {
+                                throw new IOException("Le séparateur n'est pas correcte (attendu='" + stringSeparator + "',reel='" + new String(buf2) + "')");
+                            }
+                        }
                     } else {
                         assert (false);
                     }
