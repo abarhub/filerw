@@ -24,7 +24,7 @@ import java.io.StringWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class StructWriteTextTest {
+public class StructTextWriterTest {
 
     @Test
     public void testWriteLine() {
