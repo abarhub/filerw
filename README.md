@@ -17,12 +17,14 @@ Dépendance Maven
 <dependency>
   <groupId>com.github.abarhub.filerw</groupId>
   <artifactId>filerw</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 
 Javadoc
 -------
+
+[Javadoc version 0.2.0](https://abarhub.github.io/filerw/documentation/version_0.2.0/apidocs)
 
 [Javadoc version 0.1.0](https://abarhub.github.io/filerw/documentation/version_0.1.0/apidocs)
 
