@@ -3,3 +3,9 @@
 * version 0.28 (16/05/2021)
 -passage à java 8
 -monté de version des plugin maven
+* version 0.1.0 (16/05/2021)
+-passage en SEMVER version
+* version 0.2.0 (XXX)
+-ajout des tests pour augmenter la couverture de code
+-ajout des actions github
+-correction des problèmes de retour à la ligne pour le type text (format windows et linux)

@@ -1,4 +1,4 @@
-filerw
+Filerw
 ======
 
 [![Latest release](https://img.shields.io/github/release/abarhub/filerw.svg)](https://github.com/abarhub/filerw/releases/latest)
@@ -6,11 +6,12 @@ filerw
 [![Codecov](https://codecov.io/gh/abarhub/filerw/branch/master/graph/badge.svg)](https://codecov.io/gh/abarhub/filerw)
 ![Build workflow](https://github.com/abarhub/filerw/actions/workflows/maven.yml/badge.svg)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.abarhub.filerw/filerw/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.abarhub.filerw/filerw)
+[![javadoc](https://javadoc.io/badge2/com.github.abarhub.filerw/filerw/javadoc.svg)](https://javadoc.io/doc/com.github.abarhub.filerw/filerw)
 
 File read write with enum class  
 
 Dépendance Maven
-================
+----------------
 
 ```xml
 <dependency>
@@ -21,14 +22,14 @@ Dépendance Maven
 ```
 
 Javadoc
-=======
+-------
 
 [Javadoc version 0.1.0](https://abarhub.github.io/filerw/documentation/version_0.1.0/apidocs)
 
 [Javadoc version 0.27](https://abarhub.github.io/filerw/documentation/version_0.27/apidocs)
 
 Explication
-===========
+-----------
 
 [Documentation](https://abarhub.github.io/filerw/)
 
@@ -38,7 +39,7 @@ Pour l'utiliser avec une version inferieur à java 5, il faut utiliser une versi
 
 
 Exemple d'utilisation
-=====================
+---------------------
 
 Pour un fichier avec le format suivant :
 
@@ -107,3 +108,6 @@ public class LectureEcriturePersonnes{
 }
 ```
 
+Licence
+-------
+Le code est sous licence [Apache Licence v2](https://www.apache.org/licenses/LICENSE-2.0).
