@@ -9,3 +9,5 @@
 -ajout des tests pour augmenter la couverture de code
 -ajout des actions github
 -correction des problèmes de retour à la ligne pour le type text (format windows et linux)
+* version 1.0.0 (06/06/2021)
+-amélioration des tests unitaires
