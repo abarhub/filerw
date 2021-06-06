@@ -37,10 +37,10 @@ public class ReadWriteText<T extends Field> {
     private final List<T> fieldsList;
 
     private enum Separator {
-        NewLine, NoSeparator, String
+        NEW_LINE, SEPARATOR, STRING
     }
 
-    private Separator separator = Separator.NewLine;
+    private Separator separator = Separator.NEW_LINE;
     private String stringSeparator;
 
     public ReadWriteText(File file, List<T> listFields) {
@@ -61,13 +61,13 @@ public class ReadWriteText<T extends Field> {
             {
                 while ((line = buf.readLn()) != null) {
                     res.add(line);
-                    if (separator == Separator.NewLine) {
+                    if (separator == Separator.NEW_LINE) {
                         if (readNewLine(buf)) {
                             break loop;
                         }
-                    } else if (separator == Separator.NoSeparator) {// nothing
+                    } else if (separator == Separator.SEPARATOR) {// nothing
                         // to do
-                    } else if (separator == Separator.String) {
+                    } else if (separator == Separator.STRING) {
                         if (readLineSeparator(buf)) {
                             break loop;
                         }
@@ -121,18 +121,16 @@ public class ReadWriteText<T extends Field> {
 
     public void writeFile(File fileName, FileContentText<T> fileContent)
             throws IOException {
-        StructTextWriter<T> out = null;
-        try {
-            out = new StructTextWriter<>(new BufferedWriter(new FileWriter(
-                    fileName)), fieldsList);
+        try (StructTextWriter<T> out = new StructTextWriter<>(new BufferedWriter(new FileWriter(
+                fileName)), fieldsList)) {
             if (fileContent != null && fileContent.getListe() != null) {
                 for (LineContentText<T> ligne : fileContent.getListe()) {
                     out.writeLine(ligne);
-                    if (separator == Separator.NewLine) {
+                    if (separator == Separator.NEW_LINE) {
                         out.println();
-                    } else if (separator == Separator.NoSeparator) {
+                    } else if (separator == Separator.SEPARATOR) {
 
-                    } else if (separator == Separator.String) {
+                    } else if (separator == Separator.STRING) {
                         if (stringSeparator != null
                                 && stringSeparator.length() > 0) {
                             out.print(stringSeparator);
@@ -142,41 +140,37 @@ public class ReadWriteText<T extends Field> {
                     }
                 }
             }
-        } finally {
-            if (out != null) {
-                out.flush();
-                out.close();
-            }
+            out.flush();
         }
     }
 
     public void setNewLineSeparator() {
-        separator = Separator.NewLine;
+        separator = Separator.NEW_LINE;
         stringSeparator = null;
     }
 
     public boolean isNewLineSeparator() {
-        return separator == Separator.NewLine;
+        return separator == Separator.NEW_LINE;
     }
 
     public void setNoSeparator() {
-        separator = Separator.NoSeparator;
+        separator = Separator.SEPARATOR;
         stringSeparator = null;
     }
 
     public boolean isNoSeparator() {
-        return separator == Separator.NoSeparator;
+        return separator == Separator.SEPARATOR;
     }
 
     public void setStringSeparator(String sep) {
         if (sep == null) {
             throw new IllegalArgumentException();
         }
-        separator = Separator.String;
+        separator = Separator.STRING;
         stringSeparator = sep;
     }
 
     public boolean isStringSeparator() {
-        return separator == Separator.String;
+        return separator == Separator.STRING;
     }
 }

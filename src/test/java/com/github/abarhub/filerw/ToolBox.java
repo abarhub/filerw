@@ -62,8 +62,8 @@ public class ToolBox {
         return s.equals(s2);
     }
 
-    public static String convertNewLine(String s){
-        if(s==null){
+    public static String convertNewLine(String s) {
+        if (s == null) {
             return s;
         } else {
             return s.replaceAll("\\r\\n", "\n");
